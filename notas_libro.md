@@ -55,3 +55,8 @@ This method classifies as outliers points that are too large or too small, in ot
 This is a very poor idea as the oulier can easily be in the middle values and the normal ones in the tails.
 
 This kind of analysis is normally performed at the end of the algorithm when we have the points already scored.
+
+#### 1.3.3 Probabilistic and Statistical Models
+This method tries to learn the parameters of a distribution to try to fit the data so that the ones that don't fit are outliers.
+
+This is a very good way to make a general procedure to find anomalies. The inconvinient of this comes up when we add too many parameters to the models and the data overfits including anomalies as normal points.
