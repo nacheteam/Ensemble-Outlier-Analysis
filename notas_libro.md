@@ -30,3 +30,8 @@ A simple model to qualify a point as an outlier could be the Z-test. This test c
 If there are not enough data points the mean and deviation cannot be obtained robustly and we should be considering other distribution (Student's one) rather tahn normal one.
 
 The model chosen depends on the data, for example if they are clearly aligned a regresion model would be more suitable than clustering one.
+
+#### 1.2.1 Connections with Supervised Models
+The outlier detection problem can be interpreted as a classification problem in which labels are normal or anomaly.
+
+This problem is unsupervised as we don't know the expected result of classification and we should detect it ourselves. The model is usually trained and tested with the same data set as we don't differ on it. This could cause overfitting. Another point of view is that we have the whole data set classified as normal and we filter it to check the training errors which will be the outliers.
