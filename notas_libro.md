@@ -48,3 +48,10 @@ $K(z_1 ... z_N) = \frac{\sum_{i=1}^{N}z_i^4}{N}$
 This will give a high score if the data is non-uniform. It shows how long is the data spread over the image. This is commonly used to look for outliers in subspaces of lower dimension of the data.
 
 A problem of this measure is that it does not measures well the interaction between atributes when it analyzes the features individually.
+
+#### 1.3.2 Extreme-Value Analysis
+This method classifies as outliers points that are too large or too small, in other words you need to detect the tails of the underlying distribution.
+
+This is a very poor idea as the oulier can easily be in the middle values and the normal ones in the tails.
+
+This kind of analysis is normally performed at the end of the algorithm when we have the points already scored.
