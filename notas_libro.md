@@ -35,3 +35,16 @@ The model chosen depends on the data, for example if they are clearly aligned a 
 The outlier detection problem can be interpreted as a classification problem in which labels are normal or anomaly.
 
 This problem is unsupervised as we don't know the expected result of classification and we should detect it ourselves. The model is usually trained and tested with the same data set as we don't differ on it. This could cause overfitting. Another point of view is that we have the whole data set classified as normal and we filter it to check the training errors which will be the outliers.
+
+### 1.3 The Basic Outlier Detection Models
+
+#### 1.3.1 Feature Selection in Outlier Detection
+It is very difficult to perform a feature selection as the problem is unsupervised. Nevertheless a common way of measuring the non-uniformity of a set of unvariate points is the Kurtosis measure.
+
+$z_i = \frac{x_i - \mu}{\sigma}$
+
+$K(z_1 ... z_N) = \frac{\sum_{i=1}^{N}z_i^4}{N}$
+
+This will give a high score if the data is non-uniform. It shows how long is the data spread over the image. This is commonly used to look for outliers in subspaces of lower dimension of the data.
+
+A problem of this measure is that it does not measures well the interaction between atributes when it analyzes the features individually.
