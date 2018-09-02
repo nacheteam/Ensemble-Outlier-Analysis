@@ -19,3 +19,14 @@ We could fall on the idea of considering the noise as low scored (weak) outliers
 Unsupervised detection is the one in which we dont have previous examples and normal data to compare with the new ones and supervised detection is the opposite one.
 
 It is clear that the dimensionality, the type of attributes in the data or the ordering are really important when detecting anomalies and should be taken into account.
+
+### 1.2 The Data Model is Everything
+The data model chosen to fit our data is crucial as it will give us by methods as k-nearest neighbors or studying the deviation from normal points a score of the outlierness.
+
+It is a really dificult task to choose the model as it is an unsupervised one in which we dont have labeled examples to learn from. Because of this the model is usually chosen by the analyst on what he believes it is the best.
+
+A simple model to qualify a point as an outlier could be the Z-test. This test computes with the obervations $X_1 , ... , X_N$ with mean $\mu$ and standard deviation $\sigma$ the number $Z_i = \frac{|X_i - \mu|}{\sigma}$. An implicit asumption of this is that the model is a Gaussian one. A simple classification could be that if $Z_i \geq 3$ then we classify the point as an anomaly.
+
+If there are not enough data points the mean and deviation cannot be obtained robustly and we should be considering other distribution (Student's one) rather tahn normal one.
+
+The model chosen depends on the data, for example if they are clearly aligned a regresion model would be more suitable than clustering one.
