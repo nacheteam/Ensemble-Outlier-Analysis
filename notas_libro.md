@@ -60,3 +60,12 @@ This kind of analysis is normally performed at the end of the algorithm when we 
 This method tries to learn the parameters of a distribution to try to fit the data so that the ones that don't fit are outliers.
 
 This is a very good way to make a general procedure to find anomalies. The inconvinient of this comes up when we add too many parameters to the models and the data overfits including anomalies as normal points.
+
+#### 1.3.4 Linear Models
+These methods model the data along lower-dimensional subspaces with the use of linear correlations. Typically a least-squares fit is used to determine the optimal lower-dimensional hyperplane.
+
+For example in 2-dimensions a linear model of the data points $\{ (x_i,y_i), i\in \{1 , ... , N \}$ in terms of two coefficients a and b may be created as follows:
+
+$y_i = a\cdot x_i + b + \epsilon_i$   $\forall i \in \{1 , ... , N\}$
+
+Where $\epsilon_i$ represents the residual which is the modeling error.
