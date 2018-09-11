@@ -69,3 +69,11 @@ For example in 2-dimensions a linear model of the data points $\{ (x_i,y_i), i\i
 $y_i = a\cdot x_i + b + \epsilon_i$   $\forall i \in \{1 , ... , N\}$
 
 Where $\epsilon_i$ represents the residual which is the modeling error.
+
+#### 1.3.4.1 Spectral Models
+These methods are related to clustering graphs and networks which are referred as spectral models. They are closely related to matrix factorization.
+
+#### 1.3.5 Proximity-Based Models
+The idea is to model outliers as points that are isolated from the rest of the data based on similarity or distance functions. They could be classified as clustering, density based and nearest neighbors.
+
+The difference of density based methods and clustering ones is that in clustering we want to segment the data whereas in density based we want to do it with the space.
