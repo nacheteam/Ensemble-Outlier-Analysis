@@ -77,3 +77,34 @@ These methods are related to clustering graphs and networks which are referred a
 The idea is to model outliers as points that are isolated from the rest of the data based on similarity or distance functions. They could be classified as clustering, density based and nearest neighbors.
 
 The difference of density based methods and clustering ones is that in clustering we want to segment the data whereas in density based we want to do it with the space.
+
+#### 1.3.6 Information-Theoretic Models
+We can also detect outliers as the elements that make the dataset description longer or more difficult, so that if we remove that element the description becomes concise.
+
+#### 1.3.7 High-Dimensional Outlier Detection
+The most useful and common thing to do is figure out where those outliers are in the subspaces of the data and then obtain properties on the whole space.
+
+### 1.4 Outlier Ensembles
+It is very common in a lot of different areas to combine simple algorithms to obtain a more robust one. This technique in this area is called ensembles.
+
+There are two types of ensembles:
+- Sequential ensembles: the algorithms are applied sequentially so that the next algorithm receives the output of the previous. The output of this could be the output of the last simple algorithm or a weighted combination of the results of all the simple algorithms.
+- Independent ensembles: different algorithms or different instantiations of the same algorithms are applied to either the whole dataset or portions of it. The results are combined to obtain a more robust one.
+
+#### 1.4.1 Sequential Ensembles
+The idea is to apply sequentially a series of algorithms to either the whole dataset or portions of it. We can keep this procedure for a fixed number of iterations or until convergence.
+This process could be seen as a refinement of the results data on continuous aproaches.
+
+#### 1.4.2 Independent Ensembles
+In this kind of ensembles differents algorithms may be applied on the whole dataset or portions of it but, they do not refine the output of the previous. The output of each of those algorithms are combined to obtain the general output.
+This method if commonly used for high dimension problems.
+
+### 1.5 The Basic Data Types for Analysis
+#### 1.5.1 Categorical, Text and Mixed Attributes
+It is very important to understand which kind of data we have to analyse as the methods we are going to apply are going to be different ones.
+
+#### 1.5.2 When the Data Values have Dependencies
+Normally when we have a dataset the data can be partially dependent on other points, for example in time. We can also detect an anomaly by stablishing the relationship with other points in the data. This kind of outliers are referred as contextual outlier or conditional anomalies.
+When we find a set of data items that are anomalous as a group we call them a collective anomaly.
+
+##### 1.5.2.1 Times-Series Data and Data Streams
