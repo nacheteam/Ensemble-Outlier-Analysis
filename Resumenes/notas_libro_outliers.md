@@ -107,4 +107,17 @@ It is very important to understand which kind of data we have to analyse as the 
 Normally when we have a dataset the data can be partially dependent on other points, for example in time. We can also detect an anomaly by stablishing the relationship with other points in the data. This kind of outliers are referred as contextual outlier or conditional anomalies.
 When we find a set of data items that are anomalous as a group we call them a collective anomaly.
 
-##### 1.5.2.1 Times-Series Data and Data Streams
+#### 1.5.2.1 Times-Series Data and Data Streams
+Normally when considering time series the data does not changes significantly in timestamps that are close by or they do it in a smooth way. In this context it is very important the temporal context to identify the anomalies.
+
+If a time series changes smoothly then there are no suspicions that it is an anomaly, in the other hand if the change is produced abruptly then we should be concerned that it could be one.
+
+One of the challenging scenarios with this kind of data is to perform the anomaly detection receiving data in real time.
+
+#### 1.5.2.2 Discrete Sequences
+They are like the continuous sequences but they should have a special treatment if they have categorical data.
+
+#### 1.5.2.3 Spatial Data
+In this area the continuity and smoothness of the data is very important as well because if we find a peak or discontinuity in the data then it is really easy to figure out the anomalies.
+
+#### 1.5.2.4 Network and Graph Data
