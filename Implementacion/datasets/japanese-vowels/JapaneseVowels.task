@@ -1,0 +1,83 @@
+<!------------------------------------------------------------------------
+<!  Japanese vowels
+<!----------------------------------------------------------------------->
+<HTML>
+<HEAD>
+<TITLE>Japanese vowels</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<!------------------------------------------------------------------------
+<!  Title 
+<!----------------------------------------------------------------------->
+<H1>Japanese vowels</H1>
+
+<!------------------------------------------------------------------------
+<!  Task Type 
+<!----------------------------------------------------------------------->
+<H2>Task Type</H2>
+classification, speaker identification
+
+<!------------------------------------------------------------------------
+<!  Sources 
+<!----------------------------------------------------------------------->
+<H2> Sources</H2>
+<H4> Original Owner and Donor</H4>
+<PRE>
+Mineichi Kudo, Jun Toyama, Masaru Shimbo
+<a href="http://ips9.main.eng.hokudai.ac.jp/index_e.html">Information Processing Laboratory</a>
+Division of Systems and Information Engineering
+Graduate School of Engineering
+Hokkaido University, Sapporo 060-8628, JAPAN
+{<a href="mailto:mine@main.eng.hokudai.ac.jp">mine</a>,<a href="mailto:jun@main.eng.hokudai.ac.jp">jun</a>,<a href="mailto:shimbo@main.eng.hokudai.ac.jp">shimbo</a>}@main.eng.hokudai.ac.jp
+</PRE>
+<B>Date Donated: </B> June 13, 2000 
+
+
+<!------------------------------------------------------------------------
+<!  Problem Description 
+<!----------------------------------------------------------------------->
+<H2> Problem Description</H2>
+<p>
+Distinguish nine male speakers by their utterances of two Japanese
+vowels /ae/.
+
+
+<!------------------------------------------------------------------------
+<!  Other Relevant Information 
+<!----------------------------------------------------------------------->
+<H2>Other Relevant Information</H2>
+<p>
+The training file 'ae.train' was used for constructing the classifier and the test file 'ae.test' was used for obtaining the generalization classification rate.
+
+
+<!------------------------------------------------------------------------
+<!  Results 
+<!----------------------------------------------------------------------->
+<H2> Results</H2>
+
+<p>
+Results for this dataset are reported in:
+
+<p>
+M. Kudo, J. Toyama and M. Shimbo. (1999). "Multidimensional Curve Classification Using Passing-Through Regions". Pattern Recognition Letters, Vol. 20, No. 11--13, pages 1103--1111.
+
+<p>
+The classifier proposed in the paper showed the classification rate of 94.1%, while, a 5-state continuous Hidden Markov Model attained up to 96.2%. However, the proposed classifier was shown in the paper to be able to handle a great variety of datasets. In addition, the classifier helps people to have some intuition about what the obtained classification rule is and how the rule will work.
+
+
+
+
+<!------------------------------------------------------------------------
+<!  Signature 
+<!----------------------------------------------------------------------->
+<p>
+<hr>
+<ADDRESS>
+<A href="http://kdd.ics.uci.edu/">The UCI KDD Archive</A><br>
+<a href="http://www.ics.uci.edu/">Information and Computer Science</a><br>
+<a href="http://www.uci.edu/">University of California, Irvine</a><br>
+Irvine, CA 92697-3425 <br>
+</ADDRESS> 
+Last modified: June 30, 1999 </BODY>
+</HTML>
