@@ -14,6 +14,14 @@ class KernelMahalanobis:
     '''
 
     def __init__(self,iter_number,data,data_lenght):
+        '''
+        @brief Función que inicializa la clase KernelMahalanobis
+        @param self Objeto con el que se llama
+        @param iter_number Número de iteraciones para realizar subsampling
+        @param data Conjunto de datos sobre el que se quiere saber los scores
+        que cuantifican cómo de anómalos son los datos
+        @param data_lenght Tamaño del conjunto de datos
+        '''
         self.dataset=data
         self.niter=iter_number
         self.datasize=data_lenght
