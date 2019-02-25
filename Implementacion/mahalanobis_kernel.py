@@ -23,7 +23,8 @@ class KernelMahalanobis:
             # Pull a random integer in (min{50,n},min{1000,n})
             s = np.random.randint(low=min([50,self.datasize]),high=min([1000,self.datasize]))
             # Create the subsample with size s
-            subsample = sklearn.utils.resample(self.dataset,n_samples=s)
+            subsample_indices = np.random.randint(self.datasize,size=s)
+            subsample = self.dataset[subsample_indices]
             # Create the similarity matrix with the subsampled data
             sim_matrix = np.dot(subsample,np.transpose(subsample))
             # Use SVD to decompose S = QΔ^2Q^t
@@ -33,3 +34,4 @@ class KernelMahalanobis:
             non_zero_ind = np.nonzero(Q)[0]
             Qk=Q[non_zero_ind]
             deltak = delta[non_zero_ind]
+            
