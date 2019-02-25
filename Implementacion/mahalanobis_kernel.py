@@ -27,6 +27,12 @@ class KernelMahalanobis:
         self.datasize=data_lenght
 
     def runMethod(self):
+        '''
+        @brief Función que ejecuta el método Kernel Mahalanobis
+        @param self Objeto con el que se llama
+        @return Devuelve una lista de scores que cuantifican cómo de anómalos son
+        los puntos
+        '''
         mean = np.matrix(self.dataset).mean(0)
         total_scores = None
         # For each iteration
