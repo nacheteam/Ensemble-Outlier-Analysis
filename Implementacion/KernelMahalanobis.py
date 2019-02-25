@@ -2,6 +2,7 @@
 import numpy as np
 import sklearn
 from scipy import stats
+import pdb
 
 class KernelMahalanobis:
     '''
@@ -33,6 +34,7 @@ class KernelMahalanobis:
         @return Devuelve una lista de scores que cuantifican cómo de anómalos son
         los puntos
         '''
+        pdb.set_trace()
         mean = np.matrix(self.dataset).mean(0)
         total_scores = None
         # For each iteration
@@ -52,7 +54,7 @@ class KernelMahalanobis:
             Qk=Q[non_zero_ind]
             deltak = delta[non_zero_ind]
             # Build the similarity matrix of the points out of the sample
-            out_indices = set(range(100)).difference(set(subsample_indices))
+            out_indices = list(set(range(100)).difference(set(subsample_indices)))
             out_subsample = self.dataset[out_indices]
             out_sim_matrix = np.dot(out_subsample,np.transpose(out_subsample))
             # Build the total embedding and standardize
