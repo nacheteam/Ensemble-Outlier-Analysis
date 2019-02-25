@@ -35,8 +35,7 @@ class KernelMahalanobis:
         los puntos
         '''
         # TODO: Remove numpy array, use matrices for better interpretation to remove errors
-        pdb.set_trace()
-        mean = np.matrix(self.dataset).mean(0)
+        mean = self.dataset.mean(0)
         total_scores = None
         # For each iteration
         for i in range(self.niter):
@@ -44,19 +43,21 @@ class KernelMahalanobis:
             s = np.random.randint(low=min([50,self.datasize]),high=min([1000,self.datasize]))
             # Create the subsample with size s
             subsample_indices = np.random.randint(self.datasize,size=s)
-            subsample = self.dataset[subsample_indices]
+            subsample = self.dataset[subsample_indices,:]
             # Create the similarity matrix with the subsampled data
             sim_matrix = np.dot(subsample,np.transpose(subsample))
             # Use SVD to decompose S = QΔ^2Q^t
             Q,delta_sq,Qt = np.linalg.svd(sim_matrix)
             delta = np.diag(np.sqrt(delta_sq))
+            Q = np.matrix(Q)
+            delta_sq = np.matrix(delta_sq)
             # Obtain non-zero indices of Q vectors and obtain the correspondent Qk and Δk
-            non_zero_ind = np.nonzero(Q)[0]
-            Qk=Q[non_zero_ind]
-            deltak = delta[non_zero_ind]
+            non_zero_ind = list(set(np.nonzero(Q)[1]))
+            Qk=Q[:,non_zero_ind]
+            deltak = delta[:,non_zero_ind]
             # Build the similarity matrix of the points out of the sample
             out_indices = list(set(range(100)).difference(set(subsample_indices)))
-            out_subsample = self.dataset[out_indices]
+            out_subsample = self.dataset[out_indices,:]
             out_sim_matrix = np.dot(out_subsample,np.transpose(out_subsample))
             # Build the total embedding and standardize
             D = np.stack(np.dot(Qk,deltak),np.dot(out_sim_matrix,np.dot(Qk,np.linalg.inv(deltak))))
