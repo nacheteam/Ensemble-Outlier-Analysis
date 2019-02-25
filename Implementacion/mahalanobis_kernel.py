@@ -34,4 +34,8 @@ class KernelMahalanobis:
             non_zero_ind = np.nonzero(Q)[0]
             Qk=Q[non_zero_ind]
             deltak = delta[non_zero_ind]
+            # Build the similarity matrix of the points out of the sample
+            out_indices = set(range(100)).difference(set(subsample_indices))
+            out_subsample = self.dataset[out_indices]
+            out_sim_matrix = np.dot(out_subsample,np.transpose(out_subsample))
             
