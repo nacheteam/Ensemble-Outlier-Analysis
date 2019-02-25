@@ -34,6 +34,7 @@ class KernelMahalanobis:
         @return Devuelve una lista de scores que cuantifican cómo de anómalos son
         los puntos
         '''
+        # TODO: Remove numpy array, use matrices for better interpretation to remove errors
         pdb.set_trace()
         mean = np.matrix(self.dataset).mean(0)
         total_scores = None
@@ -58,7 +59,7 @@ class KernelMahalanobis:
             out_subsample = self.dataset[out_indices]
             out_sim_matrix = np.dot(out_subsample,np.transpose(out_subsample))
             # Build the total embedding and standardize
-            D = np.stack(np.dot(Qk,deltak),np.dot(np.dot(out_sim_matrix,Qk),np.linalg.inv(deltak)))
+            D = np.stack(np.dot(Qk,deltak),np.dot(out_sim_matrix,np.dot(Qk,np.linalg.inv(deltak))))
             D_stand = stats.zscore(D)
             # Compute the score
             dimensions = len(D_stand[0])
