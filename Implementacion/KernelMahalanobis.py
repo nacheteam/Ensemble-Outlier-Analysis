@@ -44,7 +44,7 @@ class KernelMahalanobis:
             # Create the subsample with size s
             subsample_indices = np.random.randint(self.datasize,size=s)
             subsample = self.dataset[subsample_indices,:]
-            # Create the similarity matrix with the subsampled data
+            # Create the similarity matrix with the subsampled data (Usea the Euclidean distance, not this one https://stats.stackexchange.com/questions/78503/how-to-make-similarity-matrix-from-two-distributions)
             sim_matrix = np.dot(subsample,np.transpose(subsample))
             # Use SVD to decompose S = QΔ^2Q^t
             Q,delta_sq,Qt = np.linalg.svd(sim_matrix)
@@ -56,7 +56,7 @@ class KernelMahalanobis:
             Qk=Q[:,non_zero_ind]
             deltak = delta[:,non_zero_ind]
             # Build the similarity matrix of the points out of the sample
-            out_indices = list(set(range(100)).difference(set(subsample_indices)))
+            out_indices = list(set(range(self.datasize)).difference(set(subsample_indices)))
             out_subsample = self.dataset[out_indices,:]
             out_sim_matrix = np.dot(out_subsample,np.transpose(out_subsample))
             # Build the total embedding and standardize
