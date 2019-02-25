@@ -31,5 +31,5 @@ class KernelMahalanobis:
             delta = np.diag(np.sqrt(delta_sq))
             # Obtain non-zero indices of Q vectors and obtain the correspondent Qk and Δk
             non_zero_ind = np.nonzero(Q)[0]
-            Qk=Q[non_zero_ind]
-            deltak = delta[non_zero_ind]
+            Qk=np.transpose(np.transpose(Q)[non_zero_ind])
+            deltak = np.transpose(np.transpose(delta)[non_zero_ind])
