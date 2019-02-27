@@ -5,6 +5,14 @@ from scipy import stats
 import pdb
 
 def createSimilarityMatrix(sample1,sample2):
+    '''
+    @brief Function that performs the similarity matrix between two samples of a dataset
+    using the Euclidean norm
+    @param sample1 The first sample to obtain the distances
+    @param sample2 The second sample to obtain the distances
+    @return Gives back a NumPy matrix object with the distance of the vector i-th and j-th
+    in the position (i,j)
+    '''
     sim_matrix = np.matrix(np.zeros(shape=(size,size)))
     for i in range(len(sample1)):
         for j in range(len(sample2)):
