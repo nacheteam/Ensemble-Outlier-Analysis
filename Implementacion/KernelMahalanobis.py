@@ -4,10 +4,10 @@ import sklearn
 from scipy import stats
 import pdb
 
-def createSimilarityMatrix(sample1,sample2,size):
+def createSimilarityMatrix(sample1,sample2):
     sim_matrix = np.matrix(np.zeros(shape=(size,size)))
-    for i in range(size):
-        for j in range(len(sample1[0])):
+    for i in range(len(sample1)):
+        for j in range(len(sample2)):
             sim_matrix[i][j]=np.linalg.norm(sample1[i]-sample2[j])
     return sim_matrix
 
@@ -52,7 +52,7 @@ class KernelMahalanobis:
             subsample_indices = np.random.randint(self.datasize,size=s)
             subsample = self.dataset[subsample_indices,:]
             # Create the similarity matrix with the subsampled data (Usea the Euclidean distance, not this one https://stats.stackexchange.com/questions/78503/how-to-make-similarity-matrix-from-two-distributions)
-            sim_matrix = createSimilarityMatrix(subsample,s)
+            sim_matrix = createSimilarityMatrix(subsample,subsample)
             # Use SVD to decompose S = QΔ^2Q^t
             Q,delta_sq,Qt = np.linalg.svd(sim_matrix)
             delta = np.diag(np.sqrt(delta_sq))
