@@ -49,7 +49,6 @@ class KernelMahalanobis:
         @return Devuelve una lista de scores que cuantifican cómo de anómalos son
         los puntos
         '''
-        # TODO: Remove numpy array, use matrices for better interpretation to remove errors
         total_scores = None
         empty_scores = True
         # For each iteration
