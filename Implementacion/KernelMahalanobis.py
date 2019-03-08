@@ -2,22 +2,7 @@
 import numpy as np
 import sklearn
 from scipy import stats
-import pdb
-
-def createSimilarityMatrix(sample1,sample2):
-    '''
-    @brief Function that performs the similarity matrix between two samples of a dataset
-    using the Euclidean norm
-    @param sample1 The first sample to obtain the distances
-    @param sample2 The second sample to obtain the distances
-    @return Gives back a NumPy matrix object with the distance of the vector i-th and j-th
-    in the position (i,j)
-    '''
-    sim_matrix = np.matrix(np.zeros(shape=(len(sample1),len(sample2))))
-    for i in range(len(sample1)):
-        for j in range(len(sample2)):
-            sim_matrix[i,j]=np.linalg.norm(sample1[i]-sample2[j])
-    return sim_matrix
+from scipy.spatial import distance_matrix
 
 class KernelMahalanobis:
     '''
@@ -60,7 +45,8 @@ class KernelMahalanobis:
             subsample_indices = np.random.randint(self.datasize,size=s)
             subsample = self.dataset[subsample_indices,:]
             # Create the similarity matrix with the subsampled data (Usea the Euclidean distance, not this one https://stats.stackexchange.com/questions/78503/how-to-make-similarity-matrix-from-two-distributions)
-            sim_matrix = createSimilarityMatrix(subsample,subsample)
+            #sim_matrix = createSimilarityMatrix(subsample,subsample)
+            sim_matrix = distance_matrix(subsample,subsample)
             # Use SVD to decompose S = QΔ^2Q^t
             Q,delta_sq,Qt = np.linalg.svd(sim_matrix)
             delta = np.diag(np.sqrt(delta_sq))
@@ -73,7 +59,8 @@ class KernelMahalanobis:
             # Build the similarity matrix of the points out of the sample
             out_indices = list(set(range(self.datasize)).difference(set(subsample_indices)))
             out_subsample = self.dataset[out_indices,:]
-            out_sim_matrix = createSimilarityMatrix(self.dataset,subsample)
+            #out_sim_matrix = createSimilarityMatrix(self.dataset,subsample)
+            out_sim_matrix = distance_matrix(self.dataset,subsample)
             # Build the total embedding and standardize
             #D = np.stack(np.dot(Qk,deltak),np.dot(out_sim_matrix,np.dot(Qk,np.linalg.inv(deltak))))
             D = np.dot(out_sim_matrix,np.dot(Qk, np.linalg.inv(deltak)))
