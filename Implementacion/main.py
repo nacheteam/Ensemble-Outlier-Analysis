@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-NUM_ITERACIONES = 10
+NUM_ITERACIONES = 100
 np.random.seed(12345)
 
 ################################################################################
@@ -59,12 +59,13 @@ def main():
     # TODO: Plot the data seaborn-like for every pair of features
     data_frame = createDataFrame(kernel_mahalanobis.outliers)
 
+    classes_palette = {"CYT":"C0","NUC":"C1","MIT":"C2","ME3":"C3","ME2":"C4","ME1":"C5","EXC":"C6","VAC":"C7","POX":"C8","ERL":"C9","outlier":"k"}
     pairs = allPossiblePairs(["mcg","gvh","alm","mit","erl","pox","vac","nuc"])
     i=0
     for p in pairs:
         print("Pair " + str(i+1) + "/" + str(len(pairs)))
         i+=1
-        sns.pairplot(data_frame,hue="classes",diag_kind="hist",vars=p,markers=9*["o"]+["D"]+["o"])
+        sns.pairplot(data_frame,hue="classes",diag_kind="hist",vars=p,palette=classes_palette)
         plt.show()
 
 main()
