@@ -23,18 +23,26 @@ def readData():
         dataset.append(numerical)
     return np.matrix(dataset)
 
-def createDataFrame():
+def createDataFrame(outliers):
     feature_names = ["mcg","gvh","alm","mit","erl","pox","vac","nuc"]
     data_file = open("./datasets/yeast/yeast.data")
     dataset = []
-    classes = {"CYT":0,"NUC":1,"MIT":2,"ME3":3,"ME2":4,"ME1":5,"EXC":6,"VAC":7,"POX":8,"ERL":9}
+    i=0
     for line in data_file:
-        # Removing que first column
+        # Removing the first column
         numerical = list(map(float,list(filter(None,line.split(" ")))[1:-1]))
-        cl = line.split(" ")[-1].strip()
+        cl = line.split(" ")[-1].strip() if i not in outliers else "outlier"
         numerical.append(cl)
         dataset.append(numerical)
-    return pd.DataFrame(data = dataset,columns = feature_names+["clases"])
+        i+=1
+    return pd.DataFrame(data = dataset,columns = feature_names+["classes"])
+
+def allPossiblePairs(list):
+    pairs = []
+    for i in range(len(list)):
+        for j in range(i+1,len(list)):
+            pairs.append([list[i],list[j]])
+    return pairs
 
 ################################################################################
 ##                                  Main                                      ##
@@ -45,22 +53,18 @@ def main():
 
     # I place already the dataset as a matrix
     kernel_mahalanobis = KernelMahalanobis(NUM_ITERACIONES,dataset,len(dataset))
-    scores = np.array(kernel_mahalanobis.runMethod())
-    print("Media de los scores: " + str(np.mean(scores)))
+    kernel_mahalanobis.runMethod()
+    kernel_mahalanobis.obtainResults()
 
-    border = 0.9*(max(list(scores))-min(list(scores))) + min(list(scores))
-    outliers = np.where(scores>=border)
-    print("Los datos anómalos son los que tienen índices: " + str(list(outliers)))
-    plt.scatter(list(range(len(scores))),scores,c="b",label="Datos no anómalos")
-    plt.scatter(np.array(list(range(len(scores))))[outliers],scores[outliers],c="r",label="Anomalías")
-    plt.xlabel("Dato")
-    plt.ylabel("Score")
-    plt.title("Scatter Plot de los scores, en rojo las anomalías")
-    plt.legend()
-    plt.show()
     # TODO: Plot the data seaborn-like for every pair of features
-    data_frame = createDataFrame()
-    sns.pairplot(data_frame,hue="clases",diag_kind="hist",vars=["mcg","gvh","alm"])
-    plt.show()
+    data_frame = createDataFrame(kernel_mahalanobis.outliers)
+
+    pairs = allPossiblePairs(["mcg","gvh","alm","mit","erl","pox","vac","nuc"])
+    i=0
+    for p in pairs:
+        print("Pair " + str(i+1) + "/" + str(len(pairs)))
+        i+=1
+        sns.pairplot(data_frame,hue="classes",diag_kind="hist",vars=p,markers=9*["o"]+["D"]+["o"])
+        plt.show()
 
 main()
