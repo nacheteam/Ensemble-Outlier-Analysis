@@ -4,6 +4,11 @@ import sklearn
 from scipy import stats
 from scipy.spatial import distance_matrix
 
+# For plotting
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+
 class KernelMahalanobis:
     '''
     Implements the Kernel Mahalanobis Ensemble method for Outlier Detection.
@@ -26,13 +31,13 @@ class KernelMahalanobis:
         self.dataset=data
         self.niter=iter_number
         self.datasize=data_lenght
+        self.calculations_done=False
 
     def runMethod(self):
         '''
-        @brief Función que ejecuta el método Kernel Mahalanobis
+        @brief Función que ejecuta el método Kernel Mahalanobis. Los resultados
+        se guardan en la variable self.scores
         @param self Objeto con el que se llama
-        @return Devuelve una lista de scores que cuantifican cómo de anómalos son
-        los puntos
         '''
         total_scores = None
         empty_scores = True
@@ -76,4 +81,44 @@ class KernelMahalanobis:
                 total_scores=np.array(score)/self.niter
             else:
                 total_scores=total_scores+np.array(score)/self.niter
-        return total_scores
+        self.scores = np.array(total_scores)
+        self.calculations_done=True
+
+    def obtainResults(self):
+        '''
+        @brief Function that, given the calculations donde by runMethod and the
+        data stored with it, gives back some statistical information about the results.
+        @param feature_names Names of the characteristics or features involved in
+        the dataset
+        '''
+        if not self.calculations_done:
+            print("First you need to apply the method runMethod.")
+            exit()
+
+        print("\n\n\n##########################################################")
+        print("Statistical information about the outliers")
+        print("##########################################################\n\n")
+        # First the mean, stdv and variance
+        mean = np.mean(self.scores)
+        stdv = np.std(self.scores)
+        variance = np.var(self.scores)
+        print("The mean of the scores is: " + str(mean))
+        print("The standard deviation of the scores is: " + str(stdv))
+        print("The variance of the scores is: " + str(variance))
+
+        # We will say that the data whose score is more than 90% of the maximum
+        # score are outliers, that is the percentile 90.
+        border = 0.9*(max(list(self.scores))-min(list(self.scores)))+min(list(self.scores))
+        outliers_index = np.where(self.scores>=border)
+        # We store the outliers index
+        self.outliers=list(outliers_index[0])
+        print("The outliers are the elements with indexes: " + str(self.outliers))
+
+        # Then we will plot the scores colouring the outliers in red.
+        plt.scatter(list(range(len(self.scores))),self.scores,c="b",label="Normal data")
+        plt.scatter(np.array(list(range(len(self.scores))))[outliers_index],self.scores[outliers_index],c="r",label="Outliers")
+        plt.xlabel("Data")
+        plt.ylabel("Score")
+        plt.title("Scatter Plot of the scores, outliers in red.")
+        plt.legend()
+        plt.show()
