@@ -21,12 +21,11 @@ class KernelMahalanobis:
 
     def __init__(self,iter_number,data,data_lenght):
         '''
-        @brief Función que inicializa la clase KernelMahalanobis
-        @param self Objeto con el que se llama
-        @param iter_number Número de iteraciones para realizar subsampling
-        @param data Conjunto de datos sobre el que se quiere saber los scores
-        que cuantifican cómo de anómalos son los datos
-        @param data_lenght Tamaño del conjunto de datos
+        @brief Function that initialises the KernelMahalanobis class
+        @param self
+        @param iter_number Number of times subsampling is going to be applied
+        @param data Dataset on which to apply the method
+        @param data_lenght size of the dataset
         '''
         self.dataset=data
         self.niter=iter_number
@@ -35,9 +34,9 @@ class KernelMahalanobis:
 
     def runMethod(self):
         '''
-        @brief Función que ejecuta el método Kernel Mahalanobis. Los resultados
-        se guardan en la variable self.scores
-        @param self Objeto con el que se llama
+        @brief Function that executes the Kernel Mahalanobis method. The results are
+        stored on the variable self.scores
+        @param self
         '''
         total_scores = None
         empty_scores = True
