@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-NUM_ITERACIONES = 100
+NUM_ITERACIONES = 1000
 np.random.seed(12345)
 
 ################################################################################
