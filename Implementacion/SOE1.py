@@ -19,7 +19,13 @@ class SOE1:
         '''
         @brief Function that initialises the SOE1 class
         @param self
+        @param k Number of outliers wanted to be extracted
+        @param SS list of subspaces of the characteristics
+        @param comb Combination function
         '''
+        self.k = k
+        self.SS = SS
+        self.comb = comb
 
     def runMethod(self):
         '''
