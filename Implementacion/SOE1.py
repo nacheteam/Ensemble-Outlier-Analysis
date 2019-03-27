@@ -38,18 +38,28 @@ class SOE1:
         stored on the variable self.scores
         @param self
         '''
+        # We obtain the dimensionality of the dataset
         dimension = len(self.dataset[0])
         histograms1D = []
+        # For each dimension
         for i in range(dimension):
+            # We obtain the corresponding row of the dataset
             subset = self.dataset[:,i]
+            # Count each value and the number of occurrences
             unique, counts = numpy.unique(subset, return_counts=True)
+            # We append a dictionary with the values and number of occurrences
             histograms1D.append(zip(unique,counts))
+        # Parse the list to numpy array
         histograms1D = np.array(histograms1D)
         histogramsSS = []
+        # For each characteristics subspace given in SS
         for subs in self.SS:
+            # We combine the 1D histograms using the combination function given
             histogramsSS.append(self.comb(histograms1D[subs]))
+        # Parse the list to numpy array
         histogramsSS = np.array(histogramsSS)
-        self.scores = self.score_comb(np.append(histograms1D,histogramsSS))[:k]
+        # We obtain the k-most outlying scores and points
+        self.scores = self.score_comb(np.append(histograms1D,histogramsSS),self.k)
 
     def obtainResults(self):
         '''
