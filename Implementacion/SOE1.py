@@ -36,6 +36,12 @@ class SOE1:
         stored on the variable self.scores
         @param self
         '''
+        dimension = len(self.dataset[0])
+        histograms = []
+        for i in range(dimension):
+            subset = self.dataset[:,i]
+            unique, counts = numpy.unique(subset, return_counts=True)
+            histograms.append(zip(unique,counts))
 
     def obtainResults(self):
         '''
