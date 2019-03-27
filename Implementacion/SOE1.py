@@ -15,17 +15,20 @@ class SOE1:
     comb: combination/ensemble function
     '''
 
-    def __init__(self,k,SS,comb):
+    def __init__(self,k,SS,comb,dataset):
         '''
         @brief Function that initialises the SOE1 class
         @param self
         @param k Number of outliers wanted to be extracted
-        @param SS list of subspaces of the characteristics
-        @param comb Combination function
+        @param SS list of subspaces of the characteristics given as lists of indexes
+        in the dataset
+        @param comb Combination function should take a bunch of histograms and combine
+        them into one single histogram.
         '''
         self.k = k
         self.SS = SS
         self.comb = comb
+        self.dataset = dataset
 
     def runMethod(self):
         '''
