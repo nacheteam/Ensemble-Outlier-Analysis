@@ -1,6 +1,6 @@
 #!# -*- coding: utf-8 -*-
 import numpy as np
-import sklearn
+from sklearn.preprocessing import scale
 from scipy import stats
 from scipy.spatial import distance_matrix
 
@@ -32,6 +32,25 @@ class KernelMahalanobis:
         self.datasize=data_lenght
         self.calculations_done=False
 
+    def runMethodClassic(self):
+        '''
+        @brief Function that executes the Kernel Mahalanobis method. The results are
+        stored on the variable self.scores
+        @param self
+        '''
+        S = np.dot(self.dataset, self.dataset.T)
+        Q,delta_sq,Qt = np.linalg.svd(S)
+        delta = np.matrix(np.diag(np.sqrt(delta_sq)))
+        Q = np.matrix(Q)
+        Dprime = np.dot(Q,delta)
+        Dp_std = scale(Dprime, axis=1)
+        mean = Dp_std.mean(axis=0)
+        self.scores=[]
+        for i in range(len(Dp_std)):
+            self.scores.append(np.linalg.norm(mean-Dp_std[i])**2)
+        self.scores = np.array(self.scores)
+        self.calculations_done=True
+
     def runMethod(self):
         '''
         @brief Function that executes the Kernel Mahalanobis method. The results are
@@ -42,7 +61,7 @@ class KernelMahalanobis:
         empty_scores = True
         # For each iteration
         for i in range(self.niter):
-            print("Iteración "  + str(i+1) + "/" + str(self.niter))
+            print("Iteration "  + str(i+1) + "/" + str(self.niter))
             # Pull a random integer in (min{50,n},min{1000,n})
             s = np.random.randint(low=min([50,self.datasize]),high=min([1000,self.datasize]))
             # Create the subsample with size s
@@ -112,7 +131,7 @@ class KernelMahalanobis:
 
         # Then we will plot the scores colouring the outliers in red.
         plt.scatter(list(range(len(self.scores))),self.scores,c="b",label="Normal data")
-        plt.scatter(np.array(list(range(len(self.scores))))[outliers_index],self.scores[outliers_index],c="r",label="Outliers")
+        plt.scatter(np.array(list(range(len(self.scores))))[self.outliers],self.scores[self.outliers],c="r",label="Outliers")
         plt.xlabel("Data")
         plt.ylabel("Score")
         plt.title("Scatter Plot of the scores, outliers in red.")
