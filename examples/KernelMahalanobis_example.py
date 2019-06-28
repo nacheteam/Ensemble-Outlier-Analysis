@@ -1,12 +1,15 @@
 #!# -*- coding: utf-8 -*-
 import sys
 sys.path.append('../models/')
+sys.path.append("../test/")
 
 import numpy as np
 from KernelMahalanobis import KernelMahalanobis
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+
+from pyod_test import voteForOutliers
 
 NUM_ITERACIONES = 100
 NOUTLIERS=10
@@ -86,6 +89,17 @@ def obtainResults(mk):
     plt.legend()
     plt.show()
 
+def checkAnomalies(dataset, outliers_mahalanobis):
+    outliers_voted = voteForOutliers(dataset)
+    common_ones = 0
+    different_ones = 0
+    for om in outliers_mahalanobis:
+        if om in outliers_voted:
+            common_ones+=1
+        else:
+            different_ones+=1
+    return common_ones, different_ones
+
 ################################################################################
 ##                                  Main                                      ##
 ################################################################################
@@ -101,5 +115,9 @@ def main():
     obtainResults(kernel_mahalanobis)
 
     print(labels[kernel_mahalanobis.getOutliersBN(NOUTLIERS)])
+
+    cm, df = checkAnomalies(dataset, kernel_mahalanobis.getOutliersBN(NOUTLIERS))
+    print("Common ones: " + str(cm))
+    print("Different ones: " + str(df))
 
 main()
