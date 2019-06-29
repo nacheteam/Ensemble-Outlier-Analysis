@@ -12,7 +12,7 @@ import seaborn as sns
 from pyod_test import voteForOutliers
 
 NUM_ITERACIONES = 100
-NOUTLIERS=10
+NOUTLIERS=100
 np.random.seed(123456789)
 
 ################################################################################
@@ -116,6 +116,7 @@ def main():
 
     print(labels[kernel_mahalanobis.getOutliersBN(NOUTLIERS)])
 
+    print("Getting anomalies based on the voting system to check")
     cm, df = checkAnomalies(dataset, kernel_mahalanobis.getOutliersBN(NOUTLIERS))
     print("Common ones: " + str(cm))
     print("Different ones: " + str(df))
