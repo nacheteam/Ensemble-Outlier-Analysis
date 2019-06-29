@@ -18,7 +18,7 @@ class KernelMahalanobis(EnsembleTemplate):
 
     Parameters
     ------------
-    iter_number: number of iterations for the subsampling loop.
+    Parameter free
     '''
 
     def __init__(self,iter_number):
