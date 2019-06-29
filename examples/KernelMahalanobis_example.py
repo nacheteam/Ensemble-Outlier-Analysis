@@ -111,7 +111,6 @@ def main():
     # I place already the dataset as a matrix
     kernel_mahalanobis = KernelMahalanobis(NUM_ITERACIONES)
     kernel_mahalanobis.fit(dataset)
-    kernel_mahalanobis.runMethod()
     obtainResults(kernel_mahalanobis)
 
     print(labels[kernel_mahalanobis.getOutliersBN(NOUTLIERS)])
