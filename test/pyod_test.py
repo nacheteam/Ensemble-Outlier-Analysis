@@ -18,6 +18,20 @@ from pyod.models.so_gaal import SO_GAAL
 from pyod.models.sos import SOS
 #from pyod.models.xgbod import XGBOD
 
+import sys, os
+
+################################################################################
+##                              AUX FUNCTIONS                                 ##
+################################################################################
+
+# Disable
+def blockPrint():
+    sys.stdout = open(os.devnull, 'w')
+
+# Restore
+def enablePrint():
+    sys.stdout = sys.__stdout__
+
 ################################################################################
 ##                        OUTLIERS FROM EACH MODEL                            ##
 ################################################################################
@@ -125,7 +139,9 @@ def voteForOutliers(dataset, n_votes=5):
     names = ["ABOD", "Auto Encoder", "CBLOF", "COF", "Feature Bagging", "HBOS", "IForest", "KNN", "LOF", "MCD", "MO_GAAL", "OCSVM", "PCA", "SOD", "SO_GAAL", "SOS"]
     countings = [0]*len(dataset)
     for model,name in zip(models,names):
+        enablePrint()
         print("Executing " + name)
+        blockPrint()
         outliers = model(dataset)
         for i in range(len(outliers)):
             if outliers[i]==1:
@@ -134,4 +150,5 @@ def voteForOutliers(dataset, n_votes=5):
     for i in range(len(countings)):
         if countings[i]>=n_votes:
             voted_outliers.append(i)
+    enablePrint()
     return voted_outliers
