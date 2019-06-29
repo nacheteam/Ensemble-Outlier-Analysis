@@ -11,9 +11,10 @@ class EnsembleTemplate:
 
     def fit(self, dataset):
         '''
-        Function to set the dataset
+        Function to set the dataset and execute the algorithm
         '''
         self.dataset = dataset
+        self.runMethod()
         return self
 
     def runMethod(self):
