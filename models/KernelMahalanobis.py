@@ -21,13 +21,14 @@ class KernelMahalanobis(EnsembleTemplate):
     Parameter free
     '''
 
-    def __init__(self,iter_number):
+    def __init__(self, contamination=0.1):
         '''
         @brief Function that initialises the KernelMahalanobis class
         @param self
-        @param iter_number Number of times subsampling is going to be applied
+        @param contamination Proportion of outliers expected in the dataset, float
+        between 0 and 1.
         '''
-        self.niter=iter_number
+        self.contamination=0.1
         self.calculations_done=False
 
     def runMethod(self):
@@ -53,6 +54,11 @@ class KernelMahalanobis(EnsembleTemplate):
         if noutliers<len(self.dataset):
             return self.outlier_score.argsort()[-noutliers:][::-1]
         return np.array(list(range(len(self.dataset))))
+
+    def getOutliers(self):
+        assert self.calculations_done, ("The method needs to be executed before obtaining the outliers")
+        num_out = int(self.contamination*len(self.dataset))
+        return self.outlier_score.argsort()[-num_out:][::-1]
 
     """
     def runMethod(self):

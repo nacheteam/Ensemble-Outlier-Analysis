@@ -113,10 +113,12 @@ def main():
     kernel_mahalanobis.fit(dataset)
     obtainResults(kernel_mahalanobis)
 
-    print(labels[kernel_mahalanobis.getOutliersBN(NOUTLIERS)])
+    outliers = kernel_mahalanobis.getOutliers()
+
+    print(labels[outliers])
 
     print("Getting anomalies based on the voting system to check")
-    cm, df = checkAnomalies(dataset, kernel_mahalanobis.getOutliersBN(NOUTLIERS))
+    cm, df = checkAnomalies(dataset, outliers)
     print("Common ones: " + str(cm))
     print("Different ones: " + str(df))
 
