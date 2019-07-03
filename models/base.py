@@ -3,7 +3,7 @@ class EnsembleTemplate:
     Template class for the ensemble anomaly detectors.
     '''
 
-    def __init__(self):
+    def __init__(self, contamination=0.1):
         '''
         Init template
         '''
@@ -35,3 +35,6 @@ class EnsembleTemplate:
         Function that gets the noutliers instances of the most outlying data
         '''
         return self.outliers
+
+    def getOutliers(self):
+        pass
