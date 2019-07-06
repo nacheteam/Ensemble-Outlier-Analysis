@@ -64,3 +64,7 @@ class HICS(EnsembleTemplate):
             if subs>max:
                 max = subs
         return max
+
+    def generateSubspaces(self):
+        for dim in range(2,len(self.dataset[0])):
+            
