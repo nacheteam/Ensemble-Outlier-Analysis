@@ -37,7 +37,6 @@ class KernelMahalanobis(EnsembleTemplate):
         stored on the variable self.scores
         @param self
         '''
-        assert self.dataset!=None, ("Execute fit first")
         # Compute the S matrix of the algorithm
         S = np.dot(self.dataset, self.dataset.T)
         # Now we diagonalize it
