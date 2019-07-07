@@ -1,6 +1,12 @@
 from base import EnsembleTemplate
 import numpy as np
 from itertools import combinations
+from pyod.models.lof import LOF
+from pyod.models.cof import COF
+from pyod.models.cblof import CBLOF
+from pyod.models.loci import LOCI
+from pyod.models.hbos import HBOS
+from pyod.models.sod import SOD
 
 OUTLIER_RANKING_POS = ["lof", "cof", "cblof", "loci", "hbos", "sod"]
 
@@ -32,6 +38,7 @@ class HICS(EnsembleTemplate):
         self.alpha = 0.1
         self.numCandidates=numCandidates
         self.maxOutputSpaces = maxOutputSpaces
+        self.calculations_done = False
 
     # A subspace is a subset of the indexes of the atributes
     def computeContrast(self, subspace):
@@ -108,3 +115,35 @@ class HICS(EnsembleTemplate):
         subspaces = np.array(all_subspaces).flatten()
         contrasts = np.array(all_contrasts).flatten()
         return subspaces[contrasts.argsort()[-self.maxOutputSpaces:][::-1]]
+
+    def runMethod(self):
+        subspaces = self.generateSubspaces()
+        scores = np.zeros(len(self.dataset))
+        for sub in subspaces:
+            scorer = None
+            if self.outlier_rank=="lof":
+                scorer = LOF()
+            elif self.outlier_rank=="cof":
+                scorer = COF()
+            elif self.outlier_rank=="cblof":
+                scorer = CBLOF()
+            elif self.outlier_rank=="loci":
+                scorer = LOCI()
+            elif self.outlier_rank=="hbos":
+                scorer = HBOS()
+            elif self.outlier_rank=="sod":
+                scorer = SOD()
+            scorer.fit(self.dataset)
+            scores = scores+scorer.decision_scores_
+        self.outlier_score = scores/len(subspaces)
+        self.calculations_done=True
+
+    def getOutliersBN(self, noutliers):
+        if noutliers<len(self.dataset):
+            return self.outlier_score.argsort()[-noutliers:][::-1]
+        return np.array(list(range(len(self.dataset))))
+
+    def getOutliers(self):
+        assert self.calculations_done, ("The method needs to be executed before obtaining the outliers")
+        num_out = int(self.contamination*len(self.dataset))
+        return self.outlier_score.argsort()[-num_out:][::-1]
