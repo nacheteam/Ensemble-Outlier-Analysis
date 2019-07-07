@@ -27,7 +27,9 @@ class HICS(EnsembleTemplate):
     * alpha: the desired average size of the test statistic. This will be calculated
     dynamically by using this parameter.
 
-    * numCandidates:
+    * numCandidates: Maximum number of candidates in each dimension to be a real high contrast subspace
+
+    * maxOutputSpaces: Maximum number of subspaces to have at the end
     """
 
     def __init__(self, outlier_rank="lof", contamination=0.1, M=100, alpha=0.1, numCandidates=500, maxOutputSpaces=1000):
