@@ -80,7 +80,7 @@ def obtainResults(mk):
     print("The standard deviation of the scores is: " + str(stdv))
     print("The variance of the scores is: " + str(variance))
 
-    outliers = mk.getOutliersBN(NOUTLIERS)
+    outliers = mk.getOutliers()
     print("The outliers are the elements with indexes: " + str(outliers))
 
     # Then we will plot the scores colouring the outliers in red.

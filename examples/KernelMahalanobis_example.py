@@ -24,7 +24,7 @@ def main():
     dataset,labels = utils.readDataYeast()
 
     # I place already the dataset as a matrix
-    kernel_mahalanobis = KernelMahalanobis(NUM_ITERACIONES)
+    kernel_mahalanobis = KernelMahalanobis()
     kernel_mahalanobis.fit(dataset)
     utils.obtainResults(kernel_mahalanobis)
 
