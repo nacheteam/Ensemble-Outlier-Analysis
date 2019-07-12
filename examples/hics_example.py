@@ -4,7 +4,7 @@ sys.path.append('../models/')
 sys.path.append("../test/")
 
 import numpy as np
-from KernelMahalanobis import KernelMahalanobis
+from hics import HICS
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -23,12 +23,11 @@ def main():
     #dataset,labels = utils.readDataAbalone()
     dataset,labels = utils.readDataYeast()
 
-    # I place already the dataset as a matrix
-    kernel_mahalanobis = KernelMahalanobis(NUM_ITERACIONES)
-    kernel_mahalanobis.fit(dataset)
-    utils.obtainResults(kernel_mahalanobis)
+    hics = HICS(verbose=True)
+    hics.fit(dataset)
+    utils.obtainResults(hics)
 
-    outliers = kernel_mahalanobis.getOutliers()
+    outliers = hics.getOutliers()
 
     print(labels[outliers])
 
