@@ -32,7 +32,7 @@ class HICS(EnsembleTemplate):
     * maxOutputSpaces: Maximum number of subspaces to have at the end
     """
 
-    def __init__(self, outlier_rank="lof", contamination=0.1, M=100, alpha=0.1, numCandidates=500, maxOutputSpaces=1000):
+    def __init__(self, outlier_rank="lof", contamination=0.1, M=100, alpha=0.1, numCandidates=500, maxOutputSpaces=1000, verbose=False):
         '''
         @brief Constructor of the class
         @param self
@@ -54,6 +54,7 @@ class HICS(EnsembleTemplate):
         self.numCandidates=numCandidates
         self.maxOutputSpaces = maxOutputSpaces
         self.calculations_done = False
+        self.verbose=verbose
 
     def computeContrast(self, subspace):
         '''
@@ -61,6 +62,7 @@ class HICS(EnsembleTemplate):
         @param subspace Numpy array with the indexes of the features that define the subspace
         @return It returns a float representing the contrast of the subspace
         '''
+        print(subspace)
         # We set the adaptative size of the test
         size = int(len(self.dataset)*np.power(self.alpha, len(subspace)))
         # Number of instances in the dataset
@@ -73,7 +75,7 @@ class HICS(EnsembleTemplate):
             # This is the comparison attribute for the test, so it will stay untouched
             comparison_attr=np.random.randint(low=0, high=len(subspace))
             # List of booleans that masks the instances of the dataset selected
-            selected_objects = [True]*N
+            selected_objects = np.array([True]*N)
             # For all indexes in the subspace
             for j in range(1,len(subspace)+1):
                 # The comparison attribute remains untouched
@@ -83,7 +85,7 @@ class HICS(EnsembleTemplate):
                     # Mask the list of booleans
                     selected_objects[random_block] = False
             # With the sample given by the mask selected_objects we compute the deviation
-            deviation+=self.deviation(subspace[comparison_attr], selected_objects, subspace)
+            deviation+=self.computeDeviation(subspace[comparison_attr], selected_objects, subspace)
         # Finally the contrast is the average of all deviations
         return deviation/self.M
 
@@ -129,12 +131,14 @@ class HICS(EnsembleTemplate):
         # this means that in each positions there would be the subspaces of the corresponding
         # dimension in the form of a list of subspaces which are numpy arrays
         all_subspaces = []
-        # Record of the constrast for each subspace in each dimension, same shape as all_subspaces
+        # Record of the contrast for each subspace in each dimension, same shape as all_subspaces
         all_contrasts = []
         # For all dimensions starting from dimension 2 (correlation has no sense on dimension 1)
         for dimension in range(2,len(self.dataset[0])):
-            candidates = np.array([])
-            contrasts = np.array([])
+            if self.verbose:
+                print("Calculating subspaces in dimension " + str(dimension) + "/" + str(len(self.dataset[0])))
+            candidates = []
+            contrasts = []
             # This list will keep the indexes of the redundant subspaces, those are d-dimensional subspaces with d+1-dimensional
             # subspaces containing them with higher contrast
             redundant = []
@@ -157,16 +161,27 @@ class HICS(EnsembleTemplate):
                     # For each new index
                     for ind in indexes:
                         # We calculate the new candidate as the same subspace appending the index
-                        candidates = np.append(candidates,np.append(all_subspaces[-1][i],ind))
-                        contrasts = np.append(contrasts, self.computeContrast(candidates[-1]))
-                        # If the constrast of this subspace is bigger than the father's then we mark the redundancy
-                        if contrasts[-1]>all_contrasts[-1][i]:
-                            parent_should_be_removed=True
+                        new_can = np.append(all_subspaces[-1][i],ind)
+                        # Now we check that the candidate wasn't in the list before
+                        new = True
+                        for previous in candidates:
+                            if len(np.intersect1d(previous,new_can))==len(new_can):
+                                new = False
+                        if new:
+                            candidates.append(new_can)
+                            contrasts.append(self.computeContrast(candidates[-1]))
+                            # If the contrast of this subspace is bigger than the father's then we mark the redundancy
+                            if contrasts[-1]>all_contrasts[-1][i]:
+                                parent_should_be_removed=True
                     # Append the index if redundant
                     if parent_should_be_removed:
                         redundant.append(i)
+            candidates = np.array(candidates)
+            contrasts = np.array(contrasts)
             # If there are redundant subspaces
-            if redundant!=[]
+            if redundant!=[]:
+                if self.verbose:
+                    print("Now deleting redundant subspaces in dimension " + str(dimension) + ", " + str(len(redundant)) + " subspaces removed.")
                 # Delete those ones
                 non_redundant_sub = np.delete(all_subspaces[-1], redundant)
                 # Update the subspaces
@@ -175,7 +190,7 @@ class HICS(EnsembleTemplate):
             if len(candidates)>self.numCandidates:
                 all_subspaces.append(candidates[contrasts.argsort()[-self.numCandidates:][::-1]])
                 all_contrasts.append(contrasts[contrasts.argsort()[-self.numCandidates:][::-1]])
-            else
+            else:
                 all_subspaces.append(candidates)
                 all_contrasts.append(contrasts)
         # We flatten the numpy array to obtain only a list of subspaces and contrasts
@@ -190,9 +205,13 @@ class HICS(EnsembleTemplate):
         '''
         @brief This function is the actual implementation of HICS
         '''
-        assert self.dataset!=None, ("Execute fit first")
+        if self.verbose:
+            print("Calculating the subspaces\n")
         # First we obtain the high contrast subspaces
         subspaces = self.hicsFramework()
+
+        if self.verbose:
+            print("Now calculating the scoring\n")
         # We initialize the scores for each instance as 0
         scores = np.zeros(len(self.dataset))
         # For each subspace
