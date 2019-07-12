@@ -31,6 +31,14 @@ class KernelMahalanobis(EnsembleTemplate):
         self.contamination=0.1
         self.calculations_done=False
 
+    def fit(self, dataset):
+        '''
+        Function to set the dataset and execute the algorithm
+        '''
+        self.dataset = np.matrix(dataset)
+        self.runMethod()
+        return self
+
     def runMethod(self):
         '''
         @brief Function that executes the Kernel Mahalanobis method. The results are
