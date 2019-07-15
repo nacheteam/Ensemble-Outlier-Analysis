@@ -9,6 +9,7 @@ from pyod.models.hbos import HBOS
 from pyod.models.sod import SOD
 
 from multiprocessing import Pool
+from functools import reduce
 
 OUTLIER_RANKING_POS = ["lof", "cof", "cblof", "loci", "hbos", "sod"]
 
@@ -65,7 +66,6 @@ class HICS(EnsembleTemplate):
         @param subspace Numpy array with the indexes of the features that define the subspace
         @return It returns a float representing the contrast of the subspace
         '''
-        print(subspace)
         # We set the adaptative size of the test
         size = int(len(self.dataset)*np.power(self.alpha, len(subspace)))
         # Number of instances in the dataset
@@ -79,12 +79,8 @@ class HICS(EnsembleTemplate):
             comparison_attr=np.random.randint(low=0, high=len(subspace))
             # List of booleans that masks the instances of the dataset selected
             selected_objects = np.array([True]*N)
-            # For all indexes in the subspace
-            for j in range(1,len(subspace)+1):
-                # The comparison attribute remains untouched
-                if j!=comparison_attr:
-                    # We select a random sample of the dataset and mask the list of booleans
-                    selected_objects[np.random.choice(N,size=size, replace=False)] = False
+            # Select random indexes
+            selected_objects[reduce(np.union1d,np.array([np.random.choice(N,size=size,replace=False) for _ in range(len(subspace)-1)]))]=False
             # With the sample given by the mask selected_objects we compute the deviation
             deviation+=self.computeDeviation(subspace[comparison_attr], selected_objects, subspace)
         # Finally the contrast is the average of all deviations
@@ -148,8 +144,10 @@ class HICS(EnsembleTemplate):
                 while cont+self.numThreads<len(candidates):
                     contrasts = contrasts + p.map(self.computeContrast,candidates[cont:cont+self.numThreads])
                     cont+=self.numThreads
+                    print("Computed " + str(cont) + "/" + str(len(candidates)))
                 p = Pool(len(candidates)-cont)
                 contrasts = contrasts + p.map(self.computeContrast,candidates[cont:])
+                print("Computed " + str(cont) + "/" + str(len(candidates)))
             else:
                 # We need to calculate now the indexes starting from a previous subspace
                 # We record the parent of each subspace to check for redundancy
@@ -176,8 +174,10 @@ class HICS(EnsembleTemplate):
                 while cont+self.numThreads<len(candidates):
                     contrasts = contrasts + p.map(self.computeContrast,candidates[cont:cont+self.numThreads])
                     cont+=self.numThreads
+                    print("Computed " + str(cont) + "/" + str(len(candidates)))
                 p = Pool(len(candidates)-cont)
                 contrasts = contrasts + p.map(self.computeContrast,candidates[cont:])
+                print("Computed " + str(cont) + "/" + str(len(candidates)))
 
                 # Check for redundancy
                 for i in range(len(parents)):
