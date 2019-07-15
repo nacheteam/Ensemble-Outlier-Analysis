@@ -63,6 +63,22 @@ def readDataYeast():
             reading_data = True
     return np.array(dataset), np.array(labels)
 
+def readDataCancer():
+    data_file = open("../datasets/wdbc.data")
+    dataset = []
+    labels = []
+    classes = {"M": 0, "B": 1}
+    for line in data_file:
+        vars = line.rstrip().split(",")
+        row=[]
+        for i in range(len(vars)):
+            if i==1:
+                labels.append(classes[vars[i].strip()])
+            else:
+                row.append(float(vars[i]))
+        dataset.append(row)
+    return np.array(dataset), np.array(labels)
+
 ################################################################################
 ##                                   Utils                                    ##
 ################################################################################
