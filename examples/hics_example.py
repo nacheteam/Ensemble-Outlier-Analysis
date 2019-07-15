@@ -20,8 +20,9 @@ np.random.seed(123456789)
 ################################################################################
 
 def main():
-    #dataset,labels = utils.readDataAbalone()
-    dataset,labels = utils.readDataYeast()
+    dataset,labels = utils.readDataAbalone()
+    #dataset,labels = utils.readDataYeast()
+    #dataset, labels = utils.readDataCancer()
 
     hics = HICS(verbose=True)
     hics.fit(dataset)
