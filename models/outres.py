@@ -2,6 +2,7 @@ from base import EnsembleTemplate
 import numpy as np
 
 from scipy.stats import kstest
+from scipy.special import gamma
 
 class OUTRES(EnsembleTemplate):
     """
@@ -23,7 +24,7 @@ class OUTRES(EnsembleTemplate):
         '''
         self.alpha = alpha
 
-    def isRelevantSubspace(subspace):
+    def isRelevantSubspace(self,subspace):
         '''
         @brief Function that, given a subspace it returns True if the subspace is
         relevant (the data is not following a uniform distribution) and False if the
@@ -35,6 +36,9 @@ class OUTRES(EnsembleTemplate):
         '''
         d, pvalue = kstest(self.dataset[:,subspace], "uniform")
         return pvalue>self.alpha
+
+    def hoptimal(self,dimensionality):
+        return (8*gamma(dimensionality/2 + 1)/np.pow(np.pi, dimensionality/2))*(dimensionality+4)*(np.pow(2*np.sqrt(np.pi), dimensionality))*(np.pow(len(self.dataset), -1/(dimensionality+4)))
 
     def runMethod(self):
         '''
