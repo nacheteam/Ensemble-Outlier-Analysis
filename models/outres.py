@@ -40,6 +40,10 @@ class OUTRES(EnsembleTemplate):
     def hoptimal(self,dimensionality):
         return (8*gamma(dimensionality/2 + 1)/np.pow(np.pi, dimensionality/2))*(dimensionality+4)*(np.pow(2*np.sqrt(np.pi), dimensionality))*(np.pow(len(self.dataset), -1/(dimensionality+4)))
 
+    def epsilon(subspace):
+        # This could be changed, as self.hoptimal(2) remains constant during exec it could be set as a global constant maybe(?)
+        return 0.5*(self.hoptimal(len(subspace))/self.hoptimal(2))
+
     def runMethod(self):
         '''
         @brief This function is the actual implementation of HICS
