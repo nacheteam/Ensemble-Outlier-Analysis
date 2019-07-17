@@ -23,6 +23,19 @@ class OUTRES(EnsembleTemplate):
         '''
         self.alpha = alpha
 
+    def isRelevantSubspace(subspace):
+        '''
+        @brief Function that, given a subspace it returns True if the subspace is
+        relevant (the data is not following a uniform distribution) and False if the
+        data is uniformly distributed in the subspace.
+        @param subspace Numpy array with the indexes of the features chosen as
+        the subspace
+        @return It returns True or False depending wether the subspace is relevant
+        or not
+        '''
+        d, pvalue = kstest(self.dataset[:,subspace], "uniform")
+        return pvalue>self.alpha
+
     def runMethod(self):
         '''
         @brief This function is the actual implementation of HICS
