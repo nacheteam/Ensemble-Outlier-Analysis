@@ -40,9 +40,18 @@ class OUTRES(EnsembleTemplate):
     def hoptimal(self,dimensionality):
         return (8*gamma(dimensionality/2 + 1)/np.pow(np.pi, dimensionality/2))*(dimensionality+4)*(np.pow(2*np.sqrt(np.pi), dimensionality))*(np.pow(len(self.dataset), -1/(dimensionality+4)))
 
-    def epsilon(subspace):
+    def epsilon(self,subspace):
         # This could be changed, as self.hoptimal(2) remains constant during exec it could be set as a global constant maybe(?)
         return 0.5*(self.hoptimal(len(subspace))/self.hoptimal(2))
+
+    # Hey buddy, instance is the INDEX of the element in the dataset
+    def adaptativeNeighborhood(self,subspace, instance):
+        neigbors_ind = []
+        epsilon = self.epsilon(subspace)
+        for i in range(len(self.dataset)):
+            if i!=instance and np.linalg.norm(self.dataset[:,subspace][i]-self.dataset[:,subspace][instance])<=epsilon:
+                neigbors_ind.append(i)
+        return np.array(neigbors_ind)
 
     def runMethod(self):
         '''
