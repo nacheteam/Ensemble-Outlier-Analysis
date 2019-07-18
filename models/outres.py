@@ -53,6 +53,9 @@ class OUTRES(EnsembleTemplate):
                 neigbors_ind.append(i)
         return np.array(neigbors_ind)
 
+    def kernel(self, x):
+        return 1-np.pow(x,2)
+
     def runMethod(self):
         '''
         @brief This function is the actual implementation of HICS
