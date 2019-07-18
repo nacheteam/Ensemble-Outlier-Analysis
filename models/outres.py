@@ -48,12 +48,9 @@ class OUTRES(EnsembleTemplate):
 
     # Hey buddy, instance is the INDEX of the element in the dataset
     def adaptativeNeighborhood(self,subspace, instance):
-        neigbors_ind = []
         epsilon = self.epsilon(subspace)
-        for i in range(len(self.dataset)):
-            if i!=instance and np.linalg.norm(self.dataset[:,subspace][i]-self.dataset[:,subspace][instance])<=epsilon:
-                neigbors_ind.append(i)
-        return np.array(neigbors_ind)
+        neig = self.dataset[:,subspace][np.linalg.norm(self.dataset[:,subspace]-self.dataset[:,subspace][instance])<=epsilon]
+        return neig[neig!=instance]
 
     def kernel(self, x):
         return 1-np.pow(x,2)
