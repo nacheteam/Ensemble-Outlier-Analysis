@@ -14,6 +14,8 @@ class EnsembleTemplate:
         Function to set the dataset and execute the algorithm
         '''
         self.dataset = dataset
+        self.outlier_score = np.zeros(len(self.dataset))
+        self.outliers = []
         self.runMethod()
         return self
 
@@ -21,8 +23,7 @@ class EnsembleTemplate:
         '''
         Function to run the method implemented
         '''
-        self.outlier_score = np.array(list(range(len(self.dataset))))
-        self.outliers = list()
+        pass
 
     def getRawScores(self):
         '''
