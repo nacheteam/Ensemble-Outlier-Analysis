@@ -64,6 +64,9 @@ class OUTRES(EnsembleTemplate):
             density+=kernel(np.linalg.norm(self.dataset[:,subspace][ne] - self.dataset[:,subspace][instance])/epsilon)
         return density/len(self.dataset)
 
+    def deviation(self, subspace, instance, mu, sigma):
+        return (mu-self.density(subspace, instance))/(2*sigma)
+
     def runMethod(self):
         '''
         @brief This function is the actual implementation of HICS
