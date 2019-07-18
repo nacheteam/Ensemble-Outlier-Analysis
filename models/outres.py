@@ -11,7 +11,9 @@ class OUTRES(EnsembleTemplate):
 
     Parameters
     ------------
-
+    * alpha: level of confidence used in the Kolmogorov Smirnov test. This is not a
+    real parameter given by the paper, the default value (as said in the paper) is 0.01
+    but we give the possibility to change it.
     """
 
     def __init__(self, contamination=0.1, alpha=0.01):
@@ -58,19 +60,33 @@ class OUTRES(EnsembleTemplate):
 
     def density(self, subspace, instance):
         neig = self.adaptativeNeighborhood(subspace, instance)
-        density = 0
         epsilon = self.epsilon(subspace)
-        for ne in neig:
-            density+=kernel(np.linalg.norm(self.dataset[:,subspace][ne] - self.dataset[:,subspace][instance])/epsilon)
+        density = np.sum(kernel(np.linalg.norm(self.dataset[:,subspace]-np.array([self.dataset[:,subspace][instance]]*len(self.dataset)))/epsilon))
         return density/len(self.dataset)
 
-    def deviation(self, subspace, instance, mu, sigma):
-        return (mu-self.density(subspace, instance))/(2*sigma)
+    def deviation(self, subspace, mu, sigma, density):
+        return (mu-density)/(2*sigma)
+
+    def outres(self, instance, subspace):
+        remaining_indexes = set(list(range(len(self.dataset[0])))).difference(set(list(subspace)))
+        for ind in remaining_indexes:
+            new_subs = np.append(subspace,ind)
+            if self.isRelevantSubspace(new_subs):
+                density = self.density(new_subs, instance)
+                dens_neig = np.array([self.density(new_subs, ne) for ne in self.adaptativeNeighborhood(new_subs, instance)])
+                mean = np.mean(dens_neig)
+                stdv = np.std(dens_neig)
+                deviation = self.deviation(new_subs, mean, stdv, density)
+                if deviation>=1:
+                    self.outlier_score[instance]*=density/deviation
+                self.outres(instance,new_subs)
 
     def runMethod(self):
         '''
         @brief This function is the actual implementation of HICS
         '''
+        for i in range(len(self.dataset)):
+            outres(i,np.array([]))
 
     def getOutliersBN(self, noutliers):
         '''
