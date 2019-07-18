@@ -56,6 +56,14 @@ class OUTRES(EnsembleTemplate):
     def kernel(self, x):
         return 1-np.pow(x,2)
 
+    def density(self, subspace, instance):
+        neig = self.adaptativeNeighborhood(subspace, instance)
+        density = 0
+        epsilon = self.epsilon(subspace)
+        for ne in neig:
+            density+=kernel(np.linalg.norm(self.dataset[:,subspace][ne] - self.dataset[:,subspace][instance])/epsilon)
+        return density/len(self.dataset)
+
     def runMethod(self):
         '''
         @brief This function is the actual implementation of HICS
