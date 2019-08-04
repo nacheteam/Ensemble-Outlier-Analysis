@@ -4,6 +4,8 @@ import numpy as np
 from scipy.stats import kstest
 from scipy.special import gamma
 
+import multiprocessing
+
 class OUTRES(EnsembleTemplate):
     """
     Implementation of the algorithm OUTRES: Statistical Selection of Relevant Subspace
@@ -16,7 +18,7 @@ class OUTRES(EnsembleTemplate):
     but we give the possibility to change it.
     """
 
-    def __init__(self, contamination=0.1, alpha=0.01):
+    def __init__(self, contamination=0.1, alpha=0.01, numThreads=8, verbose=False):
         '''
         @brief Constructor of the class
         @param self
@@ -25,65 +27,92 @@ class OUTRES(EnsembleTemplate):
         data is uniformly distributed
         '''
         self.alpha = alpha
+        self.contamination=contamination
+        self.verbose = verbose
+        self.numThreads=numThreads
 
-    def isRelevantSubspace(self,subspace):
-        '''
-        @brief Function that, given a subspace it returns True if the subspace is
-        relevant (the data is not following a uniform distribution) and False if the
-        data is uniformly distributed in the subspace.
-        @param subspace Numpy array with the indexes of the features chosen as
-        the subspace
-        @return It returns True or False depending wether the subspace is relevant
-        or not
-        '''
-        d, pvalue = kstest(self.dataset[:,subspace], "uniform")
-        return pvalue>self.alpha
+    def isRelevantSubspace(self, subspace, neighborhood):
+        for sub in self.checked_subspaces:
+            if len(np.intersect1d(sub, subspace))==len(subspace):
+                return False
 
-    def hoptimal(self,dimensionality):
-        return (8*gamma(dimensionality/2 + 1)/np.pow(np.pi, dimensionality/2))*(dimensionality+4)*(np.pow(2*np.sqrt(np.pi), dimensionality))*(np.pow(len(self.dataset), -1/(dimensionality+4)))
+        projection = self.dataset[:,subspace][neighborhood]
+        for i in range(len(subspace)):
+            min = np.amin(projection[i])
+            max = np.amax(projection[i])
+            d,p = kstest(projection[i], "uniform", args=(min, max-min))
+            if p<=self.alpha:
+                return False
+        return True
 
-    def epsilon(self,subspace):
-        # This could be changed, as self.hoptimal(2) remains constant during exec it could be set as a global constant maybe(?)
-        return 0.5*(self.hoptimal(len(subspace))/self.hoptimal(2))
+    def computeHOptimal(self, d):
+        f1 = (8*gamma(d/2 + 1))/(np.power(np.pi, d/2))
+        f2 = d+4
+        f3 = np.power(2*np.sqrt(np.pi),d)
+        n = len(self.dataset)
+        f4 = np.power(n, -1/(d+4))
+        return f1*f2*f3*f4
 
-    # Hey buddy, instance is the INDEX of the element in the dataset
-    def adaptativeNeighborhood(self,subspace, instance):
-        epsilon = self.epsilon(subspace)
-        neig = self.dataset[:,subspace][np.linalg.norm(self.dataset[:,subspace]-self.dataset[:,subspace][instance])<=epsilon]
-        return neig[neig!=instance]
+    def computeEpsilon(self, subspace):
+        return 0.5*(self.computeHOptimal(len(subspace))/self.computeHOptimal(2))
 
-    def kernel(self, x):
-        return 1-np.pow(x,2)
+    def computeNeighborhood(self, subspace, instance):
+        projection = self.dataset[:,subspace]
+        tile = np.tile(projection[instance], len(self.dataset)).reshape((len(self.dataset),len(projection[instance])))
+        distances = np.linalg.norm(projection-tile, axis=1)
+        neighborhood = np.where(distances<self.epsilons[len(subspace)])[0]
+        return neighborhood[neighborhood!=instance]
 
-    def density(self, subspace, instance):
-        neig = self.adaptativeNeighborhood(subspace, instance)
-        epsilon = self.epsilon(subspace)
-        density = np.sum(kernel(np.linalg.norm(self.dataset[:,subspace]-np.array([self.dataset[:,subspace][instance]]*len(self.dataset)))/epsilon))
-        return density/len(self.dataset)
+    def computeKernel(self, x):
+        return 1-np.power(x,2)
 
-    def deviation(self, subspace, mu, sigma, density):
-        return (mu-density)/(2*sigma)
+    def computeDensity(self, subspace, neighborhood, instance):
+        projection = self.dataset[:,subspace]
+        tile = np.tile(projection[instance], len(self.dataset)).reshape((len(self.dataset),len(projection[instance])))
+        return np.sum(self.computeKernel(np.linalg.norm(projection-tile, axis=1))/self.computeEpsilon(subspace))/len(self.dataset)
 
+    def computeDeviation(self, subspace, neighborhood, instance, density):
+        densities = np.array([])
+        for neig in neighborhood:
+            local_neigborhood = self.computeNeighborhood(subspace, neig)
+            densities = np.append(densities,self.computeDensity(subspace, local_neigborhood, neig))
+        mean = np.mean(densities)
+        stdv = np.std(densities)
+        return (mean-density)/(2*stdv)
+
+    # First of all, instance is the index of the actual instance in the dataset
     def outres(self, instance, subspace):
-        remaining_indexes = set(list(range(len(self.dataset[0])))).difference(set(list(subspace)))
-        for ind in remaining_indexes:
-            new_subs = np.append(subspace,ind)
-            if self.isRelevantSubspace(new_subs):
-                density = self.density(new_subs, instance)
-                dens_neig = np.array([self.density(new_subs, ne) for ne in self.adaptativeNeighborhood(new_subs, instance)])
-                mean = np.mean(dens_neig)
-                stdv = np.std(dens_neig)
-                deviation = self.deviation(new_subs, mean, stdv, density)
+        available_indexes = list(set(list(range(len(self.dataset[0])))).difference(set(list(subspace))))
+        for index in available_indexes:
+            new_subspace = np.append(subspace, int(index)).astype(int)
+            neighborhood = self.computeNeighborhood(new_subspace, instance)
+            if self.isRelevantSubspace(new_subspace, neighborhood):
+                density = self.computeDensity(new_subspace, neighborhood, instance)
+                deviation = self.computeDeviation(new_subspace, neighborhood, instance, density)
                 if deviation>=1:
+                    if self.verbose:
+                        print("This instance is outlying in the subspace " + str(new_subspace))
+                    # The scores are equal to 1 at first and 1 means no outlierness and 0 means very outlying
                     self.outlier_score[instance]*=density/deviation
-                self.outres(instance,new_subs)
+                self.outres(instance, new_subspace)
+            self.checked_subspaces.append(new_subspace)
+
 
     def runMethod(self):
         '''
-        @brief This function is the actual implementation of HICS
+        @brief This function is the actual implementation of OUTRES
         '''
-        for i in range(len(self.dataset)):
-            outres(i,np.array([]))
+        self.epsilons = [self.computeEpsilon(list(range(n))) for n in range(len(self.dataset[0]))]
+
+        self.outlier_score = np.ones(len(self.dataset))
+        for i in range(1):
+            self.checked_subspaces = []
+            if self.verbose:
+                print("Computing the instance " + str(i+1) + "/" + str(len(self.dataset)))
+            for j in range(len(self.dataset[0])):
+                self.outres(i,np.array([j]))
+        self.outlier_score = np.ones(len(self.dataset))-self.outlier_score
+        self.calculations_done=True
 
     def getOutliersBN(self, noutliers):
         '''
