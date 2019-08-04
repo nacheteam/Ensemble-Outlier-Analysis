@@ -101,7 +101,7 @@ class OUTRES(EnsembleTemplate):
         '''
         @brief This function is the actual implementation of OUTRES
         '''
-        self.epsilons = [self.computeEpsilon(list(range(n))) for n in range(len(self.dataset[0]))]
+        self.epsilons = [self.computeEpsilon(list(range(n))) for n in range(len(self.dataset[0])+1)]
 
         self.outlier_score = np.ones(len(self.dataset))
         for i in range(len(self.dataset)):

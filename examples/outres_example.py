@@ -23,24 +23,24 @@ np.random.seed(123456789)
 ################################################################################
 
 def main():
-    dataset,labels = utils.readDataAbalone()
-    #dataset,labels = utils.readDataYeast()
+    #dataset,labels = utils.readDataAbalone()
+    dataset,labels = utils.readDataYeast()
     #dataset, labels = utils.readDataCancer()
 
     outres = OUTRES(verbose=True)
-    
+    '''
     p = Profile()
     p.enable()
-    
+    '''
     outres.fit(dataset)
-    
+    '''
     p.disable()
     s = io.StringIO()
     ps = pstats.Stats(p, stream=s).sort_stats('cumulative')
     ps.print_stats()
     print(s.getvalue())
     utils.obtainResults(outres)
-    
+    '''
     outliers = outres.getOutliers()
 
     print(labels[outliers])
