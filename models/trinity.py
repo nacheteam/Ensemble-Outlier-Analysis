@@ -15,16 +15,18 @@ class TRINITY(EnsembleTemplate):
 
     """
 
-    def __init__(self, contamination=0.1, num_iter=100):
+    def __init__(self, contamination=0.1, num_iter=100, verbose=False):
         '''
         @brief Constructor of the class
         @param self
         @param contamination Percentage of outliers expected to be in the dataset
         '''
         self.contamination=contamination
+        self.num_iter = num_iter
+        self.verbose = verbose
 
     def distanceBased(self):
-        scores = np.array([0]*len(self.dataset))
+        scores = np.array([0]*len(self.dataset)).astype(float)
         for i in range(self.num_iter):
             knn = KNN(n_neighbors=5, contamination=self.contamination)
             # Number in the interval [50, 1000]
@@ -35,7 +37,7 @@ class TRINITY(EnsembleTemplate):
         return scores/self.num_iter
 
     def dependencyBased(self):
-        scores = np.array([0]*len(self.dataset))
+        scores = np.array([0]*len(self.dataset)).astype(float)
         for i in range(self.num_iter):
             kernel_mahalanobis = KernelMahalanobis(contamination=self.contamination)
             # Number in the interval [50, 1000]
@@ -46,7 +48,7 @@ class TRINITY(EnsembleTemplate):
         return scores/self.num_iter
 
     def densityBased(self):
-        scores = np.array([0]*len(self.dataset))
+        scores = np.array([0]*len(self.dataset)).astype(float)
         for i in range(self.num_iter):
             iforest = IForest(contamination=self.contamination)
             # Number in the interval [50, 1000]
@@ -60,6 +62,17 @@ class TRINITY(EnsembleTemplate):
         '''
         @brief This function is the actual implementation of TRINITY
         '''
+        if self.verbose:
+            print("Obtaining scores with the distance module")
+        distance_based = self.distanceBased()
+        if self.verbose:
+            print("Obtaining scores with the dependency module")
+        dependency_based = self.dependencyBased()
+        if self.verbose:
+            print("Obtaining scores with the density module")
+        density_based = self.densityBased()
+        self.outlier_score=(distance_based + dependency_based + density_based)/3
+        self.calculations_done=True
 
 
     def getOutliersBN(self, noutliers):
