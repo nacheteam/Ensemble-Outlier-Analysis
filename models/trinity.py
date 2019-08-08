@@ -3,6 +3,7 @@ import numpy as np
 
 from pyod.models.knn import KNN
 from KernelMahalanobis import KernelMahalanobis
+from pyod.models.iforest import IForest
 
 class TRINITY(EnsembleTemplate):
     """
@@ -42,6 +43,17 @@ class TRINITY(EnsembleTemplate):
             sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
             kernel_mahalanobis.fit(self.dataset[sample])
             scores[sample]+=kernel_mahalanobis.outlier_score
+        return scores/self.num_iter
+
+    def densityBased(self):
+        scores = np.array([0]*len(self.dataset))
+        for i in range(self.num_iter):
+            iforest = IForest(contamination=self.contamination)
+            # Number in the interval [50, 1000]
+            subsample_size = np.random.randint(50, 1001)
+            sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
+            iforest.fit(self.dataset[sample])
+            scores[sample]+=iforest.decision_scores_
         return scores/self.num_iter
 
     def runMethod(self):
