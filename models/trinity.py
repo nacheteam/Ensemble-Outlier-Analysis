@@ -21,6 +21,17 @@ class TRINITY(EnsembleTemplate):
         '''
         self.contamination=contamination
 
+    def distanceBased(self):
+        scores = np.array([0]*len(self.dataset))
+        for i in range(self.num_iter):
+            knn = KNN(n_neighbors=5, contamination=self.contamination)
+            # Number in the interval [50, 1000]
+            subsample_size = np.random.randint(50, 1001)
+            sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
+            knn.fit(self.dataset[sample])
+            scores[sample]+=knn.decision_scores_
+        return scores/self.num_iter
+
     def runMethod(self):
         '''
         @brief This function is the actual implementation of TRINITY
