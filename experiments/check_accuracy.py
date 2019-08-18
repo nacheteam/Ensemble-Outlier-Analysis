@@ -3,25 +3,39 @@
 import sys
 sys.path.append('../models/')
 from trinity import TRINITY
+from KernelMahalanobis import KernelMahalanobis
 
 import numpy as np
 
 # For reading the .mat files
 import scipy.io
+import h5py
 
-def readDataset(name):
+version37 = ["http.mat"]
+
+def checkForNan(d):
+    for e in d:
+        if np.isnan(e):
+            return True
+    return False
+
+def readDataset(name, version37=False):
     '''
     @brief Function to read the dataset
     @paramm name Route to the dataset
     @return It returns two numpy arrays, first the dataset and second the labels
     '''
     # Load the file
-    file = scipy.io.loadmat(name)
+    file=None
+    if not version37:
+        file = scipy.io.loadmat(name)
+    else:
+        f
     data = []
     labels = []
     # Takes the data and labels only if there are no missing values
     for i in range(len(file['X'])):
-        if not np.nan in file['X'][i]:
+        if not checkForNan(file['X'][i]):
             data.append(file['X'][i])
             labels.append(file['y'][i])
     # Parse them to numpy array
@@ -73,3 +87,20 @@ ker = fitModel(ker, dataset)
 accuracy = getAccuracy(ker, labels, True)
 print("The accuracy is " + str(accuracy*100) + "%")
 '''
+
+# This is based on executing the script from the folder experiments
+ROUTE = "../datasets/outlier_ground_truth/"
+datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "cover.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "shuttle.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
+
+acc = []
+for dat in datasets:
+    print("Computing dataset " + dat)
+    ker = KernelMahalanobis()
+    dataset, labels = readDataset(ROUTE + dat)
+    print("The dataset has " + str(len(dataset)) + " number of instances with dimensionality " + str(len(dataset[0])))
+    ker = fitModel(ker, dataset)
+    acc.append(getAccuracy(ker, labels, True))
+
+print("\n\n\n")
+for data, ac in zip(datasets, acc):
+    print("The accuracy in the dataset " + data + " was " + str(ac*100) + "%")
