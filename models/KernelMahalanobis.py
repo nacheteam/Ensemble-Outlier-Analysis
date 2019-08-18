@@ -49,12 +49,18 @@ class KernelMahalanobis(EnsembleTemplate):
         S = np.dot(self.dataset, self.dataset.T)
         # Now we diagonalize it
         Q,delta_sq,Qt = np.linalg.svd(S)
+        del S
+        del Qt
         # Obtain delta as matrix
         delta = np.matrix(np.diag(np.sqrt(delta_sq)))
+        del delta_sq
         Q = np.matrix(Q)
         # Compute de D' matrix and normalize it
         Dprime = np.dot(Q,delta)
+        del Q
+        del delta
         Dp_std = scale(Dprime, axis=1)
+        del Dprime
         # We compute its mean on the rows to compute the deviation as the score
         mean = Dp_std.mean(axis=0)
         self.outlier_score=[]
