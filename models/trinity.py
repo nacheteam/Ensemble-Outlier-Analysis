@@ -38,8 +38,12 @@ class TRINITY(EnsembleTemplate):
             knn = KNN(n_neighbors=5, contamination=self.contamination)
             # Number in the interval [50, 1000]
             subsample_size = np.random.randint(50, 1001)
-            # Take the sample and train the model
-            sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
+            sample = []
+            if subsample_size>=len(self.dataset):
+                sample = list(range(len(self.dataset)))
+            else:
+                # Take the sample and train the model
+                sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
             knn.fit(self.dataset[sample])
             # Update the score to compute the mean
             scores[sample]+=knn.decision_scores_
@@ -58,8 +62,12 @@ class TRINITY(EnsembleTemplate):
             kernel_mahalanobis = KernelMahalanobis(contamination=self.contamination)
             # Number in the interval [50, 1000]
             subsample_size = np.random.randint(50, 1001)
-            # Take the sample and train the model
-            sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
+            sample = []
+            if subsample_size>=len(self.dataset):
+                sample = list(range(len(self.dataset)))
+            else:
+                # Take the sample and train the model
+                sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
             kernel_mahalanobis.fit(self.dataset[sample])
             # Update the score to compute the mean
             scores[sample]+=kernel_mahalanobis.outlier_score
@@ -75,11 +83,15 @@ class TRINITY(EnsembleTemplate):
         # Initialize the scores
         scores = np.array([0]*len(self.dataset)).astype(float)
         for i in range(self.num_iter):
-            iforest = IForest(contamination=self.contamination)
+            iforest = IForest(contamination=self.contamination, behaviour="new")
             # Number in the interval [50, 1000]
             subsample_size = np.random.randint(50, 1001)
-            # Take the sample and train the model
-            sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
+            sample = []
+            if subsample_size>=len(self.dataset):
+                sample = list(range(len(self.dataset)))
+            else:
+                # Take the sample and train the model
+                sample = np.random.choice(len(self.dataset), size=subsample_size, replace=False)
             iforest.fit(self.dataset[sample])
             # Update the score to compute the mean
             scores[sample]+=iforest.decision_scores_
