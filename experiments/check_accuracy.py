@@ -4,6 +4,9 @@ import sys
 sys.path.append('../models/')
 from trinity import TRINITY
 from KernelMahalanobis import KernelMahalanobis
+from hics import HICS
+from loda import LODA
+from outres import OUTRES
 
 import numpy as np
 
@@ -80,27 +83,29 @@ def getAccuracy(model, labels, my_model):
             correct+=1
     return correct/noutliers
 
-'''
-ker = TRINITY()
-dataset, labels = readDataset("../datasets/outlier_ground_truth/cover.mat")
-ker = fitModel(ker, dataset)
-accuracy = getAccuracy(ker, labels, True)
-print("The accuracy is " + str(accuracy*100) + "%")
-'''
-
 # This is based on executing the script from the folder experiments
 ROUTE = "../datasets/outlier_ground_truth/"
-datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "cover.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "shuttle.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
+#datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "cover.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "shuttle.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
+datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
 
-acc = []
-for dat in datasets:
-    print("Computing dataset " + dat)
-    ker = KernelMahalanobis()
-    dataset, labels = readDataset(ROUTE + dat)
-    print("The dataset has " + str(len(dataset)) + " number of instances with dimensionality " + str(len(dataset[0])))
-    ker = fitModel(ker, dataset)
-    acc.append(getAccuracy(ker, labels, True))
+models = [TRINITY(verbose=True), KernelMahalanobis(), HICS(verbose=True), OUTRES(verbose=True), LODA()]
+names = ["TRINITY", "Mahalanobis Kernel", "HICS", "OUTRES", "LODA"]
+accuracies = []
+
+for name, model in zip(names, models):
+    acc = []
+    for dat in datasets:
+        print("Computing dataset " + dat)
+        dataset, labels = readDataset(ROUTE + dat)
+        print("The dataset has " + str(len(dataset)) + " number of instances with dimensionality " + str(len(dataset[0])))
+        ker = fitModel(model, dataset)
+        acc.append(getAccuracy(model, labels, True))
+    accuracies.append(acc)
 
 print("\n\n\n")
-for data, ac in zip(datasets, acc):
-    print("The accuracy in the dataset " + data + " was " + str(ac*100) + "%")
+for name, acc in zip(names, accuracies):
+    print("\n\n#################################################################")
+    print("MODEL " + name)
+    print("#################################################################")
+    for data, ac in zip(acc, datasets):
+        print("The accuracy in the dataset " + data + " was " + str(ac*100) + "%")
