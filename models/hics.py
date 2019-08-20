@@ -147,7 +147,7 @@ class HICS(EnsembleTemplate):
                     print("Computed " + str(cont) + "/" + str(len(candidates)))
                 p = Pool(len(candidates)-cont)
                 contrasts = contrasts + p.map(self.computeContrast,candidates[cont:])
-                print("Computed " + str(cont) + "/" + str(len(candidates)))
+                print("Computed " + str(len(candidates)) + "/" + str(len(candidates)))
             else:
                 # We need to calculate now the indexes starting from a previous subspace
                 # We record the parent of each subspace to check for redundancy
@@ -177,7 +177,7 @@ class HICS(EnsembleTemplate):
                     print("Computed " + str(cont) + "/" + str(len(candidates)))
                 p = Pool(len(candidates)-cont)
                 contrasts = contrasts + p.map(self.computeContrast,candidates[cont:])
-                print("Computed " + str(cont) + "/" + str(len(candidates)))
+                print("Computed " + str(len(candidates)) + "/" + str(len(candidates)))
 
                 # Check for redundancy
                 for i in range(len(parents)):
