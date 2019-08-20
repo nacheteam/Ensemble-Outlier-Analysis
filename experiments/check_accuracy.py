@@ -88,18 +88,27 @@ ROUTE = "../datasets/outlier_ground_truth/"
 #datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "cover.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "shuttle.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
 datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
 
-models = [TRINITY(verbose=True), KernelMahalanobis(), HICS(verbose=True), OUTRES(verbose=True), LODA()]
-names = ["TRINITY", "Mahalanobis Kernel", "HICS", "OUTRES", "LODA"]
+models = [TRINITY(verbose=True), KernelMahalanobis(), OUTRES(verbose=True), LODA(), HICS(verbose=True)]
+names = ["TRINITY", "Mahalanobis Kernel", "OUTRES", "LODA", "HICS"]
 accuracies = []
 
 for name, model in zip(names, models):
+    print("\n\n#################################################################")
+    print("MODEL " + name + " " + str(names.index(name)+1) + "/" + str(len(names)))
+    print("#################################################################")
     acc = []
     for dat in datasets:
-        print("Computing dataset " + dat)
-        dataset, labels = readDataset(ROUTE + dat)
-        print("The dataset has " + str(len(dataset)) + " number of instances with dimensionality " + str(len(dataset[0])))
-        ker = fitModel(model, dataset)
-        acc.append(getAccuracy(model, labels, True))
+        if name=="HICS" and dat in ["arrhythmia.mat", "mnist.mat", "musk.mat", "speech.mat", "cardio.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "optdigits.mat", "satellite.mat", "satimage-2.mat", "wbc.mat"]:
+            result = None
+        elif name=="OUTRES" and dat in ["annthyroid.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "satellite.mat", "satimage-2.mat", "thyroid.mat"]:
+        else:
+            print("Computing dataset " + dat + " " + str(datasets.index(dat)+1) + "/" + str(len(datasets)))
+            dataset, labels = readDataset(ROUTE + dat)
+            print("The dataset has " + str(len(dataset)) + " number of instances with dimensionality " + str(len(dataset[0])))
+            ker = fitModel(model, dataset)
+            result = getAccuracy(model, labels, True)
+        acc.append(result)
+        print("Accuracy: " + str(result*100) + "%")
     accuracies.append(acc)
 
 print("\n\n\n")
