@@ -101,6 +101,7 @@ for name, model in zip(names, models):
         if name=="HICS" and dat in ["arrhythmia.mat", "mnist.mat", "musk.mat", "speech.mat", "cardio.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "optdigits.mat", "satellite.mat", "satimage-2.mat", "wbc.mat"]:
             result = None
         elif name=="OUTRES" and dat in ["annthyroid.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "satellite.mat", "satimage-2.mat", "thyroid.mat"]:
+            result = None
         else:
             print("Computing dataset " + dat + " " + str(datasets.index(dat)+1) + "/" + str(len(datasets)))
             dataset, labels = readDataset(ROUTE + dat)
