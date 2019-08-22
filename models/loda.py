@@ -81,7 +81,7 @@ class LODA(EnsembleTemplate):
             histograms[i]=np.histogram(Z[i], bins = self.n_bins)
 
         # Initialize the scores to zero
-        self.outlier_score = np.array([0]*len(self.dataset))
+        self.outlier_score = np.array([0]*len(self.dataset)).astype(float)
         # For each instance
         for i in range(len(self.dataset)):
             prob = []
@@ -95,7 +95,10 @@ class LODA(EnsembleTemplate):
                 prob.append(histograms[j][0][bin]/np.sum(histograms[j][0]))
             prob = np.array(prob)
             # Compute the score with the probabilities
-            self.outlier_score[i] = -np.sum(np.log(prob))/self.k
+            if 0. in prob:
+                self.outlier_score[i] = float("inf")
+            else:
+                self.outlier_score[i] = -np.sum(np.log(prob))/self.k
         self.calculations_done=True
 
 
