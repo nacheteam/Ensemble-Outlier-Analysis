@@ -127,7 +127,7 @@ class HICS(EnsembleTemplate):
         # For all dimensions starting from dimension 2 (correlation has no sense on dimension 1)
         for dimension in range(2,len(self.dataset[0])):
             if self.verbose:
-                print("Calculating subspaces in dimension " + str(dimension) + "/" + str(len(self.dataset[0])))
+                print("Computing subspaces in dimension " + str(dimension) + "/" + str(len(self.dataset[0])))
             candidates = []
             contrasts = []
             # This list will keep the indexes of the redundant subspaces, those are d-dimensional subspaces with d+1-dimensional
