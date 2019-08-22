@@ -47,12 +47,14 @@ class OUTRES(EnsembleTemplate):
 
         # Make the projection
         projection = self.dataset[:,subspace][neighborhood]
+        if len(projection)==0:
+            return False
         # We check for each subspace if the 1-dimensional data is uniformly distributed
         for i in range(len(subspace)):
-            min = np.amin(projection[i])
-            max = np.amax(projection[i])
+            min = np.amin(projection[:,i].reshape(-1))
+            max = np.amax(projection[:,i].reshape(-1))
             # We do it using the Kolmogorov-Smirnov test
-            d,p = kstest(projection[i], "uniform", args=(min, max-min))
+            d,p = kstest(projection[:,i], "uniform", args=(min, max-min))
             # If the null hypothesis is not rejected, this means the data follow a uniform distribution
             if p<=self.alpha:
                 return False
@@ -166,7 +168,7 @@ class OUTRES(EnsembleTemplate):
                 # If it is a high deviating instance in the subspace then we update the score
                 if deviation>=1:
                     if self.verbose:
-                        print("This instance is outlying in the subspace " + str(new_subspace))
+                        print("The instance " + str(instance+1) + " is outlying in the subspace " + str(new_subspace))
                     # The scores are equal to 1 at first and 1 means no outlierness and 0 means very outlying
                     self.outlier_score[instance]*=density/deviation
                 # We keep the process if the subspace was relevant
@@ -188,7 +190,7 @@ class OUTRES(EnsembleTemplate):
         for i in range(len(self.dataset)):
             # Erase checked_subspaces
             self.checked_subspaces = []
-            if self.verbose:
+            if self.verbose and i%25==0:
                 print("Computing the instance " + str(i+1) + "/" + str(len(self.dataset)))
             # We run for each instance each index
             for j in range(len(self.dataset[0])):
