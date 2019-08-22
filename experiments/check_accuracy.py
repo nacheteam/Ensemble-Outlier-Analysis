@@ -9,6 +9,7 @@ from loda import LODA
 from outres import OUTRES
 
 import numpy as np
+np.random.seed(123456789)
 
 # For reading the .mat files
 import scipy.io
@@ -83,6 +84,17 @@ def getAccuracy(model, labels, my_model):
             correct+=1
     return correct/noutliers
 
+def writeResults(modelname, datasetname, model, accuracy, datasetnumber):
+    f = open("./exp1/" + modelname + "_" + datasetname + "_" + str(datasetnumber) + ".txt", "w")
+    f.write("Model: " + modelname + "\n")
+    f.write("Dataset " + str(datasetnumber) + ": " + datasetname + "\n")
+    f.write("Accuracy: " + str(accuracy) + "\n")
+    if accuracy!=None:
+        f.write("@scores\n")
+        for score in model.outlier_score:
+            f.write(str(score) + "\n")
+    f.close()
+
 # This is based on executing the script from the folder experiments
 ROUTE = "../datasets/outlier_ground_truth/"
 #datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "cover.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "shuttle.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
@@ -98,9 +110,9 @@ for name, model in zip(names, models):
     print("#################################################################")
     acc = []
     for dat in datasets:
-        if name=="HICS" and dat in ["arrhythmia.mat", "mnist.mat", "musk.mat", "speech.mat", "cardio.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "optdigits.mat", "satellite.mat", "satimage-2.mat", "wbc.mat"]:
+        if name =="OUTRES" and dat in ["arrhythmia.mat", "mnist.mat", "musk.mat", "speech.mat", "cardio.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "optdigits.mat", "satellite.mat", "satimage-2.mat", "wbc.mat"]:
             result = None
-        elif name=="OUTRES" and dat in ["annthyroid.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "satellite.mat", "satimage-2.mat", "thyroid.mat"]:
+        elif name =="HICS" and dat in ["arrhythmia.mat", "mnist.mat", "musk.mat", "speech.mat", "cardio.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "optdigits.mat", "satellite.mat", "satimage-2.mat", "wbc.mat", "pendigits.mat"]:
             result = None
         else:
             print("Computing dataset " + dat + " " + str(datasets.index(dat)+1) + "/" + str(len(datasets)))
@@ -109,13 +121,24 @@ for name, model in zip(names, models):
             ker = fitModel(model, dataset)
             result = getAccuracy(model, labels, True)
         acc.append(result)
-        print("Accuracy: " + str(result*100) + "%")
+        if result==None:
+            print("Accuracy: None")
+        else:
+            print("Accuracy: " + str(result*100) + "%")
+        writeResults(name, dat, model, result, datasets.index(dat)+1)
     accuracies.append(acc)
 
 print("\n\n\n")
+print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+print("########################################################################")
+print("RESULTS")
+print("########################################################################\n\n")
 for name, acc in zip(names, accuracies):
     print("\n\n#################################################################")
     print("MODEL " + name)
     print("#################################################################")
-    for data, ac in zip(acc, datasets):
-        print("The accuracy in the dataset " + data + " was " + str(ac*100) + "%")
+    for data, ac in zip(datasets, acc):
+        if ac==None:
+            print("Accuracy: None")
+        else:
+            print("The accuracy in the dataset " + data + " was " + str(ac*100) + "%")
