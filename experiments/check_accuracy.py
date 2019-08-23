@@ -2,6 +2,8 @@
 
 import sys
 sys.path.append('../models/')
+
+# Import all models
 from trinity import TRINITY
 from KernelMahalanobis import KernelMahalanobis
 from hics import HICS
@@ -9,32 +11,31 @@ from loda import LODA
 from outres import OUTRES
 
 import numpy as np
+# Set the seed for the experiment
 np.random.seed(123456789)
 
 # For reading the .mat files
 import scipy.io
-import h5py
-
-version37 = ["http.mat"]
 
 def checkForNan(d):
+    '''
+    @brief Function that checks for nans in the vector d
+    @param d numpy array or list to check for nans
+    @return It returs True if d contains a nan value, False in other case
+    '''
     for e in d:
         if np.isnan(e):
             return True
     return False
 
-def readDataset(name, version37=False):
+def readDataset(name):
     '''
     @brief Function to read the dataset
     @paramm name Route to the dataset
     @return It returns two numpy arrays, first the dataset and second the labels
     '''
     # Load the file
-    file=None
-    if not version37:
-        file = scipy.io.loadmat(name)
-    else:
-        f
+    file = scipy.io.loadmat(name)
     data = []
     labels = []
     # Takes the data and labels only if there are no missing values
@@ -86,6 +87,14 @@ def getAccuracy(model, labels, my_model):
     return correct/noutliers
 
 def writeResults(modelname, datasetname, model, accuracy, datasetnumber):
+    '''
+    @brief Function that writes the results of the execution of a model to a file
+    @param modelname String with the name of the model
+    @param datasetname Name of the dataset (string)
+    @param model Object with the model fitted
+    @param accuracy Float between 0 and 1 representing the accuracy
+    @param datasetnumber Number of the dataset in the list of models
+    '''
     f = open("./exp1/" + modelname + "_" + datasetname + "_" + str(datasetnumber) + ".txt", "w")
     f.write("Model: " + modelname + "\n")
     f.write("Dataset " + str(datasetnumber) + ": " + datasetname + "\n")
@@ -98,9 +107,9 @@ def writeResults(modelname, datasetname, model, accuracy, datasetnumber):
 
 # This is based on executing the script from the folder experiments
 ROUTE = "../datasets/outlier_ground_truth/"
-#datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "cover.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "shuttle.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
+# List of datasets
 datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
-
+# List of models and names
 models = [TRINITY(verbose=True), KernelMahalanobis(), OUTRES(verbose=True), LODA(), HICS(verbose=True)]
 names = ["TRINITY", "Mahalanobis Kernel", "OUTRES", "LODA", "HICS"]
 accuracies = []
@@ -117,15 +126,19 @@ for name, model in zip(names, models):
             result = None
         else:
             print("Computing dataset " + dat + " " + str(datasets.index(dat)+1) + "/" + str(len(datasets)))
+            # Read dataset
             dataset, labels = readDataset(ROUTE + dat)
             print("The dataset has " + str(len(dataset)) + " number of instances with dimensionality " + str(len(dataset[0])))
+            # Fit the model
             ker = fitModel(model, dataset)
+            # Get accuracy
             result = getAccuracy(model, labels, True)
         acc.append(result)
         if result==None:
             print("Accuracy: None")
         else:
             print("Accuracy: " + str(result*100) + "%")
+        # Write the results to a file
         writeResults(name, dat, model, result, datasets.index(dat)+1)
     accuracies.append(acc)
 
