@@ -111,7 +111,7 @@ def writeResults(modelname, datasetname, model, accuracy, datasetnumber, time):
     f = open("./exp1/own/" + modelname + "_" + datasetname + "_" + str(datasetnumber) + ".txt", "w")
     f.write("Model: " + modelname + "\n")
     f.write("Dataset " + str(datasetnumber) + ": " + datasetname + "\n")
-    f.write("Time taken: " + str(time) + " seg.")
+    f.write("Time taken: " + str(time) + " seg.\n")
     f.write("Accuracy: " + str(accuracy) + "\n")
     if accuracy!=None:
         f.write("@scores\n")
@@ -142,9 +142,9 @@ for name, model in zip(names, models):
             dataset, labels = readDataset(ROUTE + dat)
             print("The dataset has " + str(len(dataset)) + " number of instances with dimensionality " + str(len(dataset[0])))
             # Fit the model
-            start = time.process_time()
+            start = time.time()
             ker = fitModel(model, dataset)
-            time_taken = time.process_time() - start
+            time_taken = time.time() - start
             # Get accuracy
             result = getAccuracy(model, labels, False)
         acc.append(result)
