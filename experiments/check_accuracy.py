@@ -45,6 +45,7 @@ def readDataset(name, version37=False):
     # Parse them to numpy array
     data = np.array(data)
     labels = np.array(labels)
+    del file
     return data, labels
 
 def fitModel(model, dataset):
