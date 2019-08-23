@@ -144,7 +144,8 @@ for name, model in zip(names, models):
             # Fit the model
             start = time.time()
             ker = fitModel(model, dataset)
-            time_taken = time.time() - start
+            end = time.time()
+            time_taken = end - start
             # Get accuracy
             result = getAccuracy(model, labels, False)
         acc.append(result)

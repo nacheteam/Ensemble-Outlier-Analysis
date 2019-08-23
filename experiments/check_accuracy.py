@@ -135,7 +135,8 @@ for name, model in zip(names, models):
             # Fit the model
             start = time.time()
             ker = fitModel(model, dataset)
-            time_taken = time.time() - start
+            end = time.time()
+            time_taken = end - start
             # Get accuracy
             result = getAccuracy(model, labels, True)
         acc.append(result)
@@ -144,7 +145,7 @@ for name, model in zip(names, models):
         else:
             print("Accuracy: " + str(result*100) + "%")
         # Write the results to a file
-        writeResults(name, dat, model, result, datasets.index(dat)+1, time)
+        writeResults(name, dat, model, result, datasets.index(dat)+1, time_taken)
     accuracies.append(acc)
 
 print("\n\n\n")
