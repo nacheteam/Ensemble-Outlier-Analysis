@@ -2,6 +2,7 @@
 
 import sys
 sys.path.append('../models/')
+import time
 
 # Import all models
 from trinity import TRINITY
@@ -86,7 +87,7 @@ def getAccuracy(model, labels, my_model):
             correct+=1
     return correct/noutliers
 
-def writeResults(modelname, datasetname, model, accuracy, datasetnumber):
+def writeResults(modelname, datasetname, model, accuracy, datasetnumber, time):
     '''
     @brief Function that writes the results of the execution of a model to a file
     @param modelname String with the name of the model
@@ -94,10 +95,12 @@ def writeResults(modelname, datasetname, model, accuracy, datasetnumber):
     @param model Object with the model fitted
     @param accuracy Float between 0 and 1 representing the accuracy
     @param datasetnumber Number of the dataset in the list of models
+    @param time Time taken executing the model for the dataset
     '''
-    f = open("./exp1/" + modelname + "_" + datasetname + "_" + str(datasetnumber) + ".txt", "w")
+    f = open("./exp1/own/" + modelname + "_" + datasetname + "_" + str(datasetnumber) + ".txt", "w")
     f.write("Model: " + modelname + "\n")
     f.write("Dataset " + str(datasetnumber) + ": " + datasetname + "\n")
+    f.write("Time taken: " + str(time) + " seg.")
     f.write("Accuracy: " + str(accuracy) + "\n")
     if accuracy!=None:
         f.write("@scores\n")
@@ -130,7 +133,9 @@ for name, model in zip(names, models):
             dataset, labels = readDataset(ROUTE + dat)
             print("The dataset has " + str(len(dataset)) + " number of instances with dimensionality " + str(len(dataset[0])))
             # Fit the model
+            start = time.process_time()
             ker = fitModel(model, dataset)
+            time_taken = time.process_time() - start
             # Get accuracy
             result = getAccuracy(model, labels, True)
         acc.append(result)
@@ -139,7 +144,7 @@ for name, model in zip(names, models):
         else:
             print("Accuracy: " + str(result*100) + "%")
         # Write the results to a file
-        writeResults(name, dat, model, result, datasets.index(dat)+1)
+        writeResults(name, dat, model, result, datasets.index(dat)+1, time)
     accuracies.append(acc)
 
 print("\n\n\n")
