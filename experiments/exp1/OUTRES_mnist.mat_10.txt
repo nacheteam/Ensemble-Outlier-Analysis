@@ -1,0 +1,3 @@
+Model: OUTRES
+Dataset 10: mnist.mat
+Accuracy: None

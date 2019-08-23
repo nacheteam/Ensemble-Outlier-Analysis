@@ -1,0 +1,3 @@
+Model: HICS
+Dataset 12: optdigits.mat
+Accuracy: None

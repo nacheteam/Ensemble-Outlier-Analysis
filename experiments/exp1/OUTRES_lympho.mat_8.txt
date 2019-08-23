@@ -1,0 +1,3 @@
+Model: OUTRES
+Dataset 8: lympho.mat
+Accuracy: None
