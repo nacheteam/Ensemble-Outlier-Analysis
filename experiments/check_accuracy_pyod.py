@@ -124,8 +124,8 @@ ROUTE = "../datasets/outlier_ground_truth/"
 # List of datasets
 datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
 # List of models and names
-models = [ABOD(), AutoEncoder(hidden_neurons = [4,4,4,4], verbose=0), COF(), FeatureBagging(), HBOS(), IForest(), KNN(), LOF(), MCD(), MO_GAAL(), OCSVM(), PCA(), SOD(), SO_GAAL(), SOS(), XGBOD()]
-names = ["ABOD", "Auto_Encoder", "COF", "Feature_Bagging", "HBOS", "IForest", "KNN", "LOF", "MCD", "MO_GAAL", "OCSVM", "PCA", "SOD", "SO_GAAL", "SOS", "XGBOD"]
+models = [ABOD(), AutoEncoder(hidden_neurons = [4,4,4,4], verbose=0), COF(), FeatureBagging(), HBOS(), IForest(), KNN(), LOF(), MCD(), MO_GAAL(), OCSVM(), PCA(), SOD(), SO_GAAL(), SOS()]
+names = ["ABOD", "Auto_Encoder", "COF", "Feature_Bagging", "HBOS", "IForest", "KNN", "LOF", "MCD", "MO_GAAL", "OCSVM", "PCA", "SOD", "SO_GAAL", "SOS"]
 accuracies = []
 
 for name, model in zip(names, models):

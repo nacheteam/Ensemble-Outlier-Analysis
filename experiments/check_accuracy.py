@@ -114,7 +114,9 @@ ROUTE = "../datasets/outlier_ground_truth/"
 datasets = ["annthyroid.mat", "arrhythmia.mat", "breastw.mat", "cardio.mat", "glass.mat", "ionosphere.mat", "letter.mat", "lympho.mat", "mammography.mat", "mnist.mat", "musk.mat", "optdigits.mat", "pendigits.mat", "pima.mat", "satellite.mat", "satimage-2.mat", "speech.mat", "thyroid.mat", "vertebral.mat", "vowels.mat", "wbc.mat", "wine.mat"]
 # List of models and names
 models = [TRINITY(verbose=True), KernelMahalanobis(), OUTRES(verbose=True), LODA(), HICS(verbose=True)]
+models = [TRINITY(verbose=True)]
 names = ["TRINITY", "Mahalanobis Kernel", "OUTRES", "LODA", "HICS"]
+names = ["TRINITY"]
 accuracies = []
 
 for name, model in zip(names, models):
