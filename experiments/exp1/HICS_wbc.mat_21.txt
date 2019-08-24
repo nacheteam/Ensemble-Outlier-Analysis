@@ -1,3 +1,0 @@
-Model: HICS
-Dataset 21: wbc.mat
-Accuracy: None

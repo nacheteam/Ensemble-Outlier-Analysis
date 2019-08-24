@@ -1,0 +1,4 @@
+Model: HICS
+Dataset 8: lympho.mat
+Time taken: 73.4312047958374 seg.
+Accuracy: None

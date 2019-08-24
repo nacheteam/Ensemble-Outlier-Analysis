@@ -1,3 +1,0 @@
-Model: OUTRES
-Dataset 17: speech.mat
-Accuracy: None

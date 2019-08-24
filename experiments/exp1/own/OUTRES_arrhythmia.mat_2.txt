@@ -1,0 +1,4 @@
+Model: OUTRES
+Dataset 2: arrhythmia.mat
+Time taken: 193.61105871200562 seg.
+Accuracy: None

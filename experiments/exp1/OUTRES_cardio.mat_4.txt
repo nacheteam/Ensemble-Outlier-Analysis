@@ -1,3 +1,0 @@
-Model: OUTRES
-Dataset 4: cardio.mat
-Accuracy: None

@@ -1,0 +1,4 @@
+Model: HICS
+Dataset 16: satimage-2.mat
+Time taken: 171.8624517917633 seg.
+Accuracy: None

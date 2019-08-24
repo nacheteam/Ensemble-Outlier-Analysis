@@ -1,3 +1,0 @@
-Model: OUTRES
-Dataset 15: satellite.mat
-Accuracy: None

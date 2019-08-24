@@ -1,3 +1,0 @@
-Model: HICS
-Dataset 15: satellite.mat
-Accuracy: None

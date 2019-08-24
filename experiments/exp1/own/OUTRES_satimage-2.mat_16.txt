@@ -1,0 +1,4 @@
+Model: OUTRES
+Dataset 16: satimage-2.mat
+Time taken: 40.637993574142456 seg.
+Accuracy: None

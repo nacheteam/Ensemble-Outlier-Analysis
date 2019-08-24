@@ -1,3 +1,0 @@
-Model: HICS
-Dataset 16: satimage-2.mat
-Accuracy: None

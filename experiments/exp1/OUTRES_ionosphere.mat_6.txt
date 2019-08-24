@@ -1,3 +1,0 @@
-Model: OUTRES
-Dataset 6: ionosphere.mat
-Accuracy: None

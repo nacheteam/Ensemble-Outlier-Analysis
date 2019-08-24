@@ -1,0 +1,4 @@
+Model: OUTRES
+Dataset 6: ionosphere.mat
+Time taken: 11.534909963607788 seg.
+Accuracy: None

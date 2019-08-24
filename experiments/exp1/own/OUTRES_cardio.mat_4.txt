@@ -1,0 +1,4 @@
+Model: OUTRES
+Dataset 4: cardio.mat
+Time taken: 117.82257843017578 seg.
+Accuracy: None

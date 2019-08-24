@@ -1,3 +1,0 @@
-Model: OUTRES
-Dataset 2: arrhythmia.mat
-Accuracy: None

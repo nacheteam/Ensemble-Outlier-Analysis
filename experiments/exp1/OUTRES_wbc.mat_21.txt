@@ -1,3 +1,0 @@
-Model: OUTRES
-Dataset 21: wbc.mat
-Accuracy: None

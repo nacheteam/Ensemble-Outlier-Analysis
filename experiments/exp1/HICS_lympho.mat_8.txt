@@ -1,3 +1,0 @@
-Model: HICS
-Dataset 8: lympho.mat
-Accuracy: None

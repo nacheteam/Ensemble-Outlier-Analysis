@@ -1,0 +1,4 @@
+Model: OUTRES
+Dataset 15: satellite.mat
+Time taken: 40.637993574142456 seg.
+Accuracy: None
