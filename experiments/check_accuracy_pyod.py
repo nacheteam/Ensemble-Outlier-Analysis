@@ -115,7 +115,7 @@ def writeResults(modelname, datasetname, model, accuracy, datasetnumber, time):
     f.write("Accuracy: " + str(accuracy) + "\n")
     if accuracy!=None:
         f.write("@scores\n")
-        for score in model.outlier_score:
+        for score in model.decision_scores_:
             f.write(str(score) + "\n")
     f.close()
 
