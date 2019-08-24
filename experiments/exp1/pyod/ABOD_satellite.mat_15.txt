@@ -1,0 +1,4 @@
+Model: ABOD
+Dataset 15: satellite.mat
+Time taken: 0.09729313850402832 seg.
+Accuracy: None

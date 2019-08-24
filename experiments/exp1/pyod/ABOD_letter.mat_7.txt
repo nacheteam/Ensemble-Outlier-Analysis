@@ -1,0 +1,4 @@
+Model: ABOD
+Dataset 7: letter.mat
+Time taken: 0.051576852798461914 seg.
+Accuracy: None
