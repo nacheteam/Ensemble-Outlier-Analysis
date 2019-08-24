@@ -108,7 +108,7 @@ def writeResults(modelname, datasetname, model, accuracy, datasetnumber, time):
     @param datasetnumber Number of the dataset in the list of models
     @param time Time taken executing the model for the dataset
     '''
-    f = open("./exp1/own/" + modelname + "_" + datasetname + "_" + str(datasetnumber) + ".txt", "w")
+    f = open("./exp1/pyod/" + modelname + "_" + datasetname + "_" + str(datasetnumber) + ".txt", "w")
     f.write("Model: " + modelname + "\n")
     f.write("Dataset " + str(datasetnumber) + ": " + datasetname + "\n")
     f.write("Time taken: " + str(time) + " seg.\n")
