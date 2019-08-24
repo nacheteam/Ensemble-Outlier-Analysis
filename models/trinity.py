@@ -5,6 +5,8 @@ from pyod.models.knn import KNN
 from KernelMahalanobis import KernelMahalanobis
 from pyod.models.iforest import IForest
 
+from sklearn.preprocessing import scale
+
 class TRINITY(EnsembleTemplate):
     """
     Implementation of the algorithm TRINITY.
@@ -48,7 +50,9 @@ class TRINITY(EnsembleTemplate):
             # Update the score to compute the mean
             scores[sample]+=knn.decision_scores_
         # Return the mean
-        return scores/self.num_iter
+        scores = scores/self.num_iter
+        scores = scale(scores)
+        return scores
 
     def dependencyBased(self):
         '''
@@ -72,7 +76,9 @@ class TRINITY(EnsembleTemplate):
             # Update the score to compute the mean
             scores[sample]+=kernel_mahalanobis.outlier_score
         # Return the mean
-        return scores/self.num_iter
+        scores = scores/self.num_iter
+        scores = scale(scores)
+        return scores
 
     def densityBased(self):
         '''
@@ -96,7 +102,9 @@ class TRINITY(EnsembleTemplate):
             # Update the score to compute the mean
             scores[sample]+=iforest.decision_scores_
         # Return the mean
-        return scores/self.num_iter
+        scores = scores/self.num_iter
+        scores = scale(scores)
+        return scores
 
     def runMethod(self):
         '''
