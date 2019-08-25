@@ -1,0 +1,6 @@
+Dataset 7: thyroid.mat
+@outliying_subspaces
+outlier ; subspace ; neighborhood
+38;0,539,704,742,2394
+1524;0,11882,2209,2774
+1881;0,2742,757,1112,1557,3647
