@@ -18,7 +18,7 @@ class OUTRES(EnsembleTemplate):
     but we give the possibility to change it.
     """
 
-    def __init__(self, contamination=0.1, alpha=0.01, verbose=False):
+    def __init__(self, contamination=0.1, alpha=0.01, verbose=False, experiment=False):
         '''
         @brief Constructor of the class
         @param self
@@ -26,10 +26,12 @@ class OUTRES(EnsembleTemplate):
         @param alpha Parameter for the Kolmogorov Smirnov test to check if the
         data is uniformly distributed
         @param verbose Makes the algorithm to print some information during execution
+        @param experiment Indicates if the experiment is working. Nothing to do with the algorithm
         '''
         self.alpha = alpha
         self.contamination=contamination
         self.verbose = verbose
+        self.experiment = experiment
 
     def isRelevantSubspace(self, subspace, neighborhood):
         '''
@@ -169,6 +171,8 @@ class OUTRES(EnsembleTemplate):
                 if deviation>=1:
                     if self.verbose:
                         print("The instance " + str(instance+1) + " is outlying in the subspace " + str(new_subspace))
+                    if self.experiment:
+                        self.outliying_subspaces.append([instance, new_subspace, neighborhood])
                     # The scores are equal to 1 at first and 1 means no outlierness and 0 means very outlying
                     self.outlier_score[instance]*=density/deviation
                 # We keep the process if the subspace was relevant
@@ -181,6 +185,8 @@ class OUTRES(EnsembleTemplate):
         '''
         @brief This function is the actual implementation of OUTRES
         '''
+        self.outliying_subspaces = []
+
         # First we compute all epsilons so we dont need to make this calculation more than once
         self.epsilons = [self.computeEpsilon(list(range(n))) for n in range(len(self.dataset[0])+1)]
 
