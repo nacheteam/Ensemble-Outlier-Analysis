@@ -67,7 +67,7 @@ class HICS(EnsembleTemplate):
         @return It returns a float representing the contrast of the subspace
         '''
         # We set the adaptative size of the test
-        size = int(len(self.dataset)*np.power(self.alpha, len(subspace)))
+        size = int(len(self.dataset)*np.power(self.alpha, 1./len(subspace)))
         # Number of instances in the dataset
         N = len(self.dataset)
         deviation = 0
