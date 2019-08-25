@@ -239,7 +239,7 @@ class HICS(EnsembleTemplate):
             elif self.outlier_rank=="sod":
                 scorer = SOD()
             # Fits the scorer with the dataset
-            scorer.fit(self.dataset)
+            scorer.fit(self.dataset[:,sub])
             # Adds the scores obtained to the global ones
             scores = scores+scorer.decision_scores_
         # Compute the average
