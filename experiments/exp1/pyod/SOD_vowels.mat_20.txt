@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 20: vowels.mat
-Time taken: 0.6824989318847656 seg.
+Time taken: 0.6860792636871338 seg.
 Accuracy: 0.44
 @scores
 0.135417941726516

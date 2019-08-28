@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 9: mammography.mat
-Time taken: 5.322128057479858 seg.
+Time taken: 5.8535072803497314 seg.
 Accuracy: 0.27307692307692305
 @scores
 1628.13232489369

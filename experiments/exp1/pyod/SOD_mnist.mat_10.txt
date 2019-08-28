@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 10: mnist.mat
-Time taken: 24.192448139190674 seg.
+Time taken: 22.842386960983276 seg.
 Accuracy: 0.2057142857142857
 @scores
 3.575956976859286

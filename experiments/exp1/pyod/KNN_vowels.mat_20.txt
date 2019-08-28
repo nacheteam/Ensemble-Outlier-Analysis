@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 20: vowels.mat
-Time taken: 0.02678823471069336 seg.
+Time taken: 0.02478504180908203 seg.
 Accuracy: 0.48
 @scores
 0.9283537224215335

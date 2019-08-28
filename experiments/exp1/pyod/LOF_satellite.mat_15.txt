@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 15: satellite.mat
-Time taken: 0.887505054473877 seg.
+Time taken: 0.8185000419616699 seg.
 Accuracy: 0.3708251473477407
 @scores
 1.5620824032877938

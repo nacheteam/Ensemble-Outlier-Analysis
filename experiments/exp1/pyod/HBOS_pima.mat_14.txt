@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 14: pima.mat
-Time taken: 0.003440380096435547 seg.
+Time taken: 0.0021212100982666016 seg.
 Accuracy: 0.5074626865671642
 @scores
 21.490217079559024

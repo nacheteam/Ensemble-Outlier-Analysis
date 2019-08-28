@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 13: pendigits.mat
-Time taken: 0.464322566986084 seg.
+Time taken: 0.433640718460083 seg.
 Accuracy: 0.0641025641025641
 @scores
 0.9707393644590849

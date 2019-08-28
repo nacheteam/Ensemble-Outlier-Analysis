@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 18: thyroid.mat
-Time taken: 0.005715608596801758 seg.
+Time taken: 0.0026564598083496094 seg.
 Accuracy: 0.3548387096774194
 @scores
 479.0969957035748

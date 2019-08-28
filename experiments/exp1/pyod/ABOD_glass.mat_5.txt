@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 5: glass.mat
-Time taken: 0.02786111831665039 seg.
+Time taken: 0.03588724136352539 seg.
 Accuracy: 0.1111111111111111
 @scores
 -0.08430844910621661

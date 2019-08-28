@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 10: mnist.mat
-Time taken: 10.67616868019104 seg.
+Time taken: 10.211921453475952 seg.
 Accuracy: 0.24285714285714285
 @scores
 0.9921695193278234

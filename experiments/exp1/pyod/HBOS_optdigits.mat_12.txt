@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 12: optdigits.mat
-Time taken: 0.028494834899902344 seg.
+Time taken: 0.031247377395629883 seg.
 Accuracy: 0.18666666666666668
 @scores
 76.77282911460027

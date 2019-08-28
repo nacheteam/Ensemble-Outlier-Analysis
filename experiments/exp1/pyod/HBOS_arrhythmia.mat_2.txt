@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 2: arrhythmia.mat
-Time taken: 0.05161142349243164 seg.
+Time taken: 0.05085253715515137 seg.
 Accuracy: 0.5
 @scores
 175.36158765809887

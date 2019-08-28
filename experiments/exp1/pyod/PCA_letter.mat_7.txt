@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 7: letter.mat
-Time taken: 0.008365869522094727 seg.
+Time taken: 0.007306575775146484 seg.
 Accuracy: 0.08
 @scores
 37513.57726119276

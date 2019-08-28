@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 11: musk.mat
-Time taken: 1.4057426452636719 seg.
+Time taken: 1.3294730186462402 seg.
 Accuracy: 0.030927835051546393
 @scores
 1.0098340402763082

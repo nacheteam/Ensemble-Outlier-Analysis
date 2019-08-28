@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 17: speech.mat
-Time taken: 7.65198278427124 seg.
+Time taken: 7.806872606277466 seg.
 Accuracy: 0.01639344262295082
 @scores
 -0.09092509240855406

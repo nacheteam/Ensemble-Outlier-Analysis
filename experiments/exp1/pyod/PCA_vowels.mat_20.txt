@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 20: vowels.mat
-Time taken: 0.003144979476928711 seg.
+Time taken: 0.0023217201232910156 seg.
 Accuracy: 0.14
 @scores
 2951.76674413789

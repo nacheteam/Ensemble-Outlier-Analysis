@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 1: annthyroid.mat
-Time taken: 1.541506052017212 seg.
+Time taken: 2.541940927505493 seg.
 Accuracy: 0.250936329588015
 @scores
 -20806986.332770567

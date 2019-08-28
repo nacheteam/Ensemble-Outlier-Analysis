@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 8: lympho.mat
-Time taken: 0.0015249252319335938 seg.
+Time taken: 0.0014870166778564453 seg.
 Accuracy: 0.6666666666666666
 @scores
 3.4641016151377544

@@ -1,6 +1,6 @@
 Model: COF
 Dataset 12: optdigits.mat
-Time taken: 48.898425817489624 seg.
+Time taken: 47.91412568092346 seg.
 Accuracy: 0.09333333333333334
 @scores
 1.1914624354959427

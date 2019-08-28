@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 7: letter.mat
-Time taken: 0.9315342903137207 seg.
+Time taken: 0.8809857368469238 seg.
 Accuracy: 0.51
 @scores
 1.0849987199173197

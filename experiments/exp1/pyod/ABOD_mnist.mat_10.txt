@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 10: mnist.mat
-Time taken: 11.696423053741455 seg.
+Time taken: 16.472965955734253 seg.
 Accuracy: 0.2857142857142857
 @scores
 -4.430956112869945e-12

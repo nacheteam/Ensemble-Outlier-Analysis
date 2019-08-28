@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 6: ionosphere.mat
-Time taken: 0.051576852798461914 seg.
+Time taken: 0.0641331672668457 seg.
 Accuracy: 0.8412698412698413
 @scores
 -0.06082682727810068

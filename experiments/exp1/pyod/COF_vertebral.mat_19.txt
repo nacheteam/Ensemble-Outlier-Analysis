@@ -1,6 +1,6 @@
 Model: COF
 Dataset 19: vertebral.mat
-Time taken: 0.10631251335144043 seg.
+Time taken: 0.11532711982727051 seg.
 Accuracy: 0.1
 @scores
 1.1863241527595065

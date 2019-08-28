@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 20: vowels.mat
-Time taken: 0.0034284591674804688 seg.
+Time taken: 0.003067493438720703 seg.
 Accuracy: 0.12
 @scores
 19.008755989631524

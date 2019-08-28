@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 19: vertebral.mat
-Time taken: 0.005279541015625 seg.
+Time taken: 0.0050201416015625 seg.
 Accuracy: 0.23333333333333334
 @scores
 0.00013343962341949567

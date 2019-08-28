@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 10: mnist.mat
-Time taken: 0.05247807502746582 seg.
+Time taken: 0.05027174949645996 seg.
 Accuracy: 0.17142857142857143
 @scores
 297.9701347259282

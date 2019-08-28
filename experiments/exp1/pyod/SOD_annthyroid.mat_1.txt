@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 1: annthyroid.mat
-Time taken: 11.295734167098999 seg.
+Time taken: 10.963138103485107 seg.
 Accuracy: 0.30711610486891383
 @scores
 0.001197802988809096

@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 5: glass.mat
-Time taken: 0.0022573471069335938 seg.
+Time taken: 0.003618001937866211 seg.
 Accuracy: 0.0
 @scores
 -3.8608368158165183

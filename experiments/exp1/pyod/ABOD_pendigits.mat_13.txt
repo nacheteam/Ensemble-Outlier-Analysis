@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 13: pendigits.mat
-Time taken: 1.1725833415985107 seg.
+Time taken: 1.415114164352417 seg.
 Accuracy: 0.07051282051282051
 @scores
 -26.47863480084636

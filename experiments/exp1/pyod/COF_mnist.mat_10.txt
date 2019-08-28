@@ -1,6 +1,6 @@
 Model: COF
 Dataset 10: mnist.mat
-Time taken: 130.6496615409851 seg.
+Time taken: 154.43840765953064 seg.
 Accuracy: 0.21428571428571427
 @scores
 1.0308216908320518

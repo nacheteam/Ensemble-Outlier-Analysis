@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 22: wine.mat
-Time taken: 0.0010569095611572266 seg.
+Time taken: 0.0010907649993896484 seg.
 Accuracy: 0.8
 @scores
 180.28933301779117

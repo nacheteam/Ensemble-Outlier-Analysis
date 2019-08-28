@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 8: lympho.mat
-Time taken: 0.0018849372863769531 seg.
+Time taken: 0.002046823501586914 seg.
 Accuracy: 0.5
 @scores
 9.317072386743455

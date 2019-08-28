@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 20: vowels.mat
-Time taken: 0.19527816772460938 seg.
+Time taken: 0.23672032356262207 seg.
 Accuracy: 0.74
 @scores
 -0.3414398309288521

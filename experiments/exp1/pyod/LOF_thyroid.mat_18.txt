@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 18: thyroid.mat
-Time taken: 0.0699312686920166 seg.
+Time taken: 0.06764984130859375 seg.
 Accuracy: 0.1935483870967742
 @scores
 1.0848422958625101

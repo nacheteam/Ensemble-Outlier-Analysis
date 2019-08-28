@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 14: pima.mat
-Time taken: 0.09729313850402832 seg.
+Time taken: 0.12307858467102051 seg.
 Accuracy: 0.458955223880597
 @scores
 -1.2460527309043632e-06

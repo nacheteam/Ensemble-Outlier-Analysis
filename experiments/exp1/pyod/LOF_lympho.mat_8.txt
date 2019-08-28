@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 8: lympho.mat
-Time taken: 0.0018837451934814453 seg.
+Time taken: 0.001790761947631836 seg.
 Accuracy: 0.8333333333333334
 @scores
 1.3347301303597026

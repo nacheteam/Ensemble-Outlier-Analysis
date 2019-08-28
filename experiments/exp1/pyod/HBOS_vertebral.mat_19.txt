@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 19: vertebral.mat
-Time taken: 0.0014710426330566406 seg.
+Time taken: 0.0013477802276611328 seg.
 Accuracy: 0.03333333333333333
 @scores
 18.49906983079436

@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 17: speech.mat
-Time taken: 12.9371497631073 seg.
+Time taken: 12.282023668289185 seg.
 Accuracy: 0.03278688524590164
 @scores
 0.9151944444959498

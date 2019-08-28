@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 19: vertebral.mat
-Time taken: 0.0015025138854980469 seg.
+Time taken: 0.0015532970428466797 seg.
 Accuracy: 0.0
 @scores
 19.874375461885588

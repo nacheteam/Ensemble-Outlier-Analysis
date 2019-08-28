@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 4: cardio.mat
-Time taken: 0.09191465377807617 seg.
+Time taken: 0.08722066879272461 seg.
 Accuracy: 0.3352272727272727
 @scores
 2.612373701292402

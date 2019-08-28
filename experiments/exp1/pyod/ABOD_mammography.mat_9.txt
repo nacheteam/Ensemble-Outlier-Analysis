@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 9: mammography.mat
-Time taken: 1.395874261856079 seg.
+Time taken: 1.7394452095031738 seg.
 Accuracy: 0.0038461538461538464
 @scores
 -0.4030102790315899

@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 12: optdigits.mat
-Time taken: 12.498112201690674 seg.
+Time taken: 12.50108289718628 seg.
 Accuracy: 0.02666666666666667
 @scores
 0.35192677823133184

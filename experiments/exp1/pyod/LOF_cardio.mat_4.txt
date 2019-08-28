@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 4: cardio.mat
-Time taken: 0.10550379753112793 seg.
+Time taken: 0.11707115173339844 seg.
 Accuracy: 0.17045454545454544
 @scores
 1.029670690543648

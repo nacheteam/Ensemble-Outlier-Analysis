@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 5: glass.mat
-Time taken: 0.14284396171569824 seg.
+Time taken: 0.14259028434753418 seg.
 Accuracy: 0.1111111111111111
 @scores
 0.9854327562374701

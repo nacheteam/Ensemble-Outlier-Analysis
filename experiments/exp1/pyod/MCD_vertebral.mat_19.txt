@@ -1,6 +1,6 @@
 Model: MCD
 Dataset 19: vertebral.mat
-Time taken: 0.0467832088470459 seg.
+Time taken: 0.04356980323791504 seg.
 Accuracy: 0.0
 @scores
 6.276293736717839

@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 7: letter.mat
-Time taken: 0.11107063293457031 seg.
+Time taken: 0.10472273826599121 seg.
 Accuracy: 0.46
 @scores
 1.1717792590669027

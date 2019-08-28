@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 15: satellite.mat
-Time taken: 21.981308937072754 seg.
+Time taken: 21.90621852874756 seg.
 Accuracy: 0.29911591355599215
 @scores
 0.9999998497114138

@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 18: thyroid.mat
-Time taken: 3.4738011360168457 seg.
+Time taken: 3.3138089179992676 seg.
 Accuracy: 0.21505376344086022
 @scores
 0.006725675800883546

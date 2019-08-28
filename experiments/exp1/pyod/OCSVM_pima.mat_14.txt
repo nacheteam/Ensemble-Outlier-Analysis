@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 14: pima.mat
-Time taken: 0.0442657470703125 seg.
+Time taken: 0.0567021369934082 seg.
 Accuracy: 0.39552238805970147
 @scores
 -0.00013972492433855788

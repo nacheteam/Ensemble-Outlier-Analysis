@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 5: glass.mat
-Time taken: 0.0023899078369140625 seg.
+Time taken: 0.0021169185638427734 seg.
 Accuracy: 0.1111111111111111
 @scores
 14325.165785128227

@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 19: vertebral.mat
-Time taken: 0.030240297317504883 seg.
+Time taken: 0.03952741622924805 seg.
 Accuracy: 0.06666666666666667
 @scores
 -1.838163850710313e-06

@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 16: satimage-2.mat
-Time taken: 1.4571986198425293 seg.
+Time taken: 1.7584435939788818 seg.
 Accuracy: 0.16901408450704225
 @scores
 -4.616913347689443e-08

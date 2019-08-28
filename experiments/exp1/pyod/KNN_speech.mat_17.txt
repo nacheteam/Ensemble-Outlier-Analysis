@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 17: speech.mat
-Time taken: 8.737872123718262 seg.
+Time taken: 8.654640436172485 seg.
 Accuracy: 0.01639344262295082
 @scores
 20.860511870959996

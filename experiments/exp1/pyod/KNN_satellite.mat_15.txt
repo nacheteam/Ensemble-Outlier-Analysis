@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 15: satellite.mat
-Time taken: 0.757847785949707 seg.
+Time taken: 0.774937629699707 seg.
 Accuracy: 0.5009823182711198
 @scores
 41.376321731154405

@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 12: optdigits.mat
-Time taken: 2.441420316696167 seg.
+Time taken: 2.389191150665283 seg.
 Accuracy: 0.03333333333333333
 @scores
 18.788294228055936

@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 15: satellite.mat
-Time taken: 0.027710914611816406 seg.
+Time taken: 0.030539751052856445 seg.
 Accuracy: 0.48379174852652257
 @scores
 368643.06531096273

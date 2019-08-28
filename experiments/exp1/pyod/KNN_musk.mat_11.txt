@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 11: musk.mat
-Time taken: 1.216125249862671 seg.
+Time taken: 1.1578330993652344 seg.
 Accuracy: 0.010309278350515464
 @scores
 434.35008921375857

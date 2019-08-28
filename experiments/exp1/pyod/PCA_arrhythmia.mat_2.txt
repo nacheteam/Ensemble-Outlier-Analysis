@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 2: arrhythmia.mat
-Time taken: 0.08694052696228027 seg.
+Time taken: 0.08439350128173828 seg.
 Accuracy: 0.42424242424242425
 @scores
 7.583718862937204e+35

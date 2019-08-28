@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 12: optdigits.mat
-Time taken: 0.05173778533935547 seg.
+Time taken: 0.0513613224029541 seg.
 Accuracy: 0.0
 @scores
 1.5753251350171111e+34

@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 12: optdigits.mat
-Time taken: 3.1015102863311768 seg.
+Time taken: 6.662228107452393 seg.
 Accuracy: 0.04666666666666667
 @scores
 -1.8635974420702767e-07

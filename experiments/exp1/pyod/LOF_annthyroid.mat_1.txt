@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 1: annthyroid.mat
-Time taken: 0.12042927742004395 seg.
+Time taken: 0.11455941200256348 seg.
 Accuracy: 0.29213483146067415
 @scores
 1.1074186042555625

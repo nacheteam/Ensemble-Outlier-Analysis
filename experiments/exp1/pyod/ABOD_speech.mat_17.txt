@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 17: speech.mat
-Time taken: 9.149446249008179 seg.
+Time taken: 13.29671835899353 seg.
 Accuracy: 0.13114754098360656
 @scores
 -6.259279968628074e-09

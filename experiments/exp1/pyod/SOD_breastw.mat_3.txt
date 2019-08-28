@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 3: breastw.mat
-Time taken: 0.2166910171508789 seg.
+Time taken: 0.2007288932800293 seg.
 Accuracy: 0.8075313807531381
 @scores
 0.0

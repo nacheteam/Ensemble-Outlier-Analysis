@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 16: satimage-2.mat
-Time taken: 15.569005727767944 seg.
+Time taken: 15.419378519058228 seg.
 Accuracy: 0.028169014084507043
 @scores
 0.05511550662134252

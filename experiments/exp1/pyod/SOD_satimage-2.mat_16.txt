@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 16: satimage-2.mat
-Time taken: 11.33601975440979 seg.
+Time taken: 8.27611255645752 seg.
 Accuracy: 0.22535211267605634
 @scores
 4.511189791322613

@@ -1,6 +1,6 @@
 Model: MCD
 Dataset 14: pima.mat
-Time taken: 0.5820198059082031 seg.
+Time taken: 0.5652339458465576 seg.
 Accuracy: 0.5149253731343284
 @scores
 13.826830358384262

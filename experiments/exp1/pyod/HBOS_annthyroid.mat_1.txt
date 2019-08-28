@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 1: annthyroid.mat
-Time taken: 0.8859117031097412 seg.
+Time taken: 1.2222414016723633 seg.
 Accuracy: 0.2602996254681648
 @scores
 -19.11853562875108

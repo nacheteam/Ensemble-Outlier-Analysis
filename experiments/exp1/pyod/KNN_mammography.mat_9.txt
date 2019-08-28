@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 9: mammography.mat
-Time taken: 0.29683804512023926 seg.
+Time taken: 0.27901411056518555 seg.
 Accuracy: 0.21923076923076923
 @scores
 0.6504715998700159

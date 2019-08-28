@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 21: wbc.mat
-Time taken: 0.008183002471923828 seg.
+Time taken: 0.00804758071899414 seg.
 Accuracy: 0.42857142857142855
 @scores
 1.0241347896462092

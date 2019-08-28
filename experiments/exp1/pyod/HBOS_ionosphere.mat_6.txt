@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 6: ionosphere.mat
-Time taken: 0.006666898727416992 seg.
+Time taken: 0.0062291622161865234 seg.
 Accuracy: 0.48412698412698413
 @scores
 7.741386867347581

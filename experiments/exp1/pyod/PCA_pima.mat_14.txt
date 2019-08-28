@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 14: pima.mat
-Time taken: 0.004100322723388672 seg.
+Time taken: 0.0028810501098632812 seg.
 Accuracy: 0.4962686567164179
 @scores
 182.63083919737934

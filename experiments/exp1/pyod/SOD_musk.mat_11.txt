@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 11: musk.mat
-Time taken: 4.096447944641113 seg.
+Time taken: 3.869072675704956 seg.
 Accuracy: 0.041237113402061855
 @scores
 6.989548649417977

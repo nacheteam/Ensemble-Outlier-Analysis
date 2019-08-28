@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 4: cardio.mat
-Time taken: 2.059415817260742 seg.
+Time taken: 2.0196778774261475 seg.
 Accuracy: 0.10795454545454546
 @scores
 0.15284644983022866

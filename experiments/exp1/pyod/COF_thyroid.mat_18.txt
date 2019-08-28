@@ -1,6 +1,6 @@
 Model: COF
 Dataset 18: thyroid.mat
-Time taken: 22.355472087860107 seg.
+Time taken: 21.857439756393433 seg.
 Accuracy: 0.043010752688172046
 @scores
 1.0287674430446032

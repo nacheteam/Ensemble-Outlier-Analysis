@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 17: speech.mat
-Time taken: 8.772340297698975 seg.
+Time taken: 8.40237808227539 seg.
 Accuracy: 0.03278688524590164
 @scores
 1.2064092516292748

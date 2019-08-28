@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 7: letter.mat
-Time taken: 0.23117852210998535 seg.
+Time taken: 0.25775623321533203 seg.
 Accuracy: 0.48
 @scores
 0.38779646079917374

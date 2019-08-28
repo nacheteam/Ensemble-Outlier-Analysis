@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 22: wine.mat
-Time taken: 0.0022802352905273438 seg.
+Time taken: 0.0020754337310791016 seg.
 Accuracy: 0.3
 @scores
 1992.7056877861962

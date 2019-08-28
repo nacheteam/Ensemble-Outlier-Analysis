@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 16: satimage-2.mat
-Time taken: 0.014215946197509766 seg.
+Time taken: 0.013995885848999023 seg.
 Accuracy: 0.647887323943662
 @scores
 112.84670874854794

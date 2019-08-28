@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 10: mnist.mat
-Time taken: 32.17867708206177 seg.
+Time taken: 34.59686279296875 seg.
 Accuracy: 0.11571428571428571
 @scores
 0.12789567561418788

@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 21: wbc.mat
-Time taken: 0.01077580451965332 seg.
+Time taken: 0.010179758071899414 seg.
 Accuracy: 0.6190476190476191
 @scores
 -0.4585748822489393

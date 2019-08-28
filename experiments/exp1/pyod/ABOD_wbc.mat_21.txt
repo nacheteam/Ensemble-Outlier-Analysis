@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 21: wbc.mat
-Time taken: 0.05613255500793457 seg.
+Time taken: 0.07008957862854004 seg.
 Accuracy: 0.3333333333333333
 @scores
 -14.58633041819078

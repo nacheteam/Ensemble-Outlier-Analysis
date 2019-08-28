@@ -1,6 +1,6 @@
 Model: COF
 Dataset 4: cardio.mat
-Time taken: 5.3784120082855225 seg.
+Time taken: 7.488738775253296 seg.
 Accuracy: 0.19886363636363635
 @scores
 1.1613808710771978

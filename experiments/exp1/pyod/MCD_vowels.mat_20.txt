@@ -1,6 +1,6 @@
 Model: MCD
 Dataset 20: vowels.mat
-Time taken: 0.9886090755462646 seg.
+Time taken: 0.8870432376861572 seg.
 Accuracy: 0.06
 @scores
 14.52066850987534

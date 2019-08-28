@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 5: glass.mat
-Time taken: 0.0025894641876220703 seg.
+Time taken: 0.0028121471405029297 seg.
 Accuracy: 0.1111111111111111
 @scores
 4.939365243229652

@@ -1,6 +1,6 @@
 Model: COF
 Dataset 3: breastw.mat
-Time taken: 0.7875680923461914 seg.
+Time taken: 1.0530774593353271 seg.
 Accuracy: 0.08368200836820083
 @scores
 0.9946919100989344

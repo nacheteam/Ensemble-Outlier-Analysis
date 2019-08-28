@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 9: mammography.mat
-Time taken: 0.007487058639526367 seg.
+Time taken: 0.006627321243286133 seg.
 Accuracy: 0.25769230769230766
 @scores
 442.37951784606713

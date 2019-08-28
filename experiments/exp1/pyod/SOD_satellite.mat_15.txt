@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 15: satellite.mat
-Time taken: 13.137927770614624 seg.
+Time taken: 9.877122640609741 seg.
 Accuracy: 0.4130648330058939
 @scores
 4.511189791322613

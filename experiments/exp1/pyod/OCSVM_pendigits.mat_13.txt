@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 13: pendigits.mat
-Time taken: 2.3174681663513184 seg.
+Time taken: 3.171782970428467 seg.
 Accuracy: 0.26282051282051283
 @scores
 23.290865769665743

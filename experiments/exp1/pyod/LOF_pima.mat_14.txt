@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 14: pima.mat
-Time taken: 0.006576061248779297 seg.
+Time taken: 0.005764484405517578 seg.
 Accuracy: 0.3694029850746269
 @scores
 1.066696017354982

@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 16: satimage-2.mat
-Time taken: 0.030988216400146484 seg.
+Time taken: 0.024074316024780273 seg.
 Accuracy: 0.8309859154929577
 @scores
 311747.649913811

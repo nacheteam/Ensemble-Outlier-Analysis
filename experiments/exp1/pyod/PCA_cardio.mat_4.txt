@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 4: cardio.mat
-Time taken: 0.023179054260253906 seg.
+Time taken: 0.005183219909667969 seg.
 Accuracy: 0.6079545454545454
 @scores
 4.9889993512338465e+32

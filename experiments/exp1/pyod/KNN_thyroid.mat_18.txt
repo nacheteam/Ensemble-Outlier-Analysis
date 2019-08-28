@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 18: thyroid.mat
-Time taken: 0.04728102684020996 seg.
+Time taken: 0.045027971267700195 seg.
 Accuracy: 0.23655913978494625
 @scores
 0.03968518444225245

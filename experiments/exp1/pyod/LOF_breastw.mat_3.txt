@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 3: breastw.mat
-Time taken: 0.008316993713378906 seg.
+Time taken: 0.00986933708190918 seg.
 Accuracy: 0.13389121338912133
 @scores
 1.0010643527851812

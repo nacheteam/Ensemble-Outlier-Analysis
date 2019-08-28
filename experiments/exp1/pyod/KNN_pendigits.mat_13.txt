@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 13: pendigits.mat
-Time taken: 0.3149418830871582 seg.
+Time taken: 0.31405043601989746 seg.
 Accuracy: 0.08974358974358974
 @scores
 0.35002389180782034

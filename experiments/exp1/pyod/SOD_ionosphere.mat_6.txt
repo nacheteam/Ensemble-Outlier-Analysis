@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 6: ionosphere.mat
-Time taken: 0.09294414520263672 seg.
+Time taken: 0.0897057056427002 seg.
 Accuracy: 0.8015873015873016
 @scores
 0.15048139533365082

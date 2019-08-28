@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 11: musk.mat
-Time taken: 0.1439838409423828 seg.
+Time taken: 0.24164581298828125 seg.
 Accuracy: 0.9896907216494846
 @scores
 202733706.88356915

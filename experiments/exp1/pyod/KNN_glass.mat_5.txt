@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 5: glass.mat
-Time taken: 0.0016293525695800781 seg.
+Time taken: 0.0014944076538085938 seg.
 Accuracy: 0.1111111111111111
 @scores
 1.1175435948543577

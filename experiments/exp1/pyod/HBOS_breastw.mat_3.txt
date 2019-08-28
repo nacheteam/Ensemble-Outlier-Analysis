@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 3: breastw.mat
-Time taken: 0.8914439678192139 seg.
+Time taken: 0.7055478096008301 seg.
 Accuracy: 0.9372384937238494
 @scores
 5.8859719675386275

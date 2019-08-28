@@ -1,6 +1,6 @@
 Model: COF
 Dataset 13: pendigits.mat
-Time taken: 77.50159883499146 seg.
+Time taken: 75.11949133872986 seg.
 Accuracy: 0.07692307692307693
 @scores
 0.9617851158908947

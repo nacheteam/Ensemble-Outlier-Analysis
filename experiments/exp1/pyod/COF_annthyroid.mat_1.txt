@@ -1,6 +1,6 @@
 Model: COF
 Dataset 1: annthyroid.mat
-Time taken: 85.96815133094788 seg.
+Time taken: 114.70653438568115 seg.
 Accuracy: 0.23782771535580524
 @scores
 1.096740924320689

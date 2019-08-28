@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 1: annthyroid.mat
-Time taken: 2.260162830352783 seg.
+Time taken: 2.6132025718688965 seg.
 Accuracy: 0.11235955056179775
 @scores
 11.727499831148634

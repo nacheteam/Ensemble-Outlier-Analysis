@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 18: thyroid.mat
-Time taken: 0.47318148612976074 seg.
+Time taken: 0.5982873439788818 seg.
 Accuracy: 0.0
 @scores
 -213823.82170461374

@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 5: glass.mat
-Time taken: 0.0020804405212402344 seg.
+Time taken: 0.002179861068725586 seg.
 Accuracy: 0.2222222222222222
 @scores
 1.4117009204414743

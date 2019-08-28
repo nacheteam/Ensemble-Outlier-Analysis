@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 3: breastw.mat
-Time taken: 24.036396741867065 seg.
+Time taken: 23.96227192878723 seg.
 Accuracy: 0.497907949790795
 @scores
 nan

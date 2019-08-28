@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 10: mnist.mat
-Time taken: 0.1440143585205078 seg.
+Time taken: 0.17467904090881348 seg.
 Accuracy: 0.38571428571428573
 @scores
 2.5934121747736928e+35

@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 18: thyroid.mat
-Time taken: 0.0034558773040771484 seg.
+Time taken: 0.002283334732055664 seg.
 Accuracy: 0.4838709677419355
 @scores
 -10.872519770630594

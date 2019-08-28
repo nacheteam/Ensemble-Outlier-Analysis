@@ -1,6 +1,6 @@
 Model: COF
 Dataset 16: satimage-2.mat
-Time taken: 56.06861329078674 seg.
+Time taken: 54.037211894989014 seg.
 Accuracy: 0.1267605633802817
 @scores
 1.2878759637474901

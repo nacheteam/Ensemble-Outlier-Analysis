@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 4: cardio.mat
-Time taken: 0.00535273551940918 seg.
+Time taken: 0.005368709564208984 seg.
 Accuracy: 0.4715909090909091
 @scores
 25.85806883989804

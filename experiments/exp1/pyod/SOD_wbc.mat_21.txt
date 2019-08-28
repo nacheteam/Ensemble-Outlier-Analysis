@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 21: wbc.mat
-Time taken: 0.09823799133300781 seg.
+Time taken: 0.09647464752197266 seg.
 Accuracy: 0.5238095238095238
 @scores
 0.03671473894412593

@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 17: speech.mat
-Time taken: 0.16426610946655273 seg.
+Time taken: 0.15233850479125977 seg.
 Accuracy: 0.03278688524590164
 @scores
 558.835273021932

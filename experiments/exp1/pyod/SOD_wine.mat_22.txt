@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 22: wine.mat
-Time taken: 0.022397279739379883 seg.
+Time taken: 0.0226743221282959 seg.
 Accuracy: 0.5
 @scores
 4.4405321846973855

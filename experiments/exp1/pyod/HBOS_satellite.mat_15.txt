@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 15: satellite.mat
-Time taken: 0.013963460922241211 seg.
+Time taken: 0.014663934707641602 seg.
 Accuracy: 0.5682711198428291
 @scores
 113.03904649995395

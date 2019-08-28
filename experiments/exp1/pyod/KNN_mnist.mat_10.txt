@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 10: mnist.mat
-Time taken: 10.163095474243164 seg.
+Time taken: 9.756494045257568 seg.
 Accuracy: 0.39571428571428574
 @scores
 309.7724927074051

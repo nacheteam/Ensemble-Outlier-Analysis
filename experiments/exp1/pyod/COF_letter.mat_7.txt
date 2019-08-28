@@ -1,6 +1,6 @@
 Model: COF
 Dataset 7: letter.mat
-Time taken: 4.21728777885437 seg.
+Time taken: 5.122047185897827 seg.
 Accuracy: 0.42
 @scores
 1.080376850957583

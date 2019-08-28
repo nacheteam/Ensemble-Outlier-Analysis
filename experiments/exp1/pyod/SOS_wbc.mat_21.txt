@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 21: wbc.mat
-Time taken: 0.19295001029968262 seg.
+Time taken: 0.24499988555908203 seg.
 Accuracy: 0.14285714285714285
 @scores
 0.3428188442251614

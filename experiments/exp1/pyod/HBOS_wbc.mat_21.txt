@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 21: wbc.mat
-Time taken: 0.006098747253417969 seg.
+Time taken: 0.0061452388763427734 seg.
 Accuracy: 0.6190476190476191
 @scores
 -56.91395297358925

@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 21: wbc.mat
-Time taken: 0.004204988479614258 seg.
+Time taken: 0.0043904781341552734 seg.
 Accuracy: 0.5714285714285714
 @scores
 879000.8442385828

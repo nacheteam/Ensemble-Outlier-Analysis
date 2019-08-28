@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 11: musk.mat
-Time taken: 0.05577874183654785 seg.
+Time taken: 0.05557727813720703 seg.
 Accuracy: 0.9072164948453608
 @scores
 536.9385588156691

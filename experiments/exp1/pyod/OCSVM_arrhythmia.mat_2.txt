@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 2: arrhythmia.mat
-Time taken: 0.11325383186340332 seg.
+Time taken: 0.12811517715454102 seg.
 Accuracy: 0.15151515151515152
 @scores
 -6.052602197215151e-09

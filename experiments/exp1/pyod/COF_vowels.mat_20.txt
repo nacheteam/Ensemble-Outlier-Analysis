@@ -1,6 +1,6 @@
 Model: COF
 Dataset 20: vowels.mat
-Time taken: 3.2586286067962646 seg.
+Time taken: 3.325395107269287 seg.
 Accuracy: 0.5
 @scores
 0.9219708687603542

@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 16: satimage-2.mat
-Time taken: 0.7261574268341064 seg.
+Time taken: 0.7183358669281006 seg.
 Accuracy: 0.39436619718309857
 @scores
 41.376321731154405

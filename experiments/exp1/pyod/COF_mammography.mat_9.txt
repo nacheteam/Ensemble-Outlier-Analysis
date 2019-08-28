@@ -1,6 +1,6 @@
 Model: COF
 Dataset 9: mammography.mat
-Time taken: 201.1355562210083 seg.
+Time taken: 280.7073404788971 seg.
 Accuracy: 0.13846153846153847
 @scores
 1.1355608086750926

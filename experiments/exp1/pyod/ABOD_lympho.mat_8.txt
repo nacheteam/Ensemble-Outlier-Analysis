@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 8: lympho.mat
-Time taken: 0.021105527877807617 seg.
+Time taken: 0.022870302200317383 seg.
 Accuracy: 0.3333333333333333
 @scores
 -0.00044261078917163545

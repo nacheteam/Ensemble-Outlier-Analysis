@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 13: pendigits.mat
-Time taken: 0.007969856262207031 seg.
+Time taken: 0.007676362991333008 seg.
 Accuracy: 0.32051282051282054
 @scores
 -1.5879545442891958

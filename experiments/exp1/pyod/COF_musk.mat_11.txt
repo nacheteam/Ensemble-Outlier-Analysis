@@ -1,6 +1,6 @@
 Model: COF
 Dataset 11: musk.mat
-Time taken: 22.54613208770752 seg.
+Time taken: 23.204806089401245 seg.
 Accuracy: 0.08247422680412371
 @scores
 0.9985247957624825

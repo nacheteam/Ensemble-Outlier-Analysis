@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 19: vertebral.mat
-Time taken: 0.0021429061889648438 seg.
+Time taken: 0.0011217594146728516 seg.
 Accuracy: 0.0
 @scores
 284971502.81889653

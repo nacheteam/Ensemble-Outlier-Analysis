@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 6: ionosphere.mat
-Time taken: 0.005022764205932617 seg.
+Time taken: 0.0044176578521728516 seg.
 Accuracy: 0.5952380952380952
 @scores
 13423.196612540738

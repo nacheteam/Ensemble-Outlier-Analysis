@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 1: annthyroid.mat
-Time taken: 0.0052835941314697266 seg.
+Time taken: 0.0038988590240478516 seg.
 Accuracy: 0.23782771535580524
 @scores
 577.713657238758

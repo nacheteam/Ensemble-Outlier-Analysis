@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 7: letter.mat
-Time taken: 0.08870983123779297 seg.
+Time taken: 0.08393526077270508 seg.
 Accuracy: 0.43
 @scores
 8.774964387392123

@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 18: thyroid.mat
-Time taken: 0.5893478393554688 seg.
+Time taken: 0.5607306957244873 seg.
 Accuracy: 0.15053763440860216
 @scores
 7.441129242475199

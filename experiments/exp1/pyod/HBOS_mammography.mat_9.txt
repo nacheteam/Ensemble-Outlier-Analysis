@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 9: mammography.mat
-Time taken: 0.0038123130798339844 seg.
+Time taken: 0.0037539005279541016 seg.
 Accuracy: 0.12692307692307692
 @scores
 10.097474088924496

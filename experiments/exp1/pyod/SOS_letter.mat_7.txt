@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 7: letter.mat
-Time taken: 25.992334604263306 seg.
+Time taken: 25.330527782440186 seg.
 Accuracy: 0.06
 @scores
 0.9999984129170564

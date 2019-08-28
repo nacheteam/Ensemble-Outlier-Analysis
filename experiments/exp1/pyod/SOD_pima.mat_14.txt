@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 14: pima.mat
-Time taken: 0.24792861938476562 seg.
+Time taken: 0.23034143447875977 seg.
 Accuracy: 0.4141791044776119
 @scores
 7.6075156233819206

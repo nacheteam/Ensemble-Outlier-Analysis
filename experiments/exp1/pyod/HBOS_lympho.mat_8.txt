@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 8: lympho.mat
-Time taken: 0.004107475280761719 seg.
+Time taken: 0.0038709640502929688 seg.
 Accuracy: 1.0
 @scores
 -9.720204306407311

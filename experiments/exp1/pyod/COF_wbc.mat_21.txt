@@ -1,6 +1,6 @@
 Model: COF
 Dataset 21: wbc.mat
-Time taken: 0.253093957901001 seg.
+Time taken: 0.25269460678100586 seg.
 Accuracy: 0.2857142857142857
 @scores
 1.1040773821828556

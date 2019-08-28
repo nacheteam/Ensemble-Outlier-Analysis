@@ -1,6 +1,6 @@
 Model: COF
 Dataset 8: lympho.mat
-Time taken: 0.049663543701171875 seg.
+Time taken: 0.06934070587158203 seg.
 Accuracy: 0.5
 @scores
 1.049332241938039

@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 16: satimage-2.mat
-Time taken: 3.981217384338379 seg.
+Time taken: 5.477539539337158 seg.
 Accuracy: 0.0
 @scores
 -0.00028091367059135397

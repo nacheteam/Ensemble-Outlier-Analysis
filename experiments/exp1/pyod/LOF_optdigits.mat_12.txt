@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 12: optdigits.mat
-Time taken: 2.646366834640503 seg.
+Time taken: 2.4586806297302246 seg.
 Accuracy: 0.10666666666666667
 @scores
 1.0994035945322538

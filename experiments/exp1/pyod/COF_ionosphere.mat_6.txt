@@ -1,6 +1,6 @@
 Model: COF
 Dataset 6: ionosphere.mat
-Time taken: 0.23024797439575195 seg.
+Time taken: 0.3415365219116211 seg.
 Accuracy: 0.7777777777777778
 @scores
 1.2483894831236235

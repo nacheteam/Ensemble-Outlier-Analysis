@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 20: vowels.mat
-Time taken: 0.035501718521118164 seg.
+Time taken: 0.034600257873535156 seg.
 Accuracy: 0.34
 @scores
 1.0586971545904613

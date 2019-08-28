@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 14: pima.mat
-Time taken: 0.003920555114746094 seg.
+Time taken: 0.005319833755493164 seg.
 Accuracy: 0.48134328358208955
 @scores
 23.607644715218843

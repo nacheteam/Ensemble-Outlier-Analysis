@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 13: pendigits.mat
-Time taken: 0.010842084884643555 seg.
+Time taken: 0.010555744171142578 seg.
 Accuracy: 0.3269230769230769
 @scores
 8340.189446549792

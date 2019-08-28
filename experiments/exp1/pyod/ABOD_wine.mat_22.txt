@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 22: wine.mat
-Time taken: 0.016167402267456055 seg.
+Time taken: 0.02319645881652832 seg.
 Accuracy: 0.6
 @scores
 -1.7938882266629952e-07

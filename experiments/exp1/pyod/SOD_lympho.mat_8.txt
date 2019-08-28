@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 8: lympho.mat
-Time taken: 0.028501510620117188 seg.
+Time taken: 0.02886033058166504 seg.
 Accuracy: 0.5
 @scores
 0.08451542547285165

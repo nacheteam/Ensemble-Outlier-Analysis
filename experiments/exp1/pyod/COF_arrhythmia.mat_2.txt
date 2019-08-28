@@ -1,6 +1,6 @@
 Model: COF
 Dataset 2: arrhythmia.mat
-Time taken: 0.46787333488464355 seg.
+Time taken: 0.6839172840118408 seg.
 Accuracy: 0.4696969696969697
 @scores
 1.2012589380362013

@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 2: arrhythmia.mat
-Time taken: 0.2443549633026123 seg.
+Time taken: 0.22992968559265137 seg.
 Accuracy: 0.2878787878787879
 @scores
 3.168103190878463

@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 8: lympho.mat
-Time taken: 0.10061407089233398 seg.
+Time taken: 0.05265450477600098 seg.
 Accuracy: 0.16666666666666666
 @scores
 0.5716060694113231

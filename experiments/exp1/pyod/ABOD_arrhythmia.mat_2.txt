@@ -1,6 +1,6 @@
 Model: ABOD
 Dataset 2: arrhythmia.mat
-Time taken: 0.13915085792541504 seg.
+Time taken: 0.16622090339660645 seg.
 Accuracy: 0.3787878787878788
 @scores
 -6.922962146122206e-11

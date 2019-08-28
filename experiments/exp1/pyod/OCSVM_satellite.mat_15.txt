@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 15: satellite.mat
-Time taken: 4.743309020996094 seg.
+Time taken: 6.543093204498291 seg.
 Accuracy: 0.30157170923379173
 @scores
 -0.00032182797424096243

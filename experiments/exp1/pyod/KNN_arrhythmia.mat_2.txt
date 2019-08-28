@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 2: arrhythmia.mat
-Time taken: 0.07993674278259277 seg.
+Time taken: 0.07597017288208008 seg.
 Accuracy: 0.48484848484848486
 @scores
 166.90488309213723

@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 1: annthyroid.mat
-Time taken: 0.08077478408813477 seg.
+Time taken: 0.2307910919189453 seg.
 Accuracy: 0.2846441947565543
 @scores
 0.012731001531694201

@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 22: wine.mat
-Time taken: 0.0013108253479003906 seg.
+Time taken: 0.003228425979614258 seg.
 Accuracy: 0.9
 @scores
 2.2955382696056708

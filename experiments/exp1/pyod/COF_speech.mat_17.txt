@@ -1,6 +1,6 @@
 Model: COF
 Dataset 17: speech.mat
-Time taken: 58.160062313079834 seg.
+Time taken: 58.92036247253418 seg.
 Accuracy: 0.01639344262295082
 @scores
 1.0556469435525846

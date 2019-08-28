@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 8: lympho.mat
-Time taken: 0.004225254058837891 seg.
+Time taken: 0.002948760986328125 seg.
 Accuracy: 0.6666666666666666
 @scores
 3675.4302725411926

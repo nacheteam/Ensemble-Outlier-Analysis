@@ -1,6 +1,6 @@
 Model: COF
 Dataset 15: satellite.mat
-Time taken: 69.79827380180359 seg.
+Time taken: 70.00583600997925 seg.
 Accuracy: 0.4351669941060904
 @scores
 1.3639648706630483

@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 7: letter.mat
-Time taken: 0.007928133010864258 seg.
+Time taken: 0.0075490474700927734 seg.
 Accuracy: 0.06
 @scores
 70.8828985224566

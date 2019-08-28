@@ -1,6 +1,6 @@
 Model: HBOS
 Dataset 22: wine.mat
-Time taken: 0.0026497840881347656 seg.
+Time taken: 0.0025491714477539062 seg.
 Accuracy: 0.0
 @scores
 17.02365788517938

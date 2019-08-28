@@ -1,6 +1,6 @@
 Model: COF
 Dataset 22: wine.mat
-Time taken: 0.03849029541015625 seg.
+Time taken: 0.04217982292175293 seg.
 Accuracy: 0.7
 @scores
 1.5441464655912156

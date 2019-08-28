@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 22: wine.mat
-Time taken: 0.0023572444915771484 seg.
+Time taken: 0.0020880699157714844 seg.
 Accuracy: 0.1
 @scores
 -8.796970942193116e-05

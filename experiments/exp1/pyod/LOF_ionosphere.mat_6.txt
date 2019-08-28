@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 6: ionosphere.mat
-Time taken: 0.008559942245483398 seg.
+Time taken: 0.01017451286315918 seg.
 Accuracy: 0.7619047619047619
 @scores
 1.2542701938893008

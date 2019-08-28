@@ -1,6 +1,6 @@
 Model: COF
 Dataset 5: glass.mat
-Time taken: 0.0914316177368164 seg.
+Time taken: 0.13416504859924316 seg.
 Accuracy: 0.2222222222222222
 @scores
 1.6382069699900685

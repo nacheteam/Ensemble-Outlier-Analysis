@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 3: breastw.mat
-Time taken: 0.006453990936279297 seg.
+Time taken: 0.0057337284088134766 seg.
 Accuracy: 0.9121338912133892
 @scores
 0.0

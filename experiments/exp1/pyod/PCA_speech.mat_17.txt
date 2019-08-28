@@ -1,6 +1,6 @@
 Model: PCA
 Dataset 17: speech.mat
-Time taken: 0.6109356880187988 seg.
+Time taken: 0.5699279308319092 seg.
 Accuracy: 0.03278688524590164
 @scores
 4591582.930111583

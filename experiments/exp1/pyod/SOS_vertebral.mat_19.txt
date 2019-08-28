@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 19: vertebral.mat
-Time taken: 0.14662528038024902 seg.
+Time taken: 0.14507794380187988 seg.
 Accuracy: 0.13333333333333333
 @scores
 0.4925864835457

@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 19: vertebral.mat
-Time taken: 0.0020399093627929688 seg.
+Time taken: 0.0019648075103759766 seg.
 Accuracy: 0.03333333333333333
 @scores
 1.1591483824900035

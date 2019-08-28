@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 20: vowels.mat
-Time taken: 0.09492111206054688 seg.
+Time taken: 0.08903694152832031 seg.
 Accuracy: 0.26
 @scores
 25.638725276986605

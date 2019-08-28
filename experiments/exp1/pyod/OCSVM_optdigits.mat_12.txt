@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 12: optdigits.mat
-Time taken: 4.676832437515259 seg.
+Time taken: 6.0881946086883545 seg.
 Accuracy: 0.013333333333333334
 @scores
 0.00011195449796497225

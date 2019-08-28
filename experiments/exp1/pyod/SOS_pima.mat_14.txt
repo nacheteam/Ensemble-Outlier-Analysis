@@ -1,6 +1,6 @@
 Model: SOS
 Dataset 14: pima.mat
-Time taken: 0.49353671073913574 seg.
+Time taken: 0.48552799224853516 seg.
 Accuracy: 0.3619402985074627
 @scores
 0.34180530052340863

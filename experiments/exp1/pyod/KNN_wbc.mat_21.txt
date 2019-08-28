@@ -1,6 +1,6 @@
 Model: KNN
 Dataset 21: wbc.mat
-Time taken: 0.0071790218353271484 seg.
+Time taken: 0.008247852325439453 seg.
 Accuracy: 0.5238095238095238
 @scores
 0.29193414674422286

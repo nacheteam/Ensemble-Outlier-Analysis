@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 9: mammography.mat
-Time taken: 27.24967312812805 seg.
+Time taken: 25.231181383132935 seg.
 Accuracy: 0.15
 @scores
 0.31178974988767866

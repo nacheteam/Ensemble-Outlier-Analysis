@@ -1,6 +1,6 @@
 Model: OCSVM
 Dataset 6: ionosphere.mat
-Time taken: 0.009968280792236328 seg.
+Time taken: 0.010344743728637695 seg.
 Accuracy: 0.6428571428571429
 @scores
 -6.764367527714597

@@ -1,6 +1,6 @@
 Model: LOF
 Dataset 16: satimage-2.mat
-Time taken: 0.8340306282043457 seg.
+Time taken: 0.7796916961669922 seg.
 Accuracy: 0.07042253521126761
 @scores
 1.5620824032877938

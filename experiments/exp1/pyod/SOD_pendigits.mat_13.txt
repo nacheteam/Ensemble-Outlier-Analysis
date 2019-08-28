@@ -1,6 +1,6 @@
 Model: SOD
 Dataset 13: pendigits.mat
-Time taken: 11.21753740310669 seg.
+Time taken: 10.599929571151733 seg.
 Accuracy: 0.0641025641025641
 @scores
 0.05278361547223272
