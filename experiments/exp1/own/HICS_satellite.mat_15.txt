@@ -1,4 +1,4 @@
 Model: HICS
 Dataset 15: satellite.mat
-Time taken: 171.8624517917633 seg.
+Time taken: 150.12834811210632 seg.
 Accuracy: None

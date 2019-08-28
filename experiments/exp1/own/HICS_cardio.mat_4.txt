@@ -1,4 +1,4 @@
 Model: HICS
 Dataset 4: cardio.mat
-Time taken: 308.720641374588 seg.
+Time taken: 315.4130711555481 seg.
 Accuracy: None

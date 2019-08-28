@@ -1,4 +1,4 @@
 Model: HICS
 Dataset 21: wbc.mat
-Time taken: 6336.257687330246 seg.
+Time taken: 5126.562713384628 seg.
 Accuracy: None

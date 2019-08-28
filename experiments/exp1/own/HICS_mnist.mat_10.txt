@@ -1,4 +1,4 @@
 Model: HICS
 Dataset 10: mnist.mat
-Time taken: 2856.5116968154907 seg.
+Time taken: 2502.025826215744 seg.
 Accuracy: None

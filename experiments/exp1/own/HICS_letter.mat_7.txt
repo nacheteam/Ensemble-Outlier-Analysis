@@ -1,4 +1,4 @@
 Model: HICS
 Dataset 7: letter.mat
-Time taken: 73.4312047958374 seg.
+Time taken: 79.25607919692993 seg.
 Accuracy: None

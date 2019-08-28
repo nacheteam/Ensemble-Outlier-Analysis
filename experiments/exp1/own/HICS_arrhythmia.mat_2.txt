@@ -1,4 +1,4 @@
 Model: HICS
 Dataset 2: arrhythmia.mat
-Time taken: 1269.5908463001251 seg.
+Time taken: 1169.342209815979 seg.
 Accuracy: None
