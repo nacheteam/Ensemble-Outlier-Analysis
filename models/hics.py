@@ -186,27 +186,44 @@ class HICS(EnsembleTemplate):
 
             candidates = np.array(candidates)
             contrasts = np.array(contrasts)
+            redundant = np.unique(redundant)
             # If there are redundant subspaces
             if redundant!=[]:
                 if self.verbose:
-                    print("Now deleting redundant subspaces in dimension " + str(dimension) + ", " + str(len(redundant)) + " subspaces removed.")
+                    print("Removing redundant subspaces in dimension " + str(dimension) + ", " + str(len(redundant)) + " subspaces removed.")
                 # Delete those ones
-                non_redundant_sub = np.delete(all_subspaces[-1], redundant)
+                non_redundant_sub = []
+                non_redundant_con = []
+                for i in range(len(all_subspaces[-1])):
+                    if not i in redundant:
+                        non_redundant_sub.append(all_subspaces[-1][i])
+                        non_redundant_con.append(all_contrasts[-1][i])
+                non_redundant_sub = np.array(non_redundant_sub)
+                non_redundant_con = np.array(non_redundant_con)
                 # Update the subspaces
                 all_subspaces[-1]=non_redundant_sub
+                all_contrasts[-1]=non_redundant_con
             # Sort from higher contrast to lower and only get numCandidates number of subspaces if available
             if len(candidates)>self.numCandidates:
-                all_subspaces.append(candidates[contrasts.argsort()[-self.numCandidates:][::-1]])
-                all_contrasts.append(contrasts[contrasts.argsort()[-self.numCandidates:][::-1]])
+                all_subspaces.append(candidates[contrasts.argsort()[::-1][-self.numCandidates:]])
+                all_contrasts.append(contrasts[contrasts.argsort()[::-1][-self.numCandidates:]])
             else:
                 all_subspaces.append(candidates)
                 all_contrasts.append(contrasts)
         # We flatten the numpy array to obtain only a list of subspaces and contrasts
-        subspaces = np.array(all_subspaces).flatten()
-        contrasts = np.array(all_contrasts).flatten()
+        subspaces = []
+        for i in range(len(all_subspaces)):
+            for j in range(len(all_subspaces[i])):
+                subspaces.append(all_subspaces[i][j])
+        contrasts = []
+        for i in range(len(all_contrasts)):
+            for j in range(len(all_contrasts[i])):
+                contrasts.append(all_contrasts[i][j])
+        subspaces = np.array(subspaces)
+        contrasts = np.array(contrasts)
         # We only give the maxOutputSpaces with higher contrast if available
         if len(subspaces)>self.maxOutputSpaces:
-            return subspaces[contrasts.argsort()[-self.maxOutputSpaces:][::-1]]
+            return subspaces[contrasts.argsort()[::-1][-self.maxOutputSpaces:]]
         return subspaces
 
     def runMethod(self):
@@ -238,7 +255,7 @@ class HICS(EnsembleTemplate):
                 scorer = HBOS()
             elif self.outlier_rank=="sod":
                 scorer = SOD()
-            # Fits the scorer with the dataset
+            # Fits the scorer with the dataset projection
             scorer.fit(self.dataset[:,sub])
             # Adds the scores obtained to the global ones
             scores = scores+scorer.decision_scores_
