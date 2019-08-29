@@ -72,6 +72,7 @@ def writeResults(datasetname, model, datasetnumber):
         for s in subspace[:-1]:
             f.write(str(s) + ",")
         f.write(str(subspace[-1]))
+        f.write(";")
         for neig in neighborhood[:-1]:
             f.write(str(neig) + ",")
         f.write(str(neighborhood[-1]))
