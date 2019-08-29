@@ -5,6 +5,9 @@ import numpy as np
 np.random.seed(123456789)
 
 import matplotlib.pyplot as plt
+from sklearn.manifold import TSNE
+import scipy.io
+
 
 ROUTE = "./exp1/"
 
@@ -78,3 +81,51 @@ for dataset in datasets:
     plt.title("Tiempo de cómputo de los modelos en " + dataset)
     plt.savefig("./imgs_exp1/times/" + dataset.split(".")[0] + ".png")
     plt.close()
+
+
+# Take the outres pima exec
+file = "./exp2/outres_pima.mat_1.txt"
+f = open(file, "r")
+outliers = []
+subspaces = []
+neighborhoods = []
+reading_subspaces = False
+for line in f:
+    if reading_subspaces:
+        out = int(line.split(";")[0])
+        sub = []
+        nei = []
+        for s in line.split(";")[1].split(","):
+            sub.append(int(s))
+        for n in line.split(";")[2].split(","):
+            nei.append(int(n))
+        outliers.append(out)
+        subspaces.append(sub)
+        neighborhoods.append(nei)
+    if "outlier ; subspace ; neighborhood" in line:
+        reading_subspaces=True
+
+data = scipy.io.loadmat("../datasets/outlier_ground_truth/pima.mat")["X"]
+labels = scipy.io.loadmat("../datasets/outlier_ground_truth/pima.mat")["y"]
+
+cont = 0
+for out, sub, neig in zip(outliers, subspaces, neighborhoods):
+    cont+=1
+    print("Obtaining image " + str(cont) + "/" + str(len(outliers)))
+    if len(sub)==2:
+        proj = data[:,sub]
+        plt.scatter(proj[:,0][out], proj[:,1][out], label="Instancia", c="red")
+        plt.scatter(proj[:,0][neig], proj[:,1][neig], label="Vecindario", c="blue")
+        plt.title("Instancia " + str(out) + " en el subespacio " + str(sub))
+        plt.legend()
+        plt.savefig("./imgs_exp2/" + str(cont) + ".png")
+        plt.close()
+    else:
+        proj = data[:,sub]
+        tsne_proj = TSNE(n_components=2).fit_transform(proj)
+        plt.scatter(tsne_proj[:,0][out], tsne_proj[:,1][out], label="Instancia", c="red")
+        plt.scatter(tsne_proj[:,0][neig], tsne_proj[:,1][neig], label="Vecindario", c="blue")
+        plt.title("Instancia " + str(out) + " en el subespacio " + str(sub))
+        plt.legend()
+        plt.savefig("./imgs_exp2/" + str(cont) + "_tsne.png")
+        plt.close()
