@@ -84,7 +84,7 @@ for dataset in datasets:
 
 
 # Take the outres pima exec
-file = "./exp2/outres_pima.mat_1.txt"
+file = "./exp2/outres_pima.mat_6.txt"
 f = open(file, "r")
 outliers = []
 subspaces = []
