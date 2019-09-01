@@ -1,10 +1,10 @@
 #!# -*- coding: utf-8 -*-
 import sys
+# Put the path to models
 sys.path.append('../models/')
-sys.path.append("../test/")
 
+# Import all used libraries
 import numpy as np
-from KernelMahalanobis import KernelMahalanobis
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -19,6 +19,11 @@ np.random.seed(123456789)
 ################################################################################
 
 def readDataAbalone():
+    '''
+    @brief Function that reads the abalone dataset
+    @return It returns two numpy arrays, the first one with the data and the second one
+    with the labels
+    '''
     data_file = open("../datasets/abalone19.dat")
     dataset = []
     labels = []
@@ -43,6 +48,11 @@ def readDataAbalone():
     return np.array(dataset), np.array(labels)
 
 def readDataYeast():
+    '''
+    @brief Function that reads the yeast dataset
+    @return It returns two numpy arrays, the first one with the data and the second one
+    with the labels
+    '''
     data_file = open("../datasets/yeast6.dat")
     dataset = []
     labels = []
@@ -64,6 +74,11 @@ def readDataYeast():
     return np.array(dataset), np.array(labels)
 
 def readDataCancer():
+    '''
+    @brief Function that reads the breast cancer dataset
+    @return It returns two numpy arrays, the first one with the data and the second one
+    with the labels
+    '''
     data_file = open("../datasets/wdbc.data")
     dataset = []
     labels = []
@@ -84,6 +99,11 @@ def readDataCancer():
 ################################################################################
 
 def obtainResults(mk):
+    '''
+    @brief Function that obtains statistical information from the scores and
+    plots them with the anomalies in red
+    @param mk Model to obtain the results
+    '''
     print("\n\n\n##########################################################")
     print("Statistical information about the outliers")
     print("##########################################################\n\n")
@@ -108,11 +128,21 @@ def obtainResults(mk):
     plt.legend()
     plt.show()
 
-def checkAnomalies(dataset, outliers_mahalanobis):
+def checkAnomalies(dataset, outliers):
+    '''
+    @brief Function that checks if the anomalies obtained from the model are similar
+    to those obtained by pyod models
+    @param dataset Dataset used to check for anomalies
+    @param outliers Outliers obtained by the model being used
+    @return It returns first the number of common anomalies and second the number
+    of different anomalies.
+    '''
+    # Obtain the outliers from pyod
     outliers_voted = voteForOutliers(dataset)
+    # Count the common and different ones
     common_ones = 0
     different_ones = 0
-    for om in outliers_mahalanobis:
+    for om in outliers:
         if om in outliers_voted:
             common_ones+=1
         else:
