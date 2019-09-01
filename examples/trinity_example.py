@@ -1,8 +1,9 @@
 #!# -*- coding: utf-8 -*-
 import sys
+# We add the path to the models
 sys.path.append('../models/')
-sys.path.append("../test/")
 
+# Import all used libraries
 import numpy as np
 from trinity import TRINITY
 import matplotlib.pyplot as plt
@@ -23,28 +24,23 @@ np.random.seed(123456789)
 ################################################################################
 
 def main():
+    # Read the data
     #dataset,labels = utils.readDataAbalone()
     dataset,labels = utils.readDataYeast()
     #dataset, labels = utils.readDataCancer()
 
+    # Fit the model
     trinity = TRINITY(verbose=True)
-    '''
-    p = Profile()
-    p.enable()
-    '''
     trinity.fit(dataset)
-    '''
-    p.disable()
-    s = io.StringIO()
-    ps = pstats.Stats(p, stream=s).sort_stats('cumulative')
-    ps.print_stats()
-    print(s.getvalue())
-    utils.obtainResults(outres)
-    '''
+    utils.obtainResults(trinity)
+
+    # Get the outliers
     outliers = trinity.getOutliers()
 
+    # Print the labels of the outliers
     print(labels[outliers])
 
+    # Check if pyod models get the same anomalies
     print("Getting anomalies based on the voting system to check")
     cm, df = utils.checkAnomalies(dataset, outliers)
     print("Common ones: " + str(cm))

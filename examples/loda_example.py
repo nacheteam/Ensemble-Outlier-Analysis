@@ -1,8 +1,10 @@
 #!# -*- coding: utf-8 -*-
 import sys
-sys.path.append('../models/')
-sys.path.append("../test/")
 
+# We add the path to the models
+sys.path.append('../models/')
+
+# Import all used libraries
 import numpy as np
 from loda import LODA
 import matplotlib.pyplot as plt
@@ -23,28 +25,23 @@ np.random.seed(123456789)
 ################################################################################
 
 def main():
+    # Read the data
     #dataset,labels = utils.readDataAbalone()
     dataset,labels = utils.readDataYeast()
     #dataset, labels = utils.readDataCancer()
 
+    # Fit the model
     loda = LODA()
-    '''
-    p = Profile()
-    p.enable()
-    '''
     loda.fit(dataset)
-    '''
-    p.disable()
-    s = io.StringIO()
-    ps = pstats.Stats(p, stream=s).sort_stats('cumulative')
-    ps.print_stats()
-    print(s.getvalue())
     utils.obtainResults(loda)
-    '''
+
+    # Get the outliers
     outliers = loda.getOutliers()
 
+    # Print the labels of the outliers
     print(labels[outliers])
 
+    # Check if pyod models get the same anomalies
     print("Getting anomalies based on the voting system to check")
     cm, df = utils.checkAnomalies(dataset, outliers)
     print("Common ones: " + str(cm))

@@ -1,8 +1,9 @@
 #!# -*- coding: utf-8 -*-
 import sys
+# We add the path to the models
 sys.path.append('../models/')
-sys.path.append("../test/")
 
+# Import all used libraries
 import numpy as np
 from hics import HICS
 import matplotlib.pyplot as plt
@@ -20,18 +21,23 @@ np.random.seed(123456789)
 ################################################################################
 
 def main():
+    # Read the data
     dataset,labels = utils.readDataAbalone()
     #dataset,labels = utils.readDataYeast()
     #dataset, labels = utils.readDataCancer()
 
+    # Fit the model
     hics = HICS(verbose=True)
     hics.fit(dataset)
     utils.obtainResults(hics)
 
+    # Get the outliers
     outliers = hics.getOutliers()
 
+    # Print the labels of the outliers
     print(labels[outliers])
 
+    # Check if pyod models get the same anomalies
     print("Getting anomalies based on the voting system to check")
     cm, df = utils.checkAnomalies(dataset, outliers)
     print("Common ones: " + str(cm))
