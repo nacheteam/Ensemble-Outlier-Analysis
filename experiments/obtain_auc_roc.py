@@ -74,19 +74,22 @@ for dataset in datasets:
         # Read the information of the file
         filename = R + name + "_" + dataset + "_" + str(datasets.index(dataset)+1) + ".txt"
         accuracy, time, scores = readFileExp1(filename)
-        if accuracy!=-1 and name in ["TRINITY", "Mahalanobis Kernel", "OUTRES", "LODA", "HICS"]:
+        if accuracy!=-1:
             prediction = obtainLabels(scores, truelabels)
             fpr, tpr, thr = sklearn.metrics.roc_curve(truelabels, prediction)
             auc = sklearn.metrics.auc(fpr,tpr)
             print("Modelo: " + name + ", dataset: " + dataset + ", AUC: " + str(auc))
-            # Make a roc plot
-            plt.title('Curva ROC')
-            plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % auc)
-            plt.legend(loc = 'lower right')
-            plt.plot([0, 1], [0, 1],'r--')
-            plt.xlim([0, 1])
-            plt.ylim([0, 1])
-            plt.ylabel('True Positive Rate')
-            plt.xlabel('False Positive Rate')
-            plt.savefig("./imgs_exp1/roc/" + name + "_" + dataset.split(".")[0] + ".png")
-            plt.close()
+            if name in ["TRINITY", "Mahalanobis Kernel", "OUTRES", "LODA", "HICS"]:
+                # Make a roc plot
+                plt.title('Curva ROC')
+                plt.plot(fpr, tpr, 'b', label = 'AUC = %0.2f' % auc)
+                plt.legend(loc = 'lower right')
+                plt.plot([0, 1], [0, 1],'r--')
+                plt.xlim([0, 1])
+                plt.ylim([0, 1])
+                plt.ylabel('True Positive Rate')
+                plt.xlabel('False Positive Rate')
+                plt.savefig("./imgs_exp1/roc/" + name + "_" + dataset.split(".")[0] + ".png")
+                plt.close()
+        else:
+            print("Modelo: " + name + ", dataset: " + dataset + ", AUC: NAN")
