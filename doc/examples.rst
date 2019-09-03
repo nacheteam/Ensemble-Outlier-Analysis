@@ -1,8 +1,8 @@
 Examples
-========
+============
 
 
-----
+
 
 For each model we have developed an example so we can see how it works.
 
@@ -10,7 +10,7 @@ For each model we have developed an example so we can see how it works.
 
 
 HICS Example
------------
+--------------------
 
 
 Full example: `hics_example.py <https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/hics_example.py>`_
@@ -80,7 +80,7 @@ Full example: `hics_example.py <https://github.com/nacheteam/Ensemble-Outlier-An
 
 
 Mahalanobis Kernel Example
------------
+---------------------------------
 
 
 Full example: `KernelMahalanobis_example.py <https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/KernelMahalanobis_example.py>`_
@@ -150,7 +150,7 @@ Full example: `KernelMahalanobis_example.py <https://github.com/nacheteam/Ensemb
 
 
 LODA Example
------------
+----------------------------
 
 
 Full example: `loda_example.py <https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/loda_example.py>`_
@@ -220,7 +220,7 @@ Full example: `loda_example.py <https://github.com/nacheteam/Ensemble-Outlier-An
 
 
 OUTRES Example
------------
+----------------------------
 
 
 Full example: `outres_example.py <https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/outres_example.py>`_
@@ -289,7 +289,7 @@ Full example: `outres_example.py <https://github.com/nacheteam/Ensemble-Outlier-
 ----
 
 TRINITY Example
------------
+-----------------------
 
 
 Full example: `trinity_example.py <https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/trinity_example.py>`_
@@ -354,5 +354,3 @@ Full example: `trinity_example.py <https://github.com/nacheteam/Ensemble-Outlier
 
     .. figure:: figs/trinity_common_different.png
         :alt: Number of common and different outliers with TRINITY and PyOD
-
-----
