@@ -27,7 +27,7 @@ def main():
     #dataset, labels = utils.readDataCancer()
 
     # Fit the model
-    hics = HICS(verbose=True)
+    hics = HICS(verbose=True, outlier_rank="lof", contamination=0.1, M=100, alpha=0.1, numCandidates=500, maxOutputSpaces=1000, numThreads=8)
     hics.fit(dataset)
     utils.obtainResults(hics)
 

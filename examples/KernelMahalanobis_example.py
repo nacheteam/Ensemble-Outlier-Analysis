@@ -24,6 +24,7 @@ def main():
     # Read the data
     #dataset,labels = utils.readDataAbalone()
     dataset,labels = utils.readDataYeast()
+    #dataset, labels = utils.readDataCancer()
 
     # I place already the dataset as a matrix
     kernel_mahalanobis = KernelMahalanobis()

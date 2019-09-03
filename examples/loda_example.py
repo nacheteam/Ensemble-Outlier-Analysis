@@ -31,7 +31,7 @@ def main():
     #dataset, labels = utils.readDataCancer()
 
     # Fit the model
-    loda = LODA()
+    loda = LODA(n_bins=25, k=500)
     loda.fit(dataset)
     utils.obtainResults(loda)
 

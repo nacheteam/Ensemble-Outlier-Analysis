@@ -31,7 +31,7 @@ def main():
     #dataset, labels = utils.readDataCancer()
 
     # Fit the model
-    outres = OUTRES(verbose=True)
+    outres = OUTRES(verbose=True, alpha=0.01)
     outres.fit(dataset)
     utils.obtainResults(outres)
 

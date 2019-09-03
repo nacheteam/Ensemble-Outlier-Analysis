@@ -30,7 +30,7 @@ def main():
     #dataset, labels = utils.readDataCancer()
 
     # Fit the model
-    trinity = TRINITY(verbose=True)
+    trinity = TRINITY(verbose=True, num_iter=100)
     trinity.fit(dataset)
     utils.obtainResults(trinity)
 
