@@ -10,6 +10,21 @@ Welcome to Outlier Ensembles's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Documentation
+
+  models
+  examples
+
+.. toctree::
+  :maxdepth: 2
+  :hidden:
+  :caption: Exmeriments
+
+  experiments
+
 
 
 Indices and tables

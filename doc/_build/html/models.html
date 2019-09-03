@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Models &mdash; Outlier Ensembles 5 Sept 2019 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="examples.html" />
+    <link rel="prev" title="Welcome to Outlier Ensembles’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Outlier Ensembles
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Documentation</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#base-model">Base Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hics">HICS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mahalanobis-kernel">Mahalanobis Kernel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loda">LODA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outres">OUTRES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trinity">TRINITY</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Outlier Ensembles</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Models</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/models.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="models">
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<div class="section" id="base-model">
+<h2>Base Model<a class="headerlink" href="#base-model" title="Permalink to this headline">¶</a></h2>
+<p>All the models are coded starting from the same class. This class is called EnsembleTemplate.</p>
+<p>The implementation is available in the link: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/base.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/base.py</a></p>
+<p>The class contains 6 methods as the skeleton of the rest of the classes. Those methods
+are:</p>
+<p>1. “__init__”: The method init is the constructor of the class and has the contamination parameter as default.
+This parameter indicates which percentage of the dataset is considered as outliers. If 0.1 is passed then the 10% of the dataset is considered as outliers.</p>
+<p>2. “fit”: This method is the main mathod for the user. The method needs the dataset as a parameter. The dataset is stored and the outlier scores are initialized
+an finally the method “runMethod” is executed so the model can update the scores.</p>
+<p>3. “runMethod”: This is the method where the actual model is coded. This method is only supposed to be called from the “fit” method and not from outside
+of the class.</p>
+<ol class="arabic simple" start="4">
+<li><p>“getRawScores”: This method just returns the scores.</p></li>
+</ol>
+<p>5. “getOutliersBN”: This method receives as a parameter the number of outliers and with that parameter the method returns the indexes of the instances
+with the highest score value.</p>
+<ol class="arabic simple" start="6">
+<li><p>“getOutliers”: This method takes the contamination parameter and returns the percentage with the highest scores corresponding to that percentage.</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="hics">
+<h2>HICS<a class="headerlink" href="#hics" title="Permalink to this headline">¶</a></h2>
+<p>The implementation of this model is taken from the paper High Contrast Subspaces for Density-Based Outlier Ranking written by Fabian Keller, Emmanuel Müller and Klemens Böhm.</p>
+<p>The code itself can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/hics.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/hics.py</a></p>
+<p>The parameters of the model are the following ones:</p>
+<ul class="simple">
+<li><p>outlier_rank: this is the method used to evaluate the instances in the las step of the algorithm. The original proposal used LOF but any density-based method</p></li>
+</ul>
+<p>can be used as well. The options available are: LOF, COF, CBLOF, LOCI, HBOS and SOD. Default is LOF.</p>
+<ul class="simple">
+<li><p>M: This is the number of times subsampling is applied in the process of obtaining the contrast of a subspace. Default is 100.</p></li>
+<li><p>alpha: The parameter that computes the size of the test sample when computing the contrast. Default is 0.1.</p></li>
+<li><p>numCandidates: For each dimension only numCandidates subspaces are retained until the end of the algorithm. Default is 500.</p></li>
+<li><p>maxOutputSpaces: At the end of the algorithm this is the máximum number of subspaces returned as high contrast ones. Default is 1000.</p></li>
+</ul>
+<p>Now we are going to explain the basis of the model. The model goes through all dimensions from 2 to the maximum dimensionality. For each dimension the high contrast subspaces
+are computed. All possible subspaces are tried on dimension 2 and for higher dimensions only the high contrast ones are used as fathers of the next subspaces.</p>
+<p>For example if [0,2] is a high contrast subspace then the childs or candidates for dimension 3 could be for example [0,2,3], [0,2,1], [0,2,5], etc.</p>
+<p>To compute the constrast we take a subsample of the dataset using alpha to compute the size of this sample. Over this sample the deviation is computed. This procedure works as follows:
+for each instance in the dataset and for a fixed comparison atribute we make the cumulative sum of all the elements in the sample if the value of the comparison attribute
+of the instance and each instance of the dataset is bigger. We make the same cumulative value but considering only the sample. Finally the absolute value of the difference
+is computed. Now for each instance we have a value. We take the maximum of these differences as the deviation.</p>
+<p>Finally after we have all the high contrast subspaces then LOF or outlier_rank method is applied in each projection using the subspaces. Then the
+results are averaged to obtain the final scores.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="mahalanobis-kernel">
+<h2>Mahalanobis Kernel<a class="headerlink" href="#mahalanobis-kernel" title="Permalink to this headline">¶</a></h2>
+<p>The implementation is picked from Aggarwal, Charu C., Sathe, Saket Outlier Ensembles book. The model is parameter free so no adjusting is required.</p>
+<p>The code itself can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/KernelMahalanobis.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/KernelMahalanobis.py</a></p>
+<p>Let’s describe the way this method works. First we take the data as a matrix and compute the similarity matrix <span class="math notranslate nohighlight">\(S = DD^T\)</span>. Then Singular Value Decomposition
+is applied to this matrix and we obtain <span class="math notranslate nohighlight">\(S = Q\Delta Q^T\)</span> so we can compute <span class="math notranslate nohighlight">\(D' = Q\Delta\)</span> and scale it to zero mean and unit variance.</p>
+<p>Then with this matrix as a result we can obtain it’s mean row vector and compute the anomaly scores as the Euclidean distance of each row to the mean.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="loda">
+<h2>LODA<a class="headerlink" href="#loda" title="Permalink to this headline">¶</a></h2>
+<p>The implementation is picked from LODA: Lightweight on-line detector of anomalies written by Tomas Pèvny.</p>
+<p>The code can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/loda.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/loda.py</a></p>
+<p>The model has 2 parameters:</p>
+<ul class="simple">
+<li><p>k: this is the number of projections and therefore the number of histograms computed default is 500.</p></li>
+<li><p>n_bin: number of bins of the histogram default is 25.</p></li>
+</ul>
+<p>The model creates first the random projection vectors. These vectors are as long as each instance of the dataset and contains <span class="math notranslate nohighlight">\([\sqrt{d}]\)</span> where <span class="math notranslate nohighlight">\(d\)</span> is the
+dimensionality of the dataset itself. The rest of elements of the projection vector are taken from a normal distribution with zero mean and unit variance.</p>
+<p>Using this procedure k proection vectors are created. Now for each one of this vectors we are going to compute the one-dimensional projection for each instance
+of the dataset like <span class="math notranslate nohighlight">\(z_j = x_j \cdot w_i^T\)</span> where <span class="math notranslate nohighlight">\(x_j\)</span> is an instance of the dataset and <span class="math notranslate nohighlight">\(w_i\)</span> a projection vector. With these values a histogram
+is computed so we can end up with k histograms.</p>
+<p>Finally with these histograms we can compute for each instance the probability of appearance of the instance looking for its corresponding bin in each histogram. Then,
+with these <span class="math notranslate nohighlight">\(k\)</span> probability values we can compute the final score with the formula <span class="math notranslate nohighlight">\(score = - \sum_{i=1}^{k}\frac{log(p_i)}{k}\)</span>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="outres">
+<h2>OUTRES<a class="headerlink" href="#outres" title="Permalink to this headline">¶</a></h2>
+<p>The implementation of this model is taken from OUTRES: Statistical Selection of Relevant Subspace Projections for Outlier Ranking written by Emmanuel Müller, Matthias Schiffer and Thomas Seidl.</p>
+<p>The code can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/outres.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/outres.py</a></p>
+<p>This model has a single parameter:</p>
+<ul class="simple">
+<li><p>alpha: this parameter is the level of confidence for the Kolmogorov-Smirnov test to check is a subspace is relevant or not. Default is 0.01.</p></li>
+</ul>
+<p>This model evaluates the score instance by instance. For each instance it starts checking for relevant subspaces of dimension 2. We say a subspace
+is relevant if the 1D projections included in the subspace projection are not uniformly distributed. The rest of subspaces with higher dimensionality are
+created or proposed starting from lower dimensionality subspaces that have been relevant.</p>
+<p>If the subspace is relevant then we can compute the density of the instance. This is checking in the neighborhood if the projection of the data is nearby our instance.
+The density is computed with the formula <span class="math notranslate nohighlight">\(\frac{1}{n}\sum_{p\in AN(o,S) K_e (\frac{dist_S (o,p)}{\epsilon(|S|)})}\)</span> where <span class="math notranslate nohighlight">\(o\)</span> is the instance being scored,
+<span class="math notranslate nohighlight">\(AN(o,S)\)</span> is the neighborhood of the instance <span class="math notranslate nohighlight">\(o\)</span> in the subspace <span class="math notranslate nohighlight">\(S\)</span>, <span class="math notranslate nohighlight">\(dist_S (o,p)\)</span> is the distance from the instance <span class="math notranslate nohighlight">\(o\)</span> to the
+instance <a href="#id1"><span class="problematic" id="id2">:mat:`p`</span></a> in the projection of the data, <span class="math notranslate nohighlight">\(\epsilon(|S|)\)</span> is a measure to make the adaptative neighborhood and <span class="math notranslate nohighlight">\(K_e\)</span> is the function
+<a href="#id3"><span class="problematic" id="id4">:mat:`K_e (x) = 1-x^2`</span></a>.</p>
+<p>The adaptative neighborhood are the instances that are at the most at distance <span class="math notranslate nohighlight">\(\epsilon (|S|)\)</span> to our instance. The calculation of <span class="math notranslate nohighlight">\(\epsilon (|S|)\)</span> can be
+found in the paper.</p>
+<p>With the density computed we can compute the deviation as <span class="math notranslate nohighlight">\(dev(o,S) = \frac{\mu - den(o,S)}{2\sigma}\)</span> where <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are the mean and
+standard deviation of the density values in the adaptative neighborhood.</p>
+<p>Finally if the deviation is bigger than one we update the score <span class="math notranslate nohighlight">\(r(o) = r(o) \cdot \frac{den(o,S)}{dev(o,S)}\)</span>. The scores are in the interval <span class="math notranslate nohighlight">\([0,1]\)</span>
+being 0 very outlying and 1 inlying. To mantaing the sacale (bigger is more outlying) we modify the scores at the end as <span class="math notranslate nohighlight">\(1-r(o)\)</span>. Doing this the inliers
+will have values nearby <span class="math notranslate nohighlight">\(0\)</span> and outliers will have values nearby <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>This process is repeated for every instance.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="trinity">
+<h2>TRINITY<a class="headerlink" href="#trinity" title="Permalink to this headline">¶</a></h2>
+<p>The implementatio  of this model is taken from the book Aggarwal, Charu C., Sathe, Saket Outlier Ensembles.</p>
+<p>The code can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/trinity.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/trinity.py</a></p>
+<p>This model has one single parameter:</p>
+<ul class="simple">
+<li><p>num_iter: This is the number of times the subsamping technique is used in each component of the model.</p></li>
+</ul>
+<p>The model has three main modules: the distance-based, the dependency-based and the density-based.</p>
+<p>In the distance-based module we use the KNN with <span class="math notranslate nohighlight">\(k=5\)</span> algorithm for outlier detection having at the end a list with all the scores.</p>
+<p>In the density-based module we use the IForest algorithm for outlier detection ending up with another list of scores.</p>
+<p>In the dependency-based module we use the Mahalanobis Kernel method ending up with the third list of scores.</p>
+<p>In all these three modules the subsampling technique is applied. This means that we don’t use the whole dataset to fit the model.
+we use only a small sample and repeat this process. At the end all instances will have their score. This technique allow us to reduce the variance.</p>
+<p>The three lists of scores are scaled to zero mean and unit variance, then averaged to obtain the final score list.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="examples.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Outlier Ensembles’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ignacio Aguilera Martos
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
