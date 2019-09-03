@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; Outlier Ensembles 5 Sept 2019 documentation</title>
+  <title>Examples &mdash; Outlier Ensembles 5 Sept 2019 documentation</title>
   
 
   
@@ -82,8 +82,16 @@
             
             
               <p class="caption"><span class="caption-text">Documentation</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#hics-example">HICS Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mahalanobis-kernel-example">Mahalanobis Kernel Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loda-example">LODA Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outres-example">OUTRES Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trinity-example">TRINITY Example</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -129,7 +137,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Examples</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -148,7 +156,373 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
+  <div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p>For each model we have developed an example so we can see how it works.</p>
+<hr class="docutils" />
+<div class="section" id="hics-example">
+<h2>HICS Example<a class="headerlink" href="#hics-example" title="Permalink to this headline">¶</a></h2>
+<p>Full example: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/hics_example.py">hics_example.py</a></p>
+<ol class="arabic">
+<li><p>Import model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">hics</span> <span class="kn">import</span> <span class="n">HICS</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataAbalone</span><span class="p">()</span>
+<span class="c1">#dataset,labels = utils.readDataYeast()</span>
+<span class="c1">#dataset, labels = utils.readDataCancer()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Initialize a <code class="xref py py-class docutils literal notranslate"><span class="pre">HICS</span></code> detector and fit the model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hics</span> <span class="o">=</span> <span class="n">HICS</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">outlier_rank</span><span class="o">=</span><span class="s2">&quot;lof&quot;</span><span class="p">,</span> <span class="n">contamination</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">M</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">numCandidates</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">maxOutputSpaces</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">numThreads</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">hics</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Get the plot of the scores colouring the anomalies in red.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">hics</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="HICS Scatter Plot" src="_images/hics_plot.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Get some statistical information from the scores.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">hics</span><span class="p">)</span>
+
+<span class="c1"># Get the outliers</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">hics</span><span class="o">.</span><span class="n">getOutliers</span><span class="p">()</span>
+
+<span class="c1"># Print the labels of the outliers</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="HICS Statistics" src="_images/hics_statistics.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
+<span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Different ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Number of common and different outliers with HICS and PyOD" src="_images/hics_common_different.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="mahalanobis-kernel-example">
+<h2>Mahalanobis Kernel Example<a class="headerlink" href="#mahalanobis-kernel-example" title="Permalink to this headline">¶</a></h2>
+<p>Full example: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/KernelMahalanobis_example.py">KernelMahalanobis_example.py</a></p>
+<ol class="arabic">
+<li><p>Import model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">KernelMahalanobis</span> <span class="kn">import</span> <span class="n">KernelMahalanobis</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataAbalone</span><span class="p">()</span>
+<span class="c1">#dataset,labels = utils.readDataYeast()</span>
+<span class="c1">#dataset, labels = utils.readDataCancer()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Initialize a <code class="xref py py-class docutils literal notranslate"><span class="pre">KernelMahalanobis</span></code> detector and fit the model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">kernel_mahalanobis</span> <span class="o">=</span> <span class="n">KernelMahalanobis</span><span class="p">()</span>
+<span class="n">kernel_mahalanobis</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Get the plot of the scores colouring the anomalies in red.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">kernel_mahalanobis</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Mahalanobis Kernel Scatter Plot" src="_images/MK_plot.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Get some statistical information from the scores.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">kernel_mahalanobis</span><span class="p">)</span>
+
+<span class="c1"># Get the outliers</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">kernel_mahalanobis</span><span class="o">.</span><span class="n">getOutliers</span><span class="p">()</span>
+
+<span class="c1"># Print the labels of the outliers</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Mahalanobis Kernel Statistics" src="_images/MK_statistics.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
+<span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Different ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Number of common and different outliers with Mahalanobis Kernel and PyOD" src="_images/MK_common_different.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="loda-example">
+<h2>LODA Example<a class="headerlink" href="#loda-example" title="Permalink to this headline">¶</a></h2>
+<p>Full example: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/loda_example.py">loda_example.py</a></p>
+<ol class="arabic">
+<li><p>Import model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">loda</span> <span class="kn">import</span> <span class="n">LODA</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#dataset,labels = utils.readDataAbalone()</span>
+<span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataYeast</span><span class="p">()</span>
+<span class="c1">#dataset, labels = utils.readDataCancer()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Initialize a <code class="xref py py-class docutils literal notranslate"><span class="pre">LODA</span></code> detector and fit the model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">loda</span> <span class="o">=</span> <span class="n">LODA</span><span class="p">(</span><span class="n">n_bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">loda</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Get the plot of the scores colouring the anomalies in red.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">loda</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="LODA Scatter Plot" src="_images/loda_plot.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Get some statistical information from the scores.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">loda</span><span class="p">)</span>
+
+<span class="c1"># Get the outliers</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">loda</span><span class="o">.</span><span class="n">getOutliers</span><span class="p">()</span>
+
+<span class="c1"># Print the labels of the outliers</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="LODA Statistics" src="_images/loda_statistics.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
+<span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Different ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Number of common and different outliers with LODA and PyOD" src="_images/loda_common_different.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="outres-example">
+<h2>OUTRES Example<a class="headerlink" href="#outres-example" title="Permalink to this headline">¶</a></h2>
+<p>Full example: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/outres_example.py">outres_example.py</a></p>
+<ol class="arabic">
+<li><p>Import model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">outres</span> <span class="kn">import</span> <span class="n">OUTRES</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#dataset,labels = utils.readDataAbalone()</span>
+<span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataYeast</span><span class="p">()</span>
+<span class="c1">#dataset, labels = utils.readDataCancer()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Initialize a <code class="xref py py-class docutils literal notranslate"><span class="pre">OUTRES</span></code> detector and fit the model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">outres</span> <span class="o">=</span> <span class="n">OUTRES</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">outres</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Get the plot of the scores colouring the anomalies in red.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">outres</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="OUTRES Scatter Plot" src="_images/outres_plot.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Get some statistical information from the scores.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">outres</span><span class="p">)</span>
+
+<span class="c1"># Get the outliers</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">outres</span><span class="o">.</span><span class="n">getOutliers</span><span class="p">()</span>
+
+<span class="c1"># Print the labels of the outliers</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="OUTRES Statistics" src="_images/outres_statistics.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
+<span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Different ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Number of common and different outliers with OUTRES and PyOD" src="_images/outres_common_different.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="trinity-example">
+<h2>TRINITY Example<a class="headerlink" href="#trinity-example" title="Permalink to this headline">¶</a></h2>
+<p>Full example: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/examples/trinity_example.py">trinity_example.py</a></p>
+<ol class="arabic">
+<li><p>Import model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">trinity</span> <span class="kn">import</span> <span class="n">TRINITY</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#dataset,labels = utils.readDataAbalone()</span>
+<span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataYeast</span><span class="p">()</span>
+<span class="c1">#dataset, labels = utils.readDataCancer()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Initialize a <code class="xref py py-class docutils literal notranslate"><span class="pre">TRINITY</span></code> detector and fit the model</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trinity</span> <span class="o">=</span> <span class="n">TRINITY</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">trinity</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Get the plot of the scores colouring the anomalies in red.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">utils</span>
+<span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">trinity</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="TRINITY Scatter Plot" src="figs/trinity_plot.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Get some statistical information from the scores.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">utils</span><span class="o">.</span><span class="n">obtainResults</span><span class="p">(</span><span class="n">trinity</span><span class="p">)</span>
+
+<span class="c1"># Get the outliers</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">trinity</span><span class="o">.</span><span class="n">getOutliers</span><span class="p">()</span>
+
+<span class="c1"># Print the labels of the outliers</span>
+<span class="k">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">outliers</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="TRINITY Statistics" src="figs/trinity_statistics.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
+<span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;Different ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="Number of common and different outliers with TRINITY and PyOD" src="figs/trinity_common_different.png" />
+</div>
+</div></blockquote>
+</li>
+</ol>
+<hr class="docutils" />
+</div>
+</div>
+
 
            </div>
            

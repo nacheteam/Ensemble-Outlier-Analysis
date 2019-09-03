@@ -55,6 +55,10 @@ can be used as well. The options available are: LOF, COF, CBLOF, LOCI, HBOS and 
 
 - maxOutputSpaces: At the end of the algorithm this is the máximum number of subspaces returned as high contrast ones. Default is 1000.
 
+- numThreads: Number of threads for the parallel code execution.
+
+- verbose: boolean parameter to indicate if the algorithm should print the progress.
+
 Now we are going to explain the basis of the model. The model goes through all dimensions from 2 to the maximum dimensionality. For each dimension the high contrast subspaces
 are computed. All possible subspaces are tried on dimension 2 and for higher dimensions only the high contrast ones are used as fathers of the next subspaces.
 
@@ -119,6 +123,10 @@ This model has a single parameter:
 
 - alpha: this parameter is the level of confidence for the Kolmogorov-Smirnov test to check is a subspace is relevant or not. Default is 0.01.
 
+- verbose: parameter that indicates if the progress should be printed.
+
+- experiment: parameter that indicates if the second experiment is being run. This only makes the model save the internal information to files.
+
 This model evaluates the score instance by instance. For each instance it starts checking for relevant subspaces of dimension 2. We say a subspace
 is relevant if the 1D projections included in the subspace projection are not uniformly distributed. The rest of subspaces with higher dimensionality are
 created or proposed starting from lower dimensionality subspaces that have been relevant.
@@ -153,6 +161,8 @@ The code can be found in: https://github.com/nacheteam/Ensemble-Outlier-Analysis
 This model has one single parameter:
 
 - num_iter: This is the number of times the subsamping technique is used in each component of the model.
+
+- verbose: boolean value indicating if the progress should be printed.
 
 The model has three main modules: the distance-based, the dependency-based and the density-based.
 

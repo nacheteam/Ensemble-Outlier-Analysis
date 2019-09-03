@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="examples.html" />
+    <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Welcome to Outlier Ensembles’s documentation!" href="index.html" /> 
 </head>
 
@@ -92,6 +92,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#trinity">TRINITY</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
             
@@ -195,6 +196,8 @@ with the highest score value.</p>
 <li><p>alpha: The parameter that computes the size of the test sample when computing the contrast. Default is 0.1.</p></li>
 <li><p>numCandidates: For each dimension only numCandidates subspaces are retained until the end of the algorithm. Default is 500.</p></li>
 <li><p>maxOutputSpaces: At the end of the algorithm this is the máximum number of subspaces returned as high contrast ones. Default is 1000.</p></li>
+<li><p>numThreads: Number of threads for the parallel code execution.</p></li>
+<li><p>verbose: boolean parameter to indicate if the algorithm should print the progress.</p></li>
 </ul>
 <p>Now we are going to explain the basis of the model. The model goes through all dimensions from 2 to the maximum dimensionality. For each dimension the high contrast subspaces
 are computed. All possible subspaces are tried on dimension 2 and for higher dimensions only the high contrast ones are used as fathers of the next subspaces.</p>
@@ -241,6 +244,8 @@ with these <span class="math notranslate nohighlight">\(k\)</span> probability v
 <p>This model has a single parameter:</p>
 <ul class="simple">
 <li><p>alpha: this parameter is the level of confidence for the Kolmogorov-Smirnov test to check is a subspace is relevant or not. Default is 0.01.</p></li>
+<li><p>verbose: parameter that indicates if the progress should be printed.</p></li>
+<li><p>experiment: parameter that indicates if the second experiment is being run. This only makes the model save the internal information to files.</p></li>
 </ul>
 <p>This model evaluates the score instance by instance. For each instance it starts checking for relevant subspaces of dimension 2. We say a subspace
 is relevant if the 1D projections included in the subspace projection are not uniformly distributed. The rest of subspaces with higher dimensionality are
@@ -267,6 +272,7 @@ will have values nearby <span class="math notranslate nohighlight">\(0\)</span> 
 <p>This model has one single parameter:</p>
 <ul class="simple">
 <li><p>num_iter: This is the number of times the subsamping technique is used in each component of the model.</p></li>
+<li><p>verbose: boolean value indicating if the progress should be printed.</p></li>
 </ul>
 <p>The model has three main modules: the distance-based, the dependency-based and the density-based.</p>
 <p>In the distance-based module we use the KNN with <span class="math notranslate nohighlight">\(k=5\)</span> algorithm for outlier detection having at the end a list with all the scores.</p>
@@ -286,7 +292,7 @@ we use only a small sample and repeat this process. At the end all instances wil
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="examples.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to Outlier Ensembles’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
