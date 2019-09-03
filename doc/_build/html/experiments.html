@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; Outlier Ensembles 5 Sept 2019 documentation</title>
+  <title>Experiments &mdash; Outlier Ensembles 5 Sept 2019 documentation</title>
   
 
   
@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="examples.html" /> 
+    <link rel="prev" title="Examples" href="examples.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,6 +83,18 @@
               <p class="caption"><span class="caption-text">Documentation</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Exmeriments</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Experiments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#check-accuracy-py">check_accuracy.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-accuracy-pyod-py">check_accuracy_PyOD.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get-outlying-subspaces-outres-py">get_outlying_subspaces_outres.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#obtain-results-py">obtain_results.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#obtain-auc-roc-py">obtain_auc_roc.py</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -128,7 +140,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Experiments</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -147,7 +159,152 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
+  <div class="section" id="experiments">
+<h1>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="check-accuracy-py">
+<h2>check_accuracy.py<a class="headerlink" href="#check-accuracy-py" title="Permalink to this headline">¶</a></h2>
+<p>The code is available in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/check_accuracy.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/check_accuracy.py</a></p>
+<p>This file fits all models with all datasets.</p>
+<p>The datasets used are available at ODDS: <a class="reference external" href="http://odds.cs.stonybrook.edu/">http://odds.cs.stonybrook.edu/</a></p>
+<p>From this library the datasets used where:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 31%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Dimensionality</p></th>
+<th class="head"><p>Number of instances</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>annthyroid</p></td>
+<td><p>6</p></td>
+<td><p>7200</p></td>
+</tr>
+<tr class="row-odd"><td><p>arrhythmia</p></td>
+<td><p>274</p></td>
+<td><p>452</p></td>
+</tr>
+<tr class="row-even"><td><p>breastw</p></td>
+<td><p>9</p></td>
+<td><p>683</p></td>
+</tr>
+<tr class="row-odd"><td><p>cardio</p></td>
+<td><p>21</p></td>
+<td><p>1831</p></td>
+</tr>
+<tr class="row-even"><td><p>glass</p></td>
+<td><p>9</p></td>
+<td><p>214</p></td>
+</tr>
+<tr class="row-odd"><td><p>ionosphere</p></td>
+<td><p>33</p></td>
+<td><p>351</p></td>
+</tr>
+<tr class="row-even"><td><p>letter</p></td>
+<td><p>32</p></td>
+<td><p>1600</p></td>
+</tr>
+<tr class="row-odd"><td><p>lympho</p></td>
+<td><p>18</p></td>
+<td><p>148</p></td>
+</tr>
+<tr class="row-even"><td><p>mammography</p></td>
+<td><p>6</p></td>
+<td><p>11183</p></td>
+</tr>
+<tr class="row-odd"><td><p>mnist</p></td>
+<td><p>100</p></td>
+<td><p>7603</p></td>
+</tr>
+<tr class="row-even"><td><p>musk</p></td>
+<td><p>166</p></td>
+<td><p>3062</p></td>
+</tr>
+<tr class="row-odd"><td><p>optdigits</p></td>
+<td><p>64</p></td>
+<td><p>5216</p></td>
+</tr>
+<tr class="row-even"><td><p>pendigits</p></td>
+<td><p>16</p></td>
+<td><p>6870</p></td>
+</tr>
+<tr class="row-odd"><td><p>pima</p></td>
+<td><p>8</p></td>
+<td><p>768</p></td>
+</tr>
+<tr class="row-even"><td><p>satellite</p></td>
+<td><p>36</p></td>
+<td><p>6435</p></td>
+</tr>
+<tr class="row-odd"><td><p>satimage-2</p></td>
+<td><p>36</p></td>
+<td><p>5803</p></td>
+</tr>
+<tr class="row-even"><td><p>speech</p></td>
+<td><p>400</p></td>
+<td><p>3686</p></td>
+</tr>
+<tr class="row-odd"><td><p>thyroid</p></td>
+<td><p>6</p></td>
+<td><p>3772</p></td>
+</tr>
+<tr class="row-even"><td><p>vertebral</p></td>
+<td><p>6</p></td>
+<td><p>240</p></td>
+</tr>
+<tr class="row-odd"><td><p>vowels</p></td>
+<td><p>12</p></td>
+<td><p>1456</p></td>
+</tr>
+<tr class="row-even"><td><p>wbc</p></td>
+<td><p>30</p></td>
+<td><p>378</p></td>
+</tr>
+<tr class="row-odd"><td><p>wine</p></td>
+<td><p>13</p></td>
+<td><p>129</p></td>
+</tr>
+</tbody>
+</table>
+<p>The models used are the 5 implemented by this module: HICS, OUTRES, LODA, Mahalanobis Kernel and TRINITY.</p>
+<p>This file fits all the models with all datasets and saves the results in the files located under the folder exp1.
+In this folder the files are splited in two, own containing our models and PyOD containing the PyOD models.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="check-accuracy-pyod-py">
+<h2>check_accuracy_PyOD.py<a class="headerlink" href="#check-accuracy-pyod-py" title="Permalink to this headline">¶</a></h2>
+<p>This script implements the same functions adapted to PyOD modules.</p>
+<p>The code can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/check_accuracy_pyod.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/check_accuracy_pyod.py</a></p>
+<p>The models fitted in this script are: ABOD, COF, HBOS, KNN, LOF, MCD, OCSVM, PCA, SOD and SOS.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="get-outlying-subspaces-outres-py">
+<h2>get_outlying_subspaces_outres.py<a class="headerlink" href="#get-outlying-subspaces-outres-py" title="Permalink to this headline">¶</a></h2>
+<p>The implementation can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/get_outlying_subspaces_outres.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/get_outlying_subspaces_outres.py</a></p>
+<p>This script is the second main experiment of the repository. The purpose of the script is to execute OUTRES saving the internal information of each instance,
+this is the subspaces where each instance is outlying and the adaptive neighborhood for that instance and that subspace. These results are saved in the folder exp2.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="obtain-results-py">
+<h2>obtain_results.py<a class="headerlink" href="#obtain-results-py" title="Permalink to this headline">¶</a></h2>
+<p>The implementation can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/obtain_results.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/obtain_results.py</a></p>
+<p>This script takes the information from the first and second experiments and obtains results and figures from the data files.</p>
+<p>The purpose of the script es reading the data from the files in exp1 and exp2 and plot bar figures with the time taken and accuracy obtained. The
+script takes as well the files from exp2 and plot them individually.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="obtain-auc-roc-py">
+<h2>obtain_auc_roc.py<a class="headerlink" href="#obtain-auc-roc-py" title="Permalink to this headline">¶</a></h2>
+<p>The implementation can be found in: <a class="reference external" href="https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/obtain_auc_roc.py">https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/experiments/obtain_auc_roc.py</a></p>
+<p>This script takes the results from the first experiments stored in the folder exp1. The script obtain the corresponding labels from each model and dataset and
+obtains with them the AUC values and plots the ROC curves for our 5 models implemented.</p>
+</div>
+</div>
+
 
            </div>
            
@@ -157,7 +314,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="examples.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-left" title="Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

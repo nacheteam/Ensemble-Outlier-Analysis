@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="experiments.html" />
+    <link rel="next" title="Experiments" href="experiments.html" />
     <link rel="prev" title="Models" href="models.html" /> 
 </head>
 
@@ -92,6 +92,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#trinity-example">TRINITY Example</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">Exmeriments</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="experiments.html">Experiments</a></li>
 </ul>
 
             
@@ -158,7 +162,6 @@
             
   <div class="section" id="examples">
 <h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
-<hr class="docutils" />
 <p>For each model we have developed an example so we can see how it works.</p>
 <hr class="docutils" />
 <div class="section" id="hics-example">
@@ -172,7 +175,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<li><p>Read the data to fit the model. The data should be in a NumPy array:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataAbalone</span><span class="p">()</span>
 <span class="c1">#dataset,labels = utils.readDataYeast()</span>
@@ -216,9 +219,9 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<li><p>Check if the anomalies obtained by the model are also obtained by PyOD.</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if PyOD models get the same anomalies</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
 <span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
@@ -244,7 +247,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<li><p>Read the data to fit the model. The data should be in a NumPy array:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataAbalone</span><span class="p">()</span>
 <span class="c1">#dataset,labels = utils.readDataYeast()</span>
@@ -288,9 +291,9 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<li><p>Check if the anomalies obtained by the model are also obtained by PyOD.</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if PyOD models get the same anomalies</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
 <span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
@@ -316,7 +319,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<li><p>Read the data to fit the model. The data should be in a NumPy array:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#dataset,labels = utils.readDataAbalone()</span>
 <span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataYeast</span><span class="p">()</span>
@@ -360,9 +363,9 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<li><p>Check if the anomalies obtained by the model are also obtained by PyOD.</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if PyOD models get the same anomalies</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
 <span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
@@ -388,7 +391,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<li><p>Read the data to fit the model. The data should be in a NumPy array:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#dataset,labels = utils.readDataAbalone()</span>
 <span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataYeast</span><span class="p">()</span>
@@ -432,9 +435,9 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<li><p>Check if the anomalies obtained by the model are also obtained by PyOD.</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if PyOD models get the same anomalies</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
 <span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
@@ -460,7 +463,7 @@
 </div>
 </div></blockquote>
 </li>
-<li><p>Read the data to fit the model. The data should be in a numpy array:</p>
+<li><p>Read the data to fit the model. The data should be in a NumPy array:</p>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#dataset,labels = utils.readDataAbalone()</span>
 <span class="n">dataset</span><span class="p">,</span><span class="n">labels</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">readDataYeast</span><span class="p">()</span>
@@ -484,7 +487,7 @@
 </pre></div>
 </div>
 <div class="figure align-default">
-<img alt="TRINITY Scatter Plot" src="figs/trinity_plot.png" />
+<img alt="TRINITY Scatter Plot" src="_images/trinity_plot.png" />
 </div>
 </div></blockquote>
 </li>
@@ -500,13 +503,13 @@
 </pre></div>
 </div>
 <div class="figure align-default">
-<img alt="TRINITY Statistics" src="figs/trinity_statistics.png" />
+<img alt="TRINITY Statistics" src="_images/trinity_statistics.png" />
 </div>
 </div></blockquote>
 </li>
-<li><p>Check if the anomalies obtained by the model are also obtained by pyod.</p>
+<li><p>Check if the anomalies obtained by the model are also obtained by PyOD.</p>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if pyod models get the same anomalies</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check if PyOD models get the same anomalies</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Getting anomalies based on the voting system to check&quot;</span><span class="p">)</span>
 <span class="n">cm</span><span class="p">,</span> <span class="n">df</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">checkAnomalies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">outliers</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Common ones: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">cm</span><span class="p">))</span>
@@ -514,12 +517,11 @@
 </pre></div>
 </div>
 <div class="figure align-default">
-<img alt="Number of common and different outliers with TRINITY and PyOD" src="figs/trinity_common_different.png" />
+<img alt="Number of common and different outliers with TRINITY and PyOD" src="_images/trinity_common_different.png" />
 </div>
 </div></blockquote>
 </li>
 </ol>
-<hr class="docutils" />
 </div>
 </div>
 
@@ -531,7 +533,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="experiments.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="experiments.html" class="btn btn-neutral float-right" title="Experiments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="models.html" class="btn btn-neutral float-left" title="Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

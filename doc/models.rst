@@ -19,7 +19,7 @@ are:
 1. "__init__": The method init is the constructor of the class and has the contamination parameter as default.
 This parameter indicates which percentage of the dataset is considered as outliers. If 0.1 is passed then the 10% of the dataset is considered as outliers.
 
-2. "fit": This method is the main mathod for the user. The method needs the dataset as a parameter. The dataset is stored and the outlier scores are initialized
+2. "fit": This method is the main method for the user. The method needs the dataset as a parameter. The dataset is stored and the outlier scores are initialized
 an finally the method "runMethod" is executed so the model can update the scores.
 
 3. "runMethod": This is the method where the actual model is coded. This method is only supposed to be called from the "fit" method and not from outside
@@ -44,7 +44,7 @@ The code itself can be found in: https://github.com/nacheteam/Ensemble-Outlier-A
 
 The parameters of the model are the following ones:
 
-- outlier_rank: this is the method used to evaluate the instances in the las step of the algorithm. The original proposal used LOF but any density-based method
+- outlier_rank: this is the method used to evaluate the instances in the last step of the algorithm. The original proposal used LOF but any density-based method
 can be used as well. The options available are: LOF, COF, CBLOF, LOCI, HBOS and SOD. Default is LOF.
 
 - M: This is the number of times subsampling is applied in the process of obtaining the contrast of a subspace. Default is 100.
@@ -53,19 +53,19 @@ can be used as well. The options available are: LOF, COF, CBLOF, LOCI, HBOS and 
 
 - numCandidates: For each dimension only numCandidates subspaces are retained until the end of the algorithm. Default is 500.
 
-- maxOutputSpaces: At the end of the algorithm this is the máximum number of subspaces returned as high contrast ones. Default is 1000.
+- maxOutputSpaces: At the end of the algorithm this is the maximum number of subspaces returned as high contrast ones. Default is 1000.
 
 - numThreads: Number of threads for the parallel code execution.
 
-- verbose: boolean parameter to indicate if the algorithm should print the progress.
+- verbose: Boolean parameter to indicate if the algorithm should print the progress.
 
 Now we are going to explain the basis of the model. The model goes through all dimensions from 2 to the maximum dimensionality. For each dimension the high contrast subspaces
 are computed. All possible subspaces are tried on dimension 2 and for higher dimensions only the high contrast ones are used as fathers of the next subspaces.
 
-For example if [0,2] is a high contrast subspace then the childs or candidates for dimension 3 could be for example [0,2,3], [0,2,1], [0,2,5], etc.
+For example if [0,2] is a high contrast subspace then the children or candidates for dimension 3 could be for example [0,2,3], [0,2,1], [0,2,5], etc.
 
-To compute the constrast we take a subsample of the dataset using alpha to compute the size of this sample. Over this sample the deviation is computed. This procedure works as follows:
-for each instance in the dataset and for a fixed comparison atribute we make the cumulative sum of all the elements in the sample if the value of the comparison attribute
+To compute the contrast we take a subsample of the dataset using alpha to compute the size of this sample. Over this sample the deviation is computed. This procedure works as follows:
+for each instance in the dataset and for a fixed comparison attribute we make the cumulative sum of all the elements in the sample if the value of the comparison attribute
 of the instance and each instance of the dataset is bigger. We make the same cumulative value but considering only the sample. Finally the absolute value of the difference
 is computed. Now for each instance we have a value. We take the maximum of these differences as the deviation.
 
@@ -103,7 +103,7 @@ The model has 2 parameters:
 The model creates first the random projection vectors. These vectors are as long as each instance of the dataset and contains :math:`[\sqrt{d}]` where :math:`d` is the
 dimensionality of the dataset itself. The rest of elements of the projection vector are taken from a normal distribution with zero mean and unit variance.
 
-Using this procedure k proection vectors are created. Now for each one of this vectors we are going to compute the one-dimensional projection for each instance
+Using this procedure k projection vectors are created. Now for each one of this vectors we are going to compute the one-dimensional projection for each instance
 of the dataset like :math:`z_j = x_j \cdot w_i^T` where :math:`x_j` is an instance of the dataset and :math:`w_i` a projection vector. With these values a histogram
 is computed so we can end up with k histograms.
 
@@ -134,17 +134,17 @@ created or proposed starting from lower dimensionality subspaces that have been 
 If the subspace is relevant then we can compute the density of the instance. This is checking in the neighborhood if the projection of the data is nearby our instance.
 The density is computed with the formula :math:`\frac{1}{n}\sum_{p\in AN(o,S) K_e (\frac{dist_S (o,p)}{\epsilon(|S|)})}` where :math:`o` is the instance being scored,
 :math:`AN(o,S)` is the neighborhood of the instance :math:`o` in the subspace :math:`S`, :math:`dist_S (o,p)` is the distance from the instance :math:`o` to the
-instance :mat:`p` in the projection of the data, :math:`\epsilon(|S|)` is a measure to make the adaptative neighborhood and :math:`K_e` is the function
+instance :mat:`p` in the projection of the data, :math:`\epsilon(|S|)` is a measure to make the adaptive neighborhood and :math:`K_e` is the function
 :mat:`K_e (x) = 1-x^2`.
 
-The adaptative neighborhood are the instances that are at the most at distance :math:`\epsilon (|S|)` to our instance. The calculation of :math:`\epsilon (|S|)` can be
+The adaptive neighborhood are the instances that are at the most at distance :math:`\epsilon (|S|)` to our instance. The calculation of :math:`\epsilon (|S|)` can be
 found in the paper.
 
 With the density computed we can compute the deviation as :math:`dev(o,S) = \frac{\mu - den(o,S)}{2\sigma}` where :math:`\mu` and :math:`\sigma` are the mean and
-standard deviation of the density values in the adaptative neighborhood.
+standard deviation of the density values in the adaptive neighborhood.
 
 Finally if the deviation is bigger than one we update the score :math:`r(o) = r(o) \cdot \frac{den(o,S)}{dev(o,S)}`. The scores are in the interval :math:`[0,1]`
-being 0 very outlying and 1 inlying. To mantaing the sacale (bigger is more outlying) we modify the scores at the end as :math:`1-r(o)`. Doing this the inliers
+being 0 very outlying and 1 inlying. To maintaining the scale (bigger is more outlying) we modify the scores at the end as :math:`1-r(o)`. Doing this the inliers
 will have values nearby :math:`0` and outliers will have values nearby :math:`1`.
 
 This process is repeated for every instance.
@@ -154,15 +154,15 @@ This process is repeated for every instance.
 TRINITY
 ------------------
 
-The implementatio  of this model is taken from the book Aggarwal, Charu C., Sathe, Saket Outlier Ensembles.
+The implementation  of this model is taken from the book Aggarwal, Charu C., Sathe, Saket Outlier Ensembles.
 
 The code can be found in: https://github.com/nacheteam/Ensemble-Outlier-Analysis/blob/master/models/trinity.py
 
 This model has one single parameter:
 
-- num_iter: This is the number of times the subsamping technique is used in each component of the model.
+- num_iter: This is the number of times the subsampling technique is used in each component of the model.
 
-- verbose: boolean value indicating if the progress should be printed.
+- verbose: Boolean value indicating if the progress should be printed.
 
 The model has three main modules: the distance-based, the dependency-based and the density-based.
 

@@ -22,7 +22,7 @@ Full example: `hics_example.py <https://github.com/nacheteam/Ensemble-Outlier-An
         from hics import HICS
 
 
-2. Read the data to fit the model. The data should be in a numpy array:
+2. Read the data to fit the model. The data should be in a NumPy array:
 
     .. code-block:: python
 
@@ -62,11 +62,11 @@ Full example: `hics_example.py <https://github.com/nacheteam/Ensemble-Outlier-An
     .. figure:: figs/hics_statistics.png
       :alt: HICS Statistics
 
-6. Check if the anomalies obtained by the model are also obtained by pyod.
+6. Check if the anomalies obtained by the model are also obtained by PyOD.
 
     .. code-block:: python
 
-      # Check if pyod models get the same anomalies
+      # Check if PyOD models get the same anomalies
       print("Getting anomalies based on the voting system to check")
       cm, df = utils.checkAnomalies(dataset, outliers)
       print("Common ones: " + str(cm))
@@ -92,7 +92,7 @@ Full example: `KernelMahalanobis_example.py <https://github.com/nacheteam/Ensemb
         from KernelMahalanobis import KernelMahalanobis
 
 
-2. Read the data to fit the model. The data should be in a numpy array:
+2. Read the data to fit the model. The data should be in a NumPy array:
 
     .. code-block:: python
 
@@ -132,11 +132,11 @@ Full example: `KernelMahalanobis_example.py <https://github.com/nacheteam/Ensemb
     .. figure:: figs/MK_statistics.png
       :alt: Mahalanobis Kernel Statistics
 
-6. Check if the anomalies obtained by the model are also obtained by pyod.
+6. Check if the anomalies obtained by the model are also obtained by PyOD.
 
     .. code-block:: python
 
-      # Check if pyod models get the same anomalies
+      # Check if PyOD models get the same anomalies
       print("Getting anomalies based on the voting system to check")
       cm, df = utils.checkAnomalies(dataset, outliers)
       print("Common ones: " + str(cm))
@@ -162,7 +162,7 @@ Full example: `loda_example.py <https://github.com/nacheteam/Ensemble-Outlier-An
         from loda import LODA
 
 
-2. Read the data to fit the model. The data should be in a numpy array:
+2. Read the data to fit the model. The data should be in a NumPy array:
 
     .. code-block:: python
 
@@ -202,11 +202,11 @@ Full example: `loda_example.py <https://github.com/nacheteam/Ensemble-Outlier-An
     .. figure:: figs/loda_statistics.png
       :alt: LODA Statistics
 
-6. Check if the anomalies obtained by the model are also obtained by pyod.
+6. Check if the anomalies obtained by the model are also obtained by PyOD.
 
     .. code-block:: python
 
-      # Check if pyod models get the same anomalies
+      # Check if PyOD models get the same anomalies
       print("Getting anomalies based on the voting system to check")
       cm, df = utils.checkAnomalies(dataset, outliers)
       print("Common ones: " + str(cm))
@@ -232,7 +232,7 @@ Full example: `outres_example.py <https://github.com/nacheteam/Ensemble-Outlier-
         from outres import OUTRES
 
 
-2. Read the data to fit the model. The data should be in a numpy array:
+2. Read the data to fit the model. The data should be in a NumPy array:
 
     .. code-block:: python
 
@@ -272,11 +272,11 @@ Full example: `outres_example.py <https://github.com/nacheteam/Ensemble-Outlier-
     .. figure:: figs/outres_statistics.png
       :alt: OUTRES Statistics
 
-6. Check if the anomalies obtained by the model are also obtained by pyod.
+6. Check if the anomalies obtained by the model are also obtained by PyOD.
 
     .. code-block:: python
 
-      # Check if pyod models get the same anomalies
+      # Check if PyOD models get the same anomalies
       print("Getting anomalies based on the voting system to check")
       cm, df = utils.checkAnomalies(dataset, outliers)
       print("Common ones: " + str(cm))
@@ -301,7 +301,7 @@ Full example: `trinity_example.py <https://github.com/nacheteam/Ensemble-Outlier
         from trinity import TRINITY
 
 
-2. Read the data to fit the model. The data should be in a numpy array:
+2. Read the data to fit the model. The data should be in a NumPy array:
 
     .. code-block:: python
 
@@ -341,11 +341,11 @@ Full example: `trinity_example.py <https://github.com/nacheteam/Ensemble-Outlier
     .. figure:: figs/trinity_statistics.png
       :alt: TRINITY Statistics
 
-6. Check if the anomalies obtained by the model are also obtained by pyod.
+6. Check if the anomalies obtained by the model are also obtained by PyOD.
 
     .. code-block:: python
 
-      # Check if pyod models get the same anomalies
+      # Check if PyOD models get the same anomalies
       print("Getting anomalies based on the voting system to check")
       cm, df = utils.checkAnomalies(dataset, outliers)
       print("Common ones: " + str(cm))

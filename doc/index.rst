@@ -21,15 +21,17 @@ Welcome to Outlier Ensembles's documentation!
 .. toctree::
   :maxdepth: 2
   :hidden:
-  :caption: Exmeriments
+  :caption: Experiments
 
   experiments
 
 
 
-Indices and tables
-==================
+Content of the Documentation
+===============================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+1. In the section "Documentation" the main explanation of the module can be found. In the subsection "Models" the theoretical explanation of each model is given and
+the parameters to fulfill when creating each predictor object. Then some examples are provided in the subsection "Examples".
+
+2. In the section "Experiments" you can find the explanation of some experiments and results obtained with the implementation of the models in the package compared
+to some models taken from `PyOD <https://github.com/yzhao062/pyod>`_ .
