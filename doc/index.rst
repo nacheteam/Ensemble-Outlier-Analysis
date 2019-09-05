@@ -15,6 +15,7 @@ Welcome to Outlier Ensembles's documentation!
   :hidden:
   :caption: Documentation
 
+  install
   models
   examples
 
